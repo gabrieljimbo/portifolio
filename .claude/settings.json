@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(unzip -l \"copy-deck-kit-main.zip\")",
+      "Bash(unzip -p \"copy-deck-kit-main.zip\" \"copy-deck-kit-main/skills/page-cro/SKILL.md\")",
+      "Bash(unzip -p \"copy-deck-kit-main.zip\" \"copy-deck-kit-main/skills/copywriting/SKILL.md\")",
+      "Bash(unzip -p \"copy-deck-kit-main.zip\" \"copy-deck-kit-main/setup.sh\")",
+      "Read(//c/tmp/**)",
+      "Bash(unzip -o \"C:/Users/gabri/OneDrive/ADS/Claude/Skills/Copywriter/copy-deck-kit-main.zip\" -d copy-deck-kit)",
+      "Bash(unzip -o \"C:/Users/gabri/OneDrive/ADS/Claude/Skills/Copywriter/marketingskills-main.zip\" -d marketing-skills)",
+      "Bash(unzip -o \"C:/Users/gabri/OneDrive/ADS/Claude/Skills/Copy/Claude-meta-ads-skills-main.zip\" -d meta-ads-skills)",
+      "Bash(unzip -o \"C:/Users/gabri/OneDrive/ADS/Claude/Skills/Criativo e Analise de Audiencia/claude-marketing-skills-main.zip\" -d claude-marketing)",
+      "Bash(unzip -o \"C:/Users/gabri/OneDrive/ADS/Claude/Skills/Estrategia e escala/paid-marketing-skills-main.zip\" -d paid-marketing)",
+      "Bash(unzip -o \"C:/Users/gabri/OneDrive/ADS/Claude/Skills/Copywriter/ai-marketing-claude-main.zip\" -d ai-marketing)",
+      "Read(//tmp/**)"
+    ]
+  }
+}
