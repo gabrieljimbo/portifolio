@@ -637,6 +637,11 @@
     .memoria-author-role { font-size: 0.8rem; color: var(--text-secondary); }
     .memorias-cta { text-align: center; }
     .memorias-cta p { color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.8rem; }
+    .memoria-preview { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 1.4rem; border-radius: calc(var(--radius) - 4px); overflow: hidden; }
+    .memoria-preview-img { position: relative; overflow: hidden; aspect-ratio: 3/4; }
+    .memoria-preview-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: transform 0.4s ease; }
+    .memoria-card:hover .memoria-preview-img img { transform: scale(1.04); }
+    .memoria-preview-label { position: absolute; bottom: 0.5rem; left: 0.5rem; font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; background: rgba(0,0,0,0.7); color: #fff; padding: 0.2rem 0.45rem; border-radius: 3px; }
     @media (max-width: 768px) {
       .memorias-cards { grid-template-columns: 1fr; }
       .memoria-testimonial { padding: 1.8rem 1.5rem; }
@@ -787,19 +792,11 @@
       <div id="tab-newborn" class="tab-panel">
         <div class="gallery-grid">
           <div class="gallery-item reveal">
-            <img src="https://picsum.photos/seed/nb1/400/540" alt="Newborn ensaio 1" loading="lazy" />
+            <img src="images/galeria/newborn-01.png" alt="Newborn ensaio 1" loading="lazy" />
             <div class="gallery-overlay"><div class="gallery-overlay-text">Foto simples → <span>Ensaio estúdio</span></div></div>
           </div>
           <div class="gallery-item reveal reveal-delay-1">
-            <img src="https://picsum.photos/seed/nb2/400/540" alt="Newborn ensaio 2" loading="lazy" />
-            <div class="gallery-overlay"><div class="gallery-overlay-text">Foto simples → <span>Ensaio estúdio</span></div></div>
-          </div>
-          <div class="gallery-item reveal reveal-delay-2">
-            <img src="https://picsum.photos/seed/nb3/400/540" alt="Newborn ensaio 3" loading="lazy" />
-            <div class="gallery-overlay"><div class="gallery-overlay-text">Foto simples → <span>Ensaio estúdio</span></div></div>
-          </div>
-          <div class="gallery-item reveal reveal-delay-3">
-            <img src="https://picsum.photos/seed/nb4/400/540" alt="Newborn ensaio 4" loading="lazy" />
+            <img src="images/galeria/newborn-02.png" alt="Newborn ensaio 2" loading="lazy" />
             <div class="gallery-overlay"><div class="gallery-overlay-text">Foto simples → <span>Ensaio estúdio</span></div></div>
           </div>
         </div>
@@ -807,46 +804,32 @@
 
       <div id="tab-pet" class="tab-panel active">
         <div class="gallery-grid">
-          <div class="gallery-item reveal"><img src="https://picsum.photos/seed/pet1/400/540" alt="Pet ensaio 1" loading="lazy" /><div class="gallery-overlay"><div class="gallery-overlay-text">Foto simples → <span>Ensaio estúdio</span></div></div></div>
-          <div class="gallery-item reveal reveal-delay-1"><img src="https://picsum.photos/seed/pet2/400/540" alt="Pet ensaio 2" loading="lazy" /><div class="gallery-overlay"><div class="gallery-overlay-text">Foto simples → <span>Ensaio estúdio</span></div></div></div>
-          <div class="gallery-item reveal reveal-delay-2"><img src="https://picsum.photos/seed/pet3/400/540" alt="Pet ensaio 3" loading="lazy" /><div class="gallery-overlay"><div class="gallery-overlay-text">Foto simples → <span>Ensaio estúdio</span></div></div></div>
-          <div class="gallery-item reveal reveal-delay-3"><img src="https://picsum.photos/seed/pet4/400/540" alt="Pet ensaio 4" loading="lazy" /><div class="gallery-overlay"><div class="gallery-overlay-text">Foto simples → <span>Ensaio estúdio</span></div></div></div>
+          <div class="gallery-item reveal"><img src="images/galeria/pet-01.png" alt="Pet ensaio 1" loading="lazy" /><div class="gallery-overlay"><div class="gallery-overlay-text">Foto simples → <span>Ensaio estúdio</span></div></div></div>
+          <div class="gallery-item reveal reveal-delay-1"><img src="images/galeria/pet-02.png" alt="Pet ensaio 2" loading="lazy" /><div class="gallery-overlay"><div class="gallery-overlay-text">Foto simples → <span>Ensaio estúdio</span></div></div></div>
         </div>
       </div>
 
       <div id="tab-gestante" class="tab-panel">
         <div class="gallery-grid">
-          <div class="gallery-item"><img src="https://picsum.photos/seed/gest1/400/540" alt="Gestante ensaio 1" loading="lazy" /><div class="gallery-overlay"><div class="gallery-overlay-text">Foto simples → <span>Ensaio estúdio</span></div></div></div>
-          <div class="gallery-item"><img src="https://picsum.photos/seed/gest2/400/540" alt="Gestante ensaio 2" loading="lazy" /><div class="gallery-overlay"><div class="gallery-overlay-text">Foto simples → <span>Ensaio estúdio</span></div></div></div>
-          <div class="gallery-item"><img src="https://picsum.photos/seed/gest3/400/540" alt="Gestante ensaio 3" loading="lazy" /><div class="gallery-overlay"><div class="gallery-overlay-text">Foto simples → <span>Ensaio estúdio</span></div></div></div>
-          <div class="gallery-item"><img src="https://picsum.photos/seed/gest4/400/540" alt="Gestante ensaio 4" loading="lazy" /><div class="gallery-overlay"><div class="gallery-overlay-text">Foto simples → <span>Ensaio estúdio</span></div></div></div>
+          <div class="gallery-item"><img src="images/galeria/gestante-01.png" alt="Gestante ensaio 1" loading="lazy" /><div class="gallery-overlay"><div class="gallery-overlay-text">Foto simples → <span>Ensaio estúdio</span></div></div></div>
         </div>
       </div>
 
       <div id="tab-profissional" class="tab-panel">
         <div class="gallery-grid">
-          <div class="gallery-item"><img src="https://picsum.photos/seed/prof1/400/540" alt="Profissional ensaio 1" loading="lazy" /><div class="gallery-overlay"><div class="gallery-overlay-text">Foto simples → <span>Ensaio estúdio</span></div></div></div>
-          <div class="gallery-item"><img src="https://picsum.photos/seed/prof2/400/540" alt="Profissional ensaio 2" loading="lazy" /><div class="gallery-overlay"><div class="gallery-overlay-text">Foto simples → <span>Ensaio estúdio</span></div></div></div>
-          <div class="gallery-item"><img src="https://picsum.photos/seed/prof3/400/540" alt="Profissional ensaio 3" loading="lazy" /><div class="gallery-overlay"><div class="gallery-overlay-text">Foto simples → <span>Ensaio estúdio</span></div></div></div>
-          <div class="gallery-item"><img src="https://picsum.photos/seed/prof4/400/540" alt="Profissional ensaio 4" loading="lazy" /><div class="gallery-overlay"><div class="gallery-overlay-text">Foto simples → <span>Ensaio estúdio</span></div></div></div>
+          <div class="gallery-item"><img src="images/galeria/trabalho-01.png" alt="Profissional ensaio 1" loading="lazy" /><div class="gallery-overlay"><div class="gallery-overlay-text">Foto simples → <span>Ensaio estúdio</span></div></div></div>
         </div>
       </div>
 
       <div id="tab-casal" class="tab-panel">
         <div class="gallery-grid">
-          <div class="gallery-item"><img src="https://picsum.photos/seed/casal1/400/540" alt="Casal ensaio 1" loading="lazy" /><div class="gallery-overlay"><div class="gallery-overlay-text">Foto simples → <span>Ensaio estúdio</span></div></div></div>
-          <div class="gallery-item"><img src="https://picsum.photos/seed/casal2/400/540" alt="Casal ensaio 2" loading="lazy" /><div class="gallery-overlay"><div class="gallery-overlay-text">Foto simples → <span>Ensaio estúdio</span></div></div></div>
-          <div class="gallery-item"><img src="https://picsum.photos/seed/casal3/400/540" alt="Casal ensaio 3" loading="lazy" /><div class="gallery-overlay"><div class="gallery-overlay-text">Foto simples → <span>Ensaio estúdio</span></div></div></div>
-          <div class="gallery-item"><img src="https://picsum.photos/seed/casal4/400/540" alt="Casal ensaio 4" loading="lazy" /><div class="gallery-overlay"><div class="gallery-overlay-text">Foto simples → <span>Ensaio estúdio</span></div></div></div>
+          <div class="gallery-item"><img src="images/galeria/casal-01.png" alt="Casal ensaio 1" loading="lazy" /><div class="gallery-overlay"><div class="gallery-overlay-text">Foto simples → <span>Ensaio estúdio</span></div></div></div>
         </div>
       </div>
 
       <div id="tab-familia" class="tab-panel">
         <div class="gallery-grid">
-          <div class="gallery-item"><img src="https://picsum.photos/seed/fam1/400/540" alt="Família ensaio 1" loading="lazy" /><div class="gallery-overlay"><div class="gallery-overlay-text">Foto simples → <span>Ensaio estúdio</span></div></div></div>
-          <div class="gallery-item"><img src="https://picsum.photos/seed/fam2/400/540" alt="Família ensaio 2" loading="lazy" /><div class="gallery-overlay"><div class="gallery-overlay-text">Foto simples → <span>Ensaio estúdio</span></div></div></div>
-          <div class="gallery-item"><img src="https://picsum.photos/seed/fam3/400/540" alt="Família ensaio 3" loading="lazy" /><div class="gallery-overlay"><div class="gallery-overlay-text">Foto simples → <span>Ensaio estúdio</span></div></div></div>
-          <div class="gallery-item"><img src="https://picsum.photos/seed/fam4/400/540" alt="Família ensaio 4" loading="lazy" /><div class="gallery-overlay"><div class="gallery-overlay-text">Foto simples → <span>Ensaio estúdio</span></div></div></div>
+          <div class="gallery-item"><img src="images/galeria/familia-01.png" alt="Família ensaio 1" loading="lazy" /><div class="gallery-overlay"><div class="gallery-overlay-text">Foto simples → <span>Ensaio estúdio</span></div></div></div>
         </div>
       </div>
     </div>
@@ -871,10 +854,10 @@
           </div>
           <div class="slider-container" id="slider1">
             <div class="slider-img before">
-              <img src="https://picsum.photos/seed/ba-before-pet/480/640" alt="Antes pet" loading="lazy" />
+              <img src="images/slider/pet-antes.png" alt="Antes pet" loading="lazy" />
             </div>
             <div class="slider-img after" id="slider1-after">
-              <img src="https://picsum.photos/seed/ba-after-pet/480/640" alt="Depois pet" loading="lazy" />
+              <img src="images/slider/pet-depois.png" alt="Depois pet" loading="lazy" />
             </div>
             <div class="slider-handle" id="slider1-handle"></div>
             <div class="slider-label before-label">ANTES</div>
@@ -889,10 +872,10 @@
           </div>
           <div class="slider-container" id="slider2">
             <div class="slider-img before">
-              <img src="https://picsum.photos/seed/ba-before2/480/640" alt="Antes gestante" loading="lazy" />
+              <img src="images/slider/gestante-antes.png" alt="Antes gestante" loading="lazy" />
             </div>
             <div class="slider-img after" id="slider2-after">
-              <img src="https://picsum.photos/seed/ba-after2/480/640" alt="Depois gestante" loading="lazy" />
+              <img src="images/slider/gestante-depois.png" alt="Depois gestante" loading="lazy" />
             </div>
             <div class="slider-handle" id="slider2-handle"></div>
             <div class="slider-label before-label">ANTES</div>
@@ -907,10 +890,10 @@
           </div>
           <div class="slider-container" id="slider3">
             <div class="slider-img before">
-              <img src="https://picsum.photos/seed/ba-before3/480/640" alt="Antes profissional" loading="lazy" />
+              <img src="images/slider/trabalho-antes.png" alt="Antes profissional" loading="lazy" />
             </div>
             <div class="slider-img after" id="slider3-after">
-              <img src="https://picsum.photos/seed/ba-after3/480/640" alt="Depois profissional" loading="lazy" />
+              <img src="images/slider/trabalho-depois.png" alt="Depois profissional" loading="lazy" />
             </div>
             <div class="slider-handle" id="slider3-handle"></div>
             <div class="slider-label before-label">ANTES</div>
@@ -956,6 +939,16 @@
             A memória continua sendo a mesma. A foto, não.
           </p>
           <span class="memoria-tag">Fotos danificadas · P&B · Álbuns antigos</span>
+          <div class="memoria-preview">
+            <div class="memoria-preview-img">
+              <img src="images/memorias/restauracao-antes.png" alt="Foto antiga antes da restauração" loading="lazy" />
+              <span class="memoria-preview-label">antes</span>
+            </div>
+            <div class="memoria-preview-img">
+              <img src="images/memorias/restauracao-depois.png" alt="Foto restaurada" loading="lazy" />
+              <span class="memoria-preview-label" style="color:var(--gold);">depois ✦</span>
+            </div>
+          </div>
         </div>
 
         <div class="memoria-card reveal reveal-delay-2">
@@ -967,6 +960,16 @@
             A foto em P&B guarda o momento — a colorização revela quem eles realmente eram.
           </p>
           <span class="memoria-tag">Casamentos · Retratos · Anos 50, 60, 70</span>
+          <div class="memoria-preview">
+            <div class="memoria-preview-img">
+              <img src="images/memorias/coloracao-antes.png" alt="Foto em preto e branco" loading="lazy" />
+              <span class="memoria-preview-label">antes</span>
+            </div>
+            <div class="memoria-preview-img">
+              <img src="images/memorias/coloracao-depois.png" alt="Foto colorizada" loading="lazy" />
+              <span class="memoria-preview-label" style="color:var(--gold);">depois ✦</span>
+            </div>
+          </div>
         </div>
 
         <div class="memoria-card reveal reveal-delay-3">
@@ -978,6 +981,16 @@
             Manda as fotos que você tem. A gente faz o encontro acontecer.
           </p>
           <span class="memoria-tag">Familiares falecidos · Reencontros · Presentes inesquecíveis</span>
+          <div class="memoria-preview">
+            <div class="memoria-preview-img">
+              <img src="images/memorias/familia-antes.png" alt="Família antes" loading="lazy" />
+              <span class="memoria-preview-label">antes</span>
+            </div>
+            <div class="memoria-preview-img">
+              <img src="images/memorias/familia-depois.png" alt="Família completa" loading="lazy" />
+              <span class="memoria-preview-label" style="color:var(--gold);">depois ✦</span>
+            </div>
+          </div>
         </div>
 
       </div>
