@@ -586,6 +586,62 @@
       .hero-badge { font-size: 0.65rem; }
       .pricing-value { font-size: 2.8rem; }
     }
+
+    /* ===========================
+       MEMÓRIAS — novo vertical
+    =========================== */
+    .memorias { background: var(--bg-secondary); }
+    .memorias-intro {
+      max-width: 680px; margin: 0 auto 4rem;
+      text-align: center;
+    }
+    .memorias-intro p { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.75; margin-top: 1.2rem; }
+    .memorias-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 3.5rem; }
+    .memoria-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 2.2rem 2rem;
+      transition: var(--transition); position: relative; overflow: hidden;
+    }
+    .memoria-card::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(201,168,76,0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .memoria-card:hover { border-color: var(--border-hover); box-shadow: var(--shadow-gold-hover); transform: translateY(-4px); }
+    .memoria-icon { font-size: 2.8rem; margin-bottom: 1.2rem; display: block; }
+    .memoria-card h3 { font-size: 1.5rem; margin-bottom: 0.7rem; }
+    .memoria-card p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; }
+    .memoria-card .memoria-tag {
+      display: inline-block; margin-top: 1rem;
+      font-family: 'DM Mono', monospace; font-size: 0.65rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--gold); opacity: 0.75;
+    }
+    .memoria-testimonial {
+      max-width: 700px; margin: 0 auto 3rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 2.5rem 2.5rem 2rem;
+      text-align: left;
+    }
+    .memoria-testimonial .stars { color: var(--gold); font-size: 1rem; margin-bottom: 1rem; letter-spacing: 0.1em; }
+    .memoria-testimonial blockquote {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.3rem;
+      line-height: 1.65; font-style: italic; color: var(--text-primary);
+      margin-bottom: 1.5rem;
+    }
+    .memoria-testimonial blockquote::before { content: '"'; color: var(--gold); font-size: 2.2rem; line-height: 0; vertical-align: -0.5em; margin-right: 0.2rem; }
+    .memoria-testimonial blockquote::after { content: '"'; color: var(--gold); font-size: 2.2rem; line-height: 0; vertical-align: -0.5em; margin-left: 0.2rem; }
+    .memoria-author { display: flex; align-items: center; gap: 1rem; }
+    .memoria-author img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid var(--border); }
+    .memoria-author-name { font-weight: 600; font-size: 0.95rem; }
+    .memoria-author-role { font-size: 0.8rem; color: var(--text-secondary); }
+    .memorias-cta { text-align: center; }
+    .memorias-cta p { color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.8rem; }
+    @media (max-width: 768px) {
+      .memorias-cards { grid-template-columns: 1fr; }
+      .memoria-testimonial { padding: 1.8rem 1.5rem; }
+      .memoria-testimonial blockquote { font-size: 1.15rem; }
+    }
   </style>
 </head>
 <body>
@@ -599,6 +655,7 @@
       <ul class="navbar-nav">
         <li><a href="#como-funciona">Como Funciona</a></li>
         <li><a href="#portfolio">Portfólio</a></li>
+        <li><a href="#memorias">Memórias</a></li>
         <li><a href="#servicos">Serviços</a></li>
         <li><a href="#precos">Preços</a></li>
         <li><a href="#faq">FAQ</a></li>
@@ -617,6 +674,7 @@
     <span class="mobile-close" id="mobile-close">✕</span>
     <a href="#como-funciona" onclick="closeMobileMenu()">Como Funciona</a>
     <a href="#portfolio" onclick="closeMobileMenu()">Portfólio</a>
+    <a href="#memorias" onclick="closeMobileMenu()">Memórias</a>
     <a href="#servicos" onclick="closeMobileMenu()">Serviços</a>
     <a href="#precos" onclick="closeMobileMenu()">Preços</a>
     <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
@@ -868,6 +926,89 @@
         </a>
         <p>Starter a partir de R$19,90 · Entrega em até 24h</p>
       </div>
+    </div>
+  </section>
+
+  <!-- ========================
+       MEMÓRIAS ETERNAS
+  ========================= -->
+  <section class="memorias section-pad" id="memorias">
+    <div class="container">
+
+      <div class="memorias-intro reveal">
+        <span class="label">memórias eternas</span>
+        <h2>Algumas fotos não podem<br><em class="italic gold">desaparecer com o tempo.</em></h2>
+        <p>
+          Tem uma foto amarelada dentro de um álbum. Uma imagem em preto e branco onde você queria ver a cor dos olhos dele.
+          Um retrato de família onde falta exatamente quem mais importava.
+          Isso a gente recupera — ou cria — para você guardar para sempre.
+        </p>
+      </div>
+
+      <div class="memorias-cards">
+
+        <div class="memoria-card reveal reveal-delay-1">
+          <span class="memoria-icon">🪄</span>
+          <h3>Restauração de <em class="italic gold">fotos antigas</em></h3>
+          <p>
+            Amarelada, rasgada, manchada ou quase irreconhecível — manda do jeito que está.
+            A gente devolve limpa, nítida e pronta para emoldurar como se tivesse sido tirada ontem.
+            A memória continua sendo a mesma. A foto, não.
+          </p>
+          <span class="memoria-tag">Fotos danificadas · P&B · Álbuns antigos</span>
+        </div>
+
+        <div class="memoria-card reveal reveal-delay-2">
+          <span class="memoria-icon">🎨</span>
+          <h3>Colorização de fotos <em class="italic gold">em preto e branco</em></h3>
+          <p>
+            Você sempre quis saber a cor do vestido da sua mãe no casamento.
+            A tonalidade dos olhos do seu avô. Como era o jardim da casa antiga.
+            A foto em P&B guarda o momento — a colorização revela quem eles realmente eram.
+          </p>
+          <span class="memoria-tag">Casamentos · Retratos · Anos 50, 60, 70</span>
+        </div>
+
+        <div class="memoria-card reveal reveal-delay-3">
+          <span class="memoria-icon">👨‍👩‍👧‍👦</span>
+          <h3>A foto de família que<br><em class="italic gold">nunca existiu.</em></h3>
+          <p>
+            Seu avô foi embora antes do nascimento da sua filha. Seu pai não estava na última foto de família.
+            Existe uma foto que você sempre quis ter — mas que nunca foi tirada.
+            Manda as fotos que você tem. A gente faz o encontro acontecer.
+          </p>
+          <span class="memoria-tag">Familiares falecidos · Reencontros · Presentes inesquecíveis</span>
+        </div>
+
+      </div>
+
+      <!-- Depoimento emocional -->
+      <div class="memoria-testimonial reveal">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <blockquote>
+          Eu tinha uma foto do meu pai no dia do meu batizado — a única que existia dele jovem, com a gente.
+          Estava rasgada no meio e quase toda amarelada. Mandei sem muita esperança.
+          Quando vi o resultado, não consegui nem falar. Minha mãe ficou olhando por um tempão em silêncio,
+          e depois disse: "É ele. É exatamente ele." Imprimimos em 30×40 e está na sala até hoje.
+        </blockquote>
+        <div class="memoria-author">
+          <img src="https://i.pravatar.cc/100?img=56" alt="Juliana R." loading="lazy" />
+          <div>
+            <div class="memoria-author-name">Juliana R.</div>
+            <div class="memoria-author-role">Restauração + Colorização — Foto de 1987</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="memorias-cta reveal">
+        <a href="https://wa.me/5511999999999?text=Olá!%20Tenho%20uma%20foto%20antiga%20que%20quero%20restaurar%20ou%20recuperar." target="_blank" rel="noopener" class="btn btn-gold" style="font-size:1rem;padding:1rem 2.2rem;">
+          Quero recuperar essa memória →
+        </a>
+        <p>Manda a foto pelo WhatsApp · Starter a partir de R$19,90 · Resultado em até 24h</p>
+        <div class="guarantee-badge" style="margin: 0.8rem auto 0;">Se não ficar lindo, a gente refaz sem custo</div>
+      </div>
+
     </div>
   </section>
 
@@ -1208,6 +1349,7 @@
           <ul class="footer-links">
             <li><a href="#como-funciona">Como Funciona</a></li>
             <li><a href="#portfolio">Portfólio</a></li>
+            <li><a href="#memorias">Memórias Eternas</a></li>
             <li><a href="#antes-depois">Antes & Depois</a></li>
             <li><a href="#servicos">Serviços</a></li>
             <li><a href="#precos">Preços</a></li>
