@@ -317,9 +317,11 @@
       position: relative; border-radius: var(--radius); overflow: hidden;
       aspect-ratio: 3/4; user-select: none; cursor: col-resize;
       border: 1px solid var(--border);
+      touch-action: none; /* tell browser: don't handle pan/scroll inside here */
+      -webkit-user-select: none;
     }
     .slider-img { position: absolute; inset: 0; width: 100%; height: 100%; }
-    .slider-img img { width: 100%; height: 100%; object-fit: cover; }
+    .slider-img img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
     .slider-img.after { clip-path: inset(0 50% 0 0); transition: none; }
     .slider-handle {
       position: absolute; top: 0; bottom: 0; left: 50%; transform: translateX(-50%);
@@ -327,11 +329,11 @@
     }
     .slider-handle::before, .slider-handle::after {
       content: ''; position: absolute; left: 50%; transform: translateX(-50%);
-      width: 40px; height: 40px; background: #fff; border-radius: 50%;
-      top: 50%; margin-top: -20px; display: flex; align-items: center; justify-content: center;
+      width: 44px; height: 44px; background: #fff; border-radius: 50%;
+      top: 50%; margin-top: -22px; display: flex; align-items: center; justify-content: center;
       box-shadow: 0 2px 12px rgba(0,0,0,0.5);
     }
-    .slider-handle::before { content: '◀▶'; color: #333; font-size: 0.65rem; text-align: center; line-height: 40px; letter-spacing: -2px; }
+    .slider-handle::before { content: '◀▶'; color: #333; font-size: 0.65rem; text-align: center; line-height: 44px; letter-spacing: -2px; }
     .slider-handle::after { display: none; }
     .slider-label {
       position: absolute; bottom: 1rem; padding: 0.3rem 0.8rem;
@@ -585,6 +587,25 @@
       .cta-social-proof { flex-direction: column; gap: 1rem; }
       .hero-badge { font-size: 0.65rem; }
       .pricing-value { font-size: 2.8rem; }
+      .slider-container { aspect-ratio: 2/3; }
+      .ba-examples { gap: 1.5rem; }
+      .ba-example-label strong { font-size: 1rem; }
+      .memorias-cards { gap: 1rem; }
+      .memoria-card { padding: 1.5rem 1.2rem; }
+    }
+
+    /* Touch/no-hover devices: fix hover states */
+    @media (hover: none) {
+      /* Gallery overlay always visible on touch */
+      .gallery-overlay { opacity: 1; background: linear-gradient(to top, rgba(10,10,10,0.75) 0%, transparent 45%); }
+      /* Disable transform-on-hover to prevent "stuck" states on iOS */
+      .gallery-item:hover img,
+      .nicho-card:hover, .how-card:hover, .memoria-card:hover,
+      .btn-primary:hover, .btn-secondary:hover, .btn-gold:hover,
+      .scroll-top:hover, .social-icon:hover { transform: none; }
+      /* Ensure buttons are still tappable with good contrast */
+      .btn-primary:active { opacity: 0.88; }
+      .btn-gold:active { opacity: 0.88; }
     }
 
     /* ===========================
@@ -1487,24 +1508,42 @@
 
       let isDragging = false;
 
-      function setPosition(x) {
+      function setPosition(clientX) {
         const rect = container.getBoundingClientRect();
-        let pct = (x - rect.left) / rect.width;
+        let pct = (clientX - rect.left) / rect.width;
         pct = Math.min(Math.max(pct, 0.02), 0.98);
         const pctPx = pct * 100;
         afterEl.style.clipPath = `inset(0 ${100 - pctPx}% 0 0)`;
         handle.style.left = pctPx + '%';
       }
 
-      // Default position
-      setPosition(container.getBoundingClientRect().left + container.getBoundingClientRect().width * 0.5);
+      // Set initial position at 50%
+      const initRect = container.getBoundingClientRect();
+      setPosition(initRect.left + initRect.width * 0.5);
 
-      container.addEventListener('mousedown', e => { isDragging = true; setPosition(e.clientX); e.preventDefault(); });
-      container.addEventListener('touchstart', e => { isDragging = true; setPosition(e.touches[0].clientX); }, { passive: true });
+      // --- Mouse ---
+      container.addEventListener('mousedown', e => {
+        isDragging = true;
+        setPosition(e.clientX);
+        e.preventDefault();
+      });
       window.addEventListener('mousemove', e => { if (isDragging) setPosition(e.clientX); });
-      window.addEventListener('touchmove', e => { if (isDragging) setPosition(e.touches[0].clientX); }, { passive: true });
-      window.addEventListener('mouseup', () => isDragging = false);
-      window.addEventListener('touchend', () => isDragging = false);
+      window.addEventListener('mouseup', () => { isDragging = false; });
+
+      // --- Touch (passive: false so we can call preventDefault and stop page scroll) ---
+      container.addEventListener('touchstart', e => {
+        isDragging = true;
+        setPosition(e.touches[0].clientX);
+      }, { passive: true });
+
+      container.addEventListener('touchmove', e => {
+        if (!isDragging) return;
+        e.preventDefault(); // stop page from scrolling while dragging
+        setPosition(e.touches[0].clientX);
+      }, { passive: false });
+
+      container.addEventListener('touchend', () => { isDragging = false; });
+      container.addEventListener('touchcancel', () => { isDragging = false; });
     }
 
     // Init sliders after page load so getBoundingClientRect works
