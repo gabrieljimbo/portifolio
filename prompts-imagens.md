@@ -157,7 +157,27 @@ golden and green palette. Lifestyle family photography, emotional and genuine. P
 
 ---
 
-### Slider 1 — Newborn
+### Slider 1 — Pet ⭐ (destaque — gerar primeiro)
+
+**DEPOIS (gerar primeiro):**
+```
+A professional studio pet portrait of a golden retriever lying gracefully on a dark velvet
+surface, dramatic cinematic side lighting with warm gold rim light. The dog looks directly
+at camera with a regal, calm expression. Canon R5 85mm lens, shallow depth of field, dark
+background, warm amber tones. Magazine-quality pet photography, photorealistic.
+```
+
+**ANTES:**
+```
+A casual phone photo of a golden retriever lying on a couch cushion in a typical home
+living room. Mixed indoor lighting — overhead ceiling light, slightly warm and flat.
+The dog is relaxed but the photo shows a cluttered background with furniture visible.
+Snapshot quality, authentic everyday pet photo feel, slightly imperfect framing.
+```
+
+---
+
+### Slider 2 — Newborn
 
 **DEPOIS (gerar primeiro):**
 ```
@@ -306,9 +326,9 @@ and genuine family moment. Photorealistic, seamlessly natural composition.
 | Galeria Profissional | `src="https://picsum.photos/seed/prof1/..."` | `prof1`, `prof2`, `prof3`, `prof4` |
 | Galeria Casal | `src="https://picsum.photos/seed/casal1/..."` | `casal1`, `casal2`, `casal3`, `casal4` |
 | Galeria Família | `src="https://picsum.photos/seed/fam1/..."` | `fam1`, `fam2`, `fam3`, `fam4` |
-| Slider 1 Antes | `seed/ba-before1` | slider1 — imagem before |
-| Slider 1 Depois | `seed/ba-after1` | slider1 — imagem after |
-| Slider 2 Antes | `seed/ba-before2` | slider2 — imagem before |
-| Slider 2 Depois | `seed/ba-after2` | slider2 — imagem after |
-| Slider 3 Antes | `seed/ba-before3` | slider3 — imagem before |
-| Slider 3 Depois | `seed/ba-after3` | slider3 — imagem after |
+| Slider 1 Antes (Pet) | `seed/ba-before-pet` | slider1 — imagem before |
+| Slider 1 Depois (Pet) | `seed/ba-after-pet` | slider1 — imagem after |
+| Slider 2 Antes (Newborn) | `seed/ba-before2` | slider2 — imagem before |
+| Slider 2 Depois (Newborn) | `seed/ba-after2` | slider2 — imagem after |
+| Slider 3 Antes (Profissional) | `seed/ba-before3` | slider3 — imagem before |
+| Slider 3 Depois (Profissional) | `seed/ba-after3` | slider3 — imagem after |
