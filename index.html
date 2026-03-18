@@ -14,6 +14,21 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- ================================================
+       META PIXEL — ID 655200730730537
+       Browser-side + CAPI deduplication via event_id
+  ================================================= -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+    (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=655200730730537&ev=PageView&noscript=1"/></noscript>
+
   <style>
     /* ===========================
        CSS VARIABLES & RESET
@@ -1552,6 +1567,331 @@
       initSlider('slider2', 'slider2-after', 'slider2-handle');
       initSlider('slider3', 'slider3-after', 'slider3-handle');
     });
+
+    // ============================================================
+    //  META PIXEL — ADVANCED TRACKING MODULE
+    //  Pixel ID: 655200730730537
+    //  Dados coletados: fbp, fbc, external_id, user_agent,
+    //  locale, referrer, scroll depth, time on page,
+    //  section visibility, CTA clicks com valor de pacote.
+    //  Todos os eventos são deduplicados via event_id entre
+    //  o pixel browser-side e a Conversions API (CAPI).
+    // ============================================================
+    (function () {
+      'use strict';
+
+      var PIXEL_ID = '655200730730537';
+      var CAPI_ENDPOINT = '/.netlify/functions/capi';
+
+      // ----------------------------------------------------------
+      // 1. UTILITÁRIOS
+      // ----------------------------------------------------------
+
+      function uuid() {
+        // Gera event_id único para deduplicação browser ↔ CAPI
+        return 'eid_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 11);
+      }
+
+      function getCookie(name) {
+        var m = document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)'));
+        return m ? decodeURIComponent(m[1]) : null;
+      }
+
+      function getFbc() {
+        // Tenta ler _fbc cookie definido pelo pixel
+        var fbc = getCookie('_fbc');
+        if (fbc) return fbc;
+        // Se não existir, constrói a partir do fbclid da URL
+        try {
+          var params = new URLSearchParams(window.location.search);
+          var fbclid = params.get('fbclid');
+          if (fbclid) {
+            fbc = 'fb.1.' + Date.now() + '.' + fbclid;
+            // Persiste no cookie para próximas páginas (7 dias)
+            document.cookie = '_fbc=' + encodeURIComponent(fbc) + '; max-age=604800; path=/; SameSite=Lax';
+          }
+        } catch (e) {}
+        return fbc || null;
+      }
+
+      function getExternalId() {
+        // ID anônimo persistente — identifica o browser nas Custom Audiences
+        var key = '_ejb_uid';
+        var eid = null;
+        try { eid = localStorage.getItem(key); } catch (e) {}
+        if (!eid) {
+          eid = 'u_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 14);
+          try { localStorage.setItem(key, eid); } catch (e) {}
+        }
+        return eid;
+      }
+
+      function getUserData() {
+        return {
+          fbp: getCookie('_fbp'),          // Browser ID set pelo pixel
+          fbc: getFbc(),                    // Click ID (rastreia de qual anúncio veio)
+          external_id: getExternalId(),     // ID de sessão anônimo
+          client_user_agent: navigator.userAgent,
+          locale: navigator.language || 'pt-BR',
+          referrer: document.referrer || null,
+          page_url: window.location.href
+        };
+      }
+
+      // ----------------------------------------------------------
+      // 2. ENVIO — browser pixel + CAPI (deduplicado)
+      // ----------------------------------------------------------
+
+      function sendToCapi(payload) {
+        try {
+          var body = JSON.stringify(payload);
+          if (navigator.sendBeacon) {
+            // sendBeacon: não bloqueia, sobrevive ao unload da página
+            var ok = navigator.sendBeacon(CAPI_ENDPOINT, new Blob([body], { type: 'application/json' }));
+            if (ok) return;
+          }
+          // Fallback com keepalive (sobrevive ao navegador fechar aba)
+          fetch(CAPI_ENDPOINT, {
+            method: 'POST',
+            body: body,
+            headers: { 'Content-Type': 'application/json' },
+            keepalive: true
+          }).catch(function () {});
+        } catch (e) {}
+      }
+
+      function trackEvent(eventName, customData, options) {
+        var eventId = uuid();
+        var userData = getUserData();
+
+        // --- Browser pixel ---
+        var pixelOptions = Object.assign({ eventID: eventId }, options || {});
+        fbq('track', eventName, customData || {}, pixelOptions);
+
+        // --- CAPI (server-side, bypassa ad blockers e iOS 14+) ---
+        sendToCapi({
+          event_name: eventName,
+          event_time: Math.floor(Date.now() / 1000),
+          event_id: eventId,
+          event_source_url: window.location.href,
+          action_source: 'website',
+          user_data: userData,
+          custom_data: customData || {}
+        });
+      }
+
+      function trackCustom(eventName, customData) {
+        var eventId = uuid();
+        fbq('trackCustom', eventName, Object.assign({ event_id: eventId }, customData || {}));
+        sendToCapi({
+          event_name: eventName,
+          event_time: Math.floor(Date.now() / 1000),
+          event_id: eventId,
+          event_source_url: window.location.href,
+          action_source: 'website',
+          user_data: getUserData(),
+          custom_data: customData || {}
+        });
+      }
+
+      // ----------------------------------------------------------
+      // 3. INICIALIZAÇÃO DO PIXEL com Advanced Matching
+      // ----------------------------------------------------------
+
+      fbq('init', PIXEL_ID, {
+        external_id: getExternalId()
+        // fbc e fbp são lidos automaticamente pelo pixel via cookie
+        // email/phone: adicionar aqui se houver login no futuro
+      });
+
+      // PageView com event_id para deduplicação com CAPI
+      (function () {
+        var pgEventId = uuid();
+        fbq('track', 'PageView', {}, { eventID: pgEventId });
+        sendToCapi({
+          event_name: 'PageView',
+          event_time: Math.floor(Date.now() / 1000),
+          event_id: pgEventId,
+          event_source_url: window.location.href,
+          action_source: 'website',
+          user_data: getUserData(),
+          custom_data: {}
+        });
+      })();
+
+      // ----------------------------------------------------------
+      // 4. CLIQUES EM CTAs WHATSAPP
+      //    Detecta qual pacote foi clicado pelo texto da URL
+      //    e dispara Lead + AddToCart + InitiateCheckout
+      // ----------------------------------------------------------
+
+      var PACKAGES = [
+        { match: ['starter', '19%2C90', '19,90', 'R%2419'], name: 'Starter',  value: 19.90 },
+        { match: ['popular', '49%2C90', '49,90', 'R%2449'], name: 'Popular',  value: 49.90 },
+        { match: ['premium', '97%2C00', '97,00', 'R%2497'], name: 'Premium',  value: 97.00 }
+      ];
+
+      function detectPackage(href) {
+        var lower = href.toLowerCase();
+        for (var i = 0; i < PACKAGES.length; i++) {
+          var pkg = PACKAGES[i];
+          for (var j = 0; j < pkg.match.length; j++) {
+            if (lower.indexOf(pkg.match[j].toLowerCase()) !== -1) return pkg;
+          }
+        }
+        return null;
+      }
+
+      document.addEventListener('click', function (e) {
+        var link = e.target.closest ? e.target.closest('a[href*="wa.me"]') : null;
+        if (!link) return;
+
+        var href = link.href || '';
+        var pkg = detectPackage(href);
+
+        var leadData = {
+          content_name: pkg ? pkg.name : 'WhatsApp Geral',
+          content_category: 'ensaio_ia',
+          currency: 'BRL',
+          value: pkg ? pkg.value : 0
+        };
+
+        // Lead = conversão principal (clicou no WhatsApp)
+        trackEvent('Lead', leadData);
+
+        // InitiateCheckout = sinal de intenção forte
+        trackEvent('InitiateCheckout', {
+          content_name: pkg ? pkg.name : 'WhatsApp',
+          num_items: 1,
+          currency: 'BRL',
+          value: pkg ? pkg.value : 0
+        });
+
+        // AddToCart com pacote identificado
+        if (pkg) {
+          trackEvent('AddToCart', {
+            content_ids: [pkg.name.toLowerCase()],
+            content_name: pkg.name,
+            content_type: 'product',
+            currency: 'BRL',
+            value: pkg.value
+          });
+        }
+
+        // Sinal de público quente: qualquer clique no WhatsApp
+        trackCustom('PublicoQuente', {
+          signal: 'cta_whatsapp',
+          package: pkg ? pkg.name : 'geral',
+          value: pkg ? pkg.value : 0
+        });
+      }, true);
+
+      // ----------------------------------------------------------
+      // 5. SCROLL DEPTH — sinais de engajamento
+      //    25% / 50% / 75% / 90%
+      //    75%+ indica que viu seção de preços → público quente
+      // ----------------------------------------------------------
+
+      var scrollFired = {};
+      var SCROLL_MILESTONES = [25, 50, 75, 90];
+
+      function onScroll() {
+        var scrollTop = window.scrollY || document.documentElement.scrollTop;
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (docHeight <= 0) return;
+        var pct = Math.round((scrollTop / docHeight) * 100);
+
+        SCROLL_MILESTONES.forEach(function (milestone) {
+          if (!scrollFired[milestone] && pct >= milestone) {
+            scrollFired[milestone] = true;
+            trackCustom('ScrollDepth', { depth: milestone, page: window.location.pathname });
+
+            // 75%+ = viu preços = público quente
+            if (milestone >= 75) {
+              trackCustom('PublicoQuente', { signal: 'scroll_' + milestone + 'pct' });
+            }
+          }
+        });
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      // ----------------------------------------------------------
+      // 6. SEÇÕES VISÍVEIS — IntersectionObserver
+      //    Dispara ViewContent quando seção entra na tela (30%+)
+      //    Seções-chave mapeadas para sinais de intenção
+      // ----------------------------------------------------------
+
+      var SECTION_MAP = {
+        'precos':      { event: 'ViewContent', hot: true,  label: 'pricing' },
+        'antes-depois':{ event: 'ViewContent', hot: false, label: 'gallery' },
+        'portfolio':   { event: 'ViewContent', hot: false, label: 'portfolio' },
+        'depoimentos': { event: 'ViewContent', hot: true,  label: 'testimonials' },
+        'contato':     { event: 'ViewContent', hot: true,  label: 'cta_final' },
+        'memorias':    { event: 'ViewContent', hot: false, label: 'memorias' }
+      };
+
+      if ('IntersectionObserver' in window) {
+        var sectionObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            var id = entry.target.id;
+            var config = SECTION_MAP[id];
+            if (!config) return;
+            sectionObserver.unobserve(entry.target);
+
+            trackEvent('ViewContent', {
+              content_name: config.label,
+              content_category: 'page_section'
+            });
+
+            if (config.hot) {
+              trackCustom('PublicoQuente', { signal: 'view_' + config.label });
+            }
+          });
+        }, { threshold: 0.3 });
+
+        Object.keys(SECTION_MAP).forEach(function (sectionId) {
+          var el = document.getElementById(sectionId);
+          if (el) sectionObserver.observe(el);
+        });
+      }
+
+      // ----------------------------------------------------------
+      // 7. TIME ON PAGE — sinais de engajamento profundo
+      //    30s / 60s / 120s / 180s
+      //    60s+ = considerado público quente
+      // ----------------------------------------------------------
+
+      var timeFired = {};
+
+      function scheduleTime(seconds) {
+        setTimeout(function () {
+          if (timeFired[seconds]) return;
+          timeFired[seconds] = true;
+          trackCustom('TimeOnPage', { seconds: seconds });
+          if (seconds >= 60) {
+            trackCustom('PublicoQuente', { signal: 'time_' + seconds + 's' });
+          }
+        }, seconds * 1000);
+      }
+
+      [30, 60, 120, 180].forEach(scheduleTime);
+
+      // ----------------------------------------------------------
+      // CRITÉRIOS DE PÚBLICO QUENTE (resumo para Meta Ads)
+      // ----------------------------------------------------------
+      // Criar Custom Audiences com qualquer uma dessas condições:
+      //   A) Evento "Lead"              → clicou no WhatsApp        (hottest)
+      //   B) Evento "AddToCart"         → clicou em pacote específico
+      //   C) PublicoQuente signal=view_pricing + signal=time_60s   (warm)
+      //   D) PublicoQuente signal=scroll_75pct + signal=view_cta_final
+      //   E) TimeOnPage seconds=120 (ficou 2min+)
+      //
+      // Lookalike Audiences: usar base de "Lead" (máxima qualidade)
+      // ----------------------------------------------------------
+
+    })();
   </script>
 </body>
 </html>

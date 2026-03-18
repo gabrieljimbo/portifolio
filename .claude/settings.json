@@ -12,7 +12,10 @@
       "Bash(unzip -o \"C:/Users/gabri/OneDrive/ADS/Claude/Skills/Criativo e Analise de Audiencia/claude-marketing-skills-main.zip\" -d claude-marketing)",
       "Bash(unzip -o \"C:/Users/gabri/OneDrive/ADS/Claude/Skills/Estrategia e escala/paid-marketing-skills-main.zip\" -d paid-marketing)",
       "Bash(unzip -o \"C:/Users/gabri/OneDrive/ADS/Claude/Skills/Copywriter/ai-marketing-claude-main.zip\" -d ai-marketing)",
-      "Read(//tmp/**)"
+      "Read(//tmp/**)",
+      "Bash(for dir:*)",
+      "Bash(do echo:*)",
+      "Read(//c/Users/gabri/OneDrive/ADS/Fotos Geradas por IA/Portfolio/galeria/**)"
     ]
   }
 }
