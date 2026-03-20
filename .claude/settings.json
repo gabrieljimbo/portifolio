@@ -15,7 +15,13 @@
       "Read(//tmp/**)",
       "Bash(for dir:*)",
       "Bash(do echo:*)",
-      "Read(//c/Users/gabri/OneDrive/ADS/Fotos Geradas por IA/Portfolio/galeria/**)"
+      "Read(//c/Users/gabri/OneDrive/ADS/Fotos Geradas por IA/Portfolio/galeria/**)",
+      "Bash(do)",
+      "Bash(echo \"=== $dir ===\")",
+      "Bash(cp \"C:/Users/gabri/OneDrive/ADS/Fotos Geradas por IA/Portfolio/galeria/pet/d64a2add-f3ae-48b3-8a0d-23bb373a6cf1.png\" \"c:/Users/gabri/portifolio/images/galeria/pet-03.png\")",
+      "Bash(cp \"C:/Users/gabri/OneDrive/ADS/Fotos Geradas por IA/Portfolio/galeria/pet/gato_janela.png\" \"c:/Users/gabri/portifolio/images/galeria/pet-04.png\")",
+      "Bash(cp \"C:/Users/gabri/OneDrive/ADS/Fotos Geradas por IA/Portfolio/galeria/pet/husky.png\" \"c:/Users/gabri/portifolio/images/galeria/pet-05.png\")",
+      "Bash(cp \"C:/Users/gabri/OneDrive/ADS/Fotos Geradas por IA/Portfolio/galeria/pet/siames.png\" \"c:/Users/gabri/portifolio/images/galeria/pet-06.png\")"
     ]
   }
 }

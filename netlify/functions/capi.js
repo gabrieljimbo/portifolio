@@ -19,7 +19,7 @@
  *      META_CAPI_TEST_CODE = TEST12345 (pegar no Events Manager → Test Events)
  */
 
-const PIXEL_ID = '655200730730537';
+const PIXEL_ID = '1624314842024242';
 const META_API_VERSION = 'v19.0';
 const META_CAPI_URL = `https://graph.facebook.com/${META_API_VERSION}/${PIXEL_ID}/events`;
 
