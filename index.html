@@ -237,6 +237,10 @@
     .hero-step-text span { display: block; font-size: 0.75rem; color: var(--text-secondary); font-family: 'DM Mono', monospace; letter-spacing: 0.1em; }
     .hero-step-text strong { display: block; font-size: 0.9rem; font-weight: 500; }
     .hero-arrow { font-size: 1.2rem; color: var(--gold); padding: 0 0.5rem; align-self: center; }
+    .trust-item {
+      font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.1em;
+      color: var(--text-secondary); text-transform: uppercase;
+    }
     @media (max-width: 600px) {
       .hero-step { padding: 1rem; }
       .hero-step-text strong { font-size: 0.8rem; }
@@ -426,6 +430,12 @@
     .testimonial-text::after { content: '"'; color: var(--gold); font-size: 2rem; line-height: 0; vertical-align: -0.5em; margin-left: 0.2rem; }
     .testimonial-author { display: flex; align-items: center; gap: 1rem; }
     .testimonial-avatar { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid var(--border); }
+    .avatar-initials {
+      width: 44px; height: 44px; border-radius: 50%; display: flex;
+      align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600;
+      flex-shrink: 0; color: var(--bg-primary);
+    }
     .testimonial-name { font-weight: 600; font-size: 0.95rem; }
     .testimonial-role { font-size: 0.8rem; color: var(--text-secondary); }
 
@@ -511,15 +521,27 @@
        WHATSAPP FLOAT (mobile)
     =========================== */
     .whatsapp-float {
-      display: none;
-      position: fixed; bottom: 1.5rem; left: 1.5rem; z-index: 50;
+      display: flex;
+      position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 50;
       width: 56px; height: 56px; background: #25D366; color: #fff;
       border-radius: 50%; align-items: center; justify-content: center;
       box-shadow: 0 4px 24px rgba(37,211,102,0.5); transition: var(--transition);
       text-decoration: none;
     }
     .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(37,211,102,0.6); }
-    @media (max-width: 768px) { .whatsapp-float { display: flex; } }
+
+    .pricing-savings {
+      display: inline-block; background: rgba(37,200,100,0.12); color: #25c864;
+      border: 1px solid rgba(37,200,100,0.25); border-radius: 50px;
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em;
+      padding: 0.25rem 0.75rem; margin-bottom: 0.8rem;
+      font-family: 'DM Mono', monospace; text-transform: uppercase;
+    }
+    .pricing-guarantee {
+      display: flex; align-items: center; gap: 0.4rem; justify-content: center;
+      font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.8rem;
+    }
+    .pricing-guarantee::before { content: '🔒'; }
 
     /* ===========================
        GUARANTEE BADGE
@@ -742,10 +764,17 @@
           Sem sair de casa. Sem agendamento. Sem surpresas.
         </p>
         <div class="hero-btns">
-          <a href="https://wa.me/5511947727299?text=Olá!%20Quero%20transformar%20a%20foto%20do%20meu%20pet!" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:1.05rem;padding:1rem 2.2rem;">
+          <a href="https://wa.me/5511947727299?text=Olá!%20Quero%20transformar%20minha%20foto!" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:1.05rem;padding:1rem 2.2rem;">
             Transformar minha foto agora →
           </a>
           <a href="#portfolio" class="btn btn-secondary">Ver transformações reais</a>
+        </div>
+        <!-- Trust bar -->
+        <div class="hero-trust reveal" style="display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;margin-top:2rem;opacity:0;animation:fade-up 0.9s 0.9s forwards;">
+          <span class="trust-item">⭐ 500+ ensaios entregues</span>
+          <span class="trust-item">✓ 98% de satisfação</span>
+          <span class="trust-item">🔒 Garantia total de reembolso</span>
+          <span class="trust-item">⚡ Entrega em até 24h</span>
         </div>
         <div class="hero-steps">
           <div class="hero-step">
@@ -942,8 +971,14 @@
         </div>
       </div>
 
+      <!-- Mini-testimonial + CTA após sliders -->
+      <div class="mini-testimonial reveal" style="max-width:500px;margin:3rem auto 0;text-align:center;padding:1.5rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);">
+        <div class="stars" style="font-size:0.9rem;margin-bottom:0.5rem;">⭐⭐⭐⭐⭐</div>
+        <p style="font-size:0.9rem;color:var(--text-secondary);font-style:italic;">"Meu marido perguntou qual estúdio fotografou. Quando falei que foi R$19,90 pelo WhatsApp ele não acreditou."</p>
+        <span style="font-size:0.75rem;color:var(--gold);font-family:'DM Mono',monospace;letter-spacing:0.1em;">— Camila T. · Tutora da Mel</span>
+      </div>
       <!-- CTA após sliders -->
-      <div class="section-cta-mini reveal">
+      <div class="section-cta-mini reveal" style="margin-top:2rem;">
         <a href="https://wa.me/5511947727299?text=Olá!%20Vi%20as%20transformações%20e%20quero%20testar!" target="_blank" rel="noopener" class="btn btn-primary">
           Ficou curioso? Manda sua foto agora →
         </a>
@@ -1045,7 +1080,7 @@
           e depois disse: "É ele. É exatamente ele." Imprimimos em 30×40 e está na sala até hoje.
         </blockquote>
         <div class="memoria-author">
-          <img src="https://i.pravatar.cc/100?img=56" alt="Juliana R." loading="lazy" />
+          <div class="avatar-initials" style="background:linear-gradient(135deg,var(--coral),#f08070);width:52px;height:52px;font-size:1.2rem;">JR</div>
           <div>
             <div class="memoria-author-name">Juliana R.</div>
             <div class="memoria-author-role">Restauração + Colorização — Foto de 1987</div>
@@ -1102,7 +1137,7 @@
             <span class="price-old">R$ 350,00 (fotógrafo)</span>
             <span class="price-new">a partir de R$19,90</span>
           </div>
-          <a href="#portfolio" onclick="switchTab('newborn')" class="btn btn-secondary" style="text-align:center;justify-content:center;">Ver exemplos</a>
+          <a href="https://wa.me/5511947727299?text=Olá!%20Quero%20um%20ensaio%20newborn!" target="_blank" rel="noopener" class="btn btn-primary" style="text-align:center;justify-content:center;">Quero meu ensaio →</a>
         </div>
         <div class="nicho-card reveal reveal-delay-2">
           <div class="nicho-header">
@@ -1114,7 +1149,7 @@
             <span class="price-old">R$ 400,00 (fotógrafo)</span>
             <span class="price-new">a partir de R$19,90</span>
           </div>
-          <a href="#portfolio" onclick="switchTab('gestante')" class="btn btn-secondary" style="text-align:center;justify-content:center;">Ver exemplos</a>
+          <a href="https://wa.me/5511947727299?text=Olá!%20Quero%20um%20ensaio%20gestante!" target="_blank" rel="noopener" class="btn btn-primary" style="text-align:center;justify-content:center;">Quero meu ensaio →</a>
         </div>
         <div class="nicho-card reveal reveal-delay-1">
           <div class="nicho-header">
@@ -1126,7 +1161,7 @@
             <span class="price-old">R$ 320,00 (fotógrafo)</span>
             <span class="price-new">a partir de R$19,90</span>
           </div>
-          <a href="#portfolio" onclick="switchTab('profissional')" class="btn btn-secondary" style="text-align:center;justify-content:center;">Ver exemplos</a>
+          <a href="https://wa.me/5511947727299?text=Olá!%20Quero%20uma%20foto%20profissional!" target="_blank" rel="noopener" class="btn btn-primary" style="text-align:center;justify-content:center;">Quero minha foto →</a>
         </div>
         <div class="nicho-card reveal reveal-delay-2">
           <div class="nicho-header">
@@ -1138,7 +1173,7 @@
             <span class="price-old">R$ 500,00 (fotógrafo)</span>
             <span class="price-new">a partir de R$19,90</span>
           </div>
-          <a href="#portfolio" onclick="switchTab('casal')" class="btn btn-secondary" style="text-align:center;justify-content:center;">Ver exemplos</a>
+          <a href="https://wa.me/5511947727299?text=Olá!%20Quero%20um%20ensaio%20de%20casal!" target="_blank" rel="noopener" class="btn btn-primary" style="text-align:center;justify-content:center;">Quero meu ensaio →</a>
         </div>
         <div class="nicho-card reveal reveal-delay-3">
           <div class="nicho-header">
@@ -1150,7 +1185,7 @@
             <span class="price-old">R$ 450,00 (fotógrafo)</span>
             <span class="price-new">a partir de R$19,90</span>
           </div>
-          <a href="#portfolio" onclick="switchTab('familia')" class="btn btn-secondary" style="text-align:center;justify-content:center;">Ver exemplos</a>
+          <a href="https://wa.me/5511947727299?text=Olá!%20Quero%20um%20ensaio%20de%20família!" target="_blank" rel="noopener" class="btn btn-primary" style="text-align:center;justify-content:center;">Quero meu ensaio →</a>
         </div>
       </div>
     </div>
@@ -1174,6 +1209,7 @@
             <span class="pricing-currency">R$</span>
             <span class="pricing-value">19<span style="font-size:1.8rem">,90</span></span>
           </div>
+          <div class="pricing-savings">95% mais barato que fotógrafo</div>
           <p class="pricing-tagline">Pague R$19,90. Se não gostar, devolvemos.</p>
           <ul class="pricing-features">
             <li>1 foto transformada</li>
@@ -1183,6 +1219,7 @@
             <li>Compartilhamento via WhatsApp</li>
           </ul>
           <a href="https://wa.me/5511947727299?text=Olá!%20Quero%20o%20pacote%20Starter%20por%20R$19,90" target="_blank" rel="noopener" class="btn btn-secondary" style="width:100%;justify-content:center;">Quero esse pacote</a>
+          <div class="pricing-guarantee">Garantia total — se não gostar, devolvemos</div>
         </div>
         <!-- Popular -->
         <div class="pricing-card featured reveal reveal-delay-2">
@@ -1192,6 +1229,7 @@
             <span class="pricing-currency">R$</span>
             <span class="pricing-value">49<span style="font-size:1.8rem">,90</span></span>
           </div>
+          <div class="pricing-savings">Você economiza R$350</div>
           <p class="pricing-tagline">5 fotos lindas por menos do que um almoço pra dois</p>
           <ul class="pricing-features">
             <li>5 fotos transformadas</li>
@@ -1202,6 +1240,7 @@
             <li>Suporte via WhatsApp</li>
           </ul>
           <a href="https://wa.me/5511947727299?text=Olá!%20Quero%20o%20pacote%20Popular%20por%20R$49,90" target="_blank" rel="noopener" class="btn btn-gold" style="width:100%;justify-content:center;">Quero esse pacote</a>
+          <div class="pricing-guarantee">Garantia total — se não gostar, devolvemos</div>
         </div>
         <!-- Premium -->
         <div class="pricing-card reveal reveal-delay-3">
@@ -1210,6 +1249,7 @@
             <span class="pricing-currency">R$</span>
             <span class="pricing-value">97<span style="font-size:1.8rem">,00</span></span>
           </div>
+          <div class="pricing-savings">Você economiza R$303 vs fotógrafo</div>
           <p class="pricing-tagline">10 fotos, entrega rápida, revisões até você amar</p>
           <ul class="pricing-features">
             <li>10 fotos transformadas</li>
@@ -1221,6 +1261,25 @@
             <li>Edição personalizada</li>
           </ul>
           <a href="https://wa.me/5511947727299?text=Olá!%20Quero%20o%20pacote%20Premium%20por%20R$97,00" target="_blank" rel="noopener" class="btn btn-secondary" style="width:100%;justify-content:center;">Quero esse pacote</a>
+          <div class="pricing-guarantee">Garantia total — se não gostar, devolvemos</div>
+        </div>
+      </div>
+      <!-- Mini-testimonials row após pricing -->
+      <div class="reveal" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:3rem;">
+        <div style="padding:1.2rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);text-align:center;">
+          <div style="font-size:0.85rem;margin-bottom:0.4rem;">⭐⭐⭐⭐⭐</div>
+          <p style="font-size:0.82rem;color:var(--text-secondary);font-style:italic;">"Chorei quando vi. Parecia de revista."</p>
+          <span style="font-size:0.7rem;color:var(--gold);font-family:'DM Mono',monospace;">— Ana C. · Newborn</span>
+        </div>
+        <div style="padding:1.2rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);text-align:center;">
+          <div style="font-size:0.85rem;margin-bottom:0.4rem;">⭐⭐⭐⭐⭐</div>
+          <p style="font-size:0.82rem;color:var(--text-secondary);font-style:italic;">"Troquei no LinkedIn e os comentários vieram na hora."</p>
+          <span style="font-size:0.7rem;color:var(--gold);font-family:'DM Mono',monospace;">— Rafael M. · Profissional</span>
+        </div>
+        <div style="padding:1.2rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);text-align:center;">
+          <div style="font-size:0.85rem;margin-bottom:0.4rem;">⭐⭐⭐⭐⭐</div>
+          <p style="font-size:0.82rem;color:var(--text-secondary);font-style:italic;">"Minha família no grupo ficou em choque com a qualidade."</p>
+          <span style="font-size:0.7rem;color:var(--gold);font-family:'DM Mono',monospace;">— Fernanda L. · Pet</span>
         </div>
       </div>
     </div>
@@ -1241,7 +1300,7 @@
           <div class="stars">⭐⭐⭐⭐⭐</div>
           <p class="testimonial-text">Mandei uma foto da Mel deitada no sofá, de qualquer jeito. Voltou com cenário de jardim, luz dourada, ela parecendo capa de revista pet. Meu marido perguntou qual estúdio fotografou. Quando eu disse que foi R$19,90 pelo WhatsApp, ele quis fazer do nosso outro cachorro na mesma hora.</p>
           <div class="testimonial-author">
-            <img src="https://i.pravatar.cc/100?img=5" alt="Camila Torres" class="testimonial-avatar" loading="lazy" />
+            <div class="avatar-initials" style="background:linear-gradient(135deg,var(--gold),var(--gold-light));">CT</div>
             <div>
               <div class="testimonial-name">Camila T.</div>
               <div class="testimonial-role">Tutora da Mel — Ensaio Pet</div>
@@ -1252,7 +1311,7 @@
           <div class="stars">⭐⭐⭐⭐⭐</div>
           <p class="testimonial-text">Eu chorei quando vi. Meu filho nos primeiros dias, com aquela luz de estúdio, cenário delicado. Parecia de revista. Mandei para minha mãe e ela perguntou qual fotógrafo era.</p>
           <div class="testimonial-author">
-            <img src="https://i.pravatar.cc/100?img=47" alt="Ana Carolina" class="testimonial-avatar" loading="lazy" />
+            <div class="avatar-initials" style="background:linear-gradient(135deg,var(--coral),#f08070);">AC</div>
             <div>
               <div class="testimonial-name">Ana Carolina S.</div>
               <div class="testimonial-role">Mãe do Miguel — Ensaio Newborn</div>
@@ -1263,7 +1322,7 @@
           <div class="stars">⭐⭐⭐⭐⭐</div>
           <p class="testimonial-text">Mandei uma selfie que eu tinha no celular, sem muito esperança. Voltou com fundo neutro, enquadramento certo, aquela luz que deixa a pele boa. Troca no LinkedIn e os comentários vieram na hora.</p>
           <div class="testimonial-author">
-            <img src="https://i.pravatar.cc/100?img=12" alt="Rafael Mendes" class="testimonial-avatar" loading="lazy" />
+            <div class="avatar-initials" style="background:linear-gradient(135deg,#5b8dee,#7fa7f5);">RM</div>
             <div>
               <div class="testimonial-name">Rafael M.</div>
               <div class="testimonial-role">Analista de TI — Foto Profissional</div>
@@ -1274,7 +1333,7 @@
           <div class="stars">⭐⭐⭐⭐⭐</div>
           <p class="testimonial-text">Mandei uma foto da Bella no sofá, de pijama quase. Voltou com cenário de jardim, luz dourada, ela parecendo modelo de revista. Minha família no grupo de família ficou em choque.</p>
           <div class="testimonial-author">
-            <img src="https://i.pravatar.cc/100?img=31" alt="Fernanda Lima" class="testimonial-avatar" loading="lazy" />
+            <div class="avatar-initials" style="background:linear-gradient(135deg,var(--gold),var(--gold-light));">FL</div>
             <div>
               <div class="testimonial-name">Fernanda L.</div>
               <div class="testimonial-role">Tutora da Bella — Ensaio Pet</div>
@@ -1378,7 +1437,7 @@
       </div>
       <p class="reveal reveal-delay-2">Mais de 500 famílias já receberam as fotos que mereciam. Sem sair de casa. Sem pagar R$400 em fotógrafo. Seu ensaio pode estar pronto ainda hoje.</p>
       <div class="reveal reveal-delay-3">
-        <a href="https://wa.me/5511947727299?text=Olá!%20Quero%20transformar%20a%20foto%20do%20meu%20pet!" target="_blank" rel="noopener" class="btn btn-whatsapp">
+        <a href="https://wa.me/5511947727299?text=Olá!%20Quero%20transformar%20minha%20foto!" target="_blank" rel="noopener" class="btn btn-whatsapp">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
           Quero minha foto transformada agora
         </a>
@@ -1455,6 +1514,23 @@
        JAVASCRIPT
   ========================= -->
   <script>
+    // ---- Urgência dinâmica por horário ----
+    (function() {
+      const hour = new Date().getHours();
+      const urgencyEls = document.querySelectorAll('.cta-urgency');
+      urgencyEls.forEach(el => {
+        if (hour >= 8 && hour < 17) {
+          el.textContent = '⚡ Peça agora e receba ainda hoje · 100% pelo WhatsApp';
+          el.style.color = '#25D366';
+        } else if (hour >= 17 && hour < 20) {
+          el.textContent = '⏰ Últimas vagas de entrega hoje — pede antes das 20h!';
+          el.style.color = '#E8726A';
+        } else {
+          el.textContent = '🌙 Pedidos agora entregues amanhã cedo · WhatsApp 24h';
+        }
+      });
+    })();
+
     // ---- Navbar scroll ----
     const navbar = document.getElementById('navbar');
     const scrollTopBtn = document.getElementById('scroll-top');
