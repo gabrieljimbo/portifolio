@@ -30,7 +30,8 @@
       "Bash(node -e \"require\\(''''sharp''''\\)\")",
       "Bash(npm install:*)",
       "Bash(node -e \":*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(node sync-fotos.js)"
     ],
     "additionalDirectories": [
       "C:\\Users\\gabri\\OneDrive\\ADS\\Fotos Geradas por IA\\clientes\\Bull Terrie - Almies\\feito",

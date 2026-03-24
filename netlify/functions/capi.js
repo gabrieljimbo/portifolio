@@ -1,3 +1,9 @@
+const crypto = require('crypto');
+
+function sha256(value) {
+  return crypto.createHash('sha256').update(String(value)).digest('hex');
+}
+
 /**
  * Netlify Function — Meta Conversions API (CAPI) Proxy
  *
@@ -20,7 +26,7 @@
  */
 
 const PIXEL_ID = '1624314842024242';
-const META_API_VERSION = 'v19.0';
+const META_API_VERSION = 'v25.0';
 const META_CAPI_URL = `https://graph.facebook.com/${META_API_VERSION}/${PIXEL_ID}/events`;
 
 exports.handler = async function (event, context) {
@@ -61,13 +67,13 @@ exports.handler = async function (event, context) {
   const enrichedUserData = {
     ...(browserUserData.fbp        ? { fbp: browserUserData.fbp }                       : {}),
     ...(browserUserData.fbc        ? { fbc: browserUserData.fbc }                       : {}),
-    ...(browserUserData.external_id? { external_id: [browserUserData.external_id] }     : {}),
+    ...(browserUserData.external_id? { external_id: [sha256(browserUserData.external_id)] } : {}),
     ...(clientIp                   ? { client_ip_address: clientIp }                    : {}),
     ...(browserUserData.client_user_agent ? { client_user_agent: browserUserData.client_user_agent } : {}),
-    // country: infere do locale enviado pelo browser (ex: 'pt-BR' → 'br')
+    // country: infere do locale enviado pelo browser (ex: 'pt-BR' → 'br'), hasheado com SHA-256
     ...(browserUserData.locale
-      ? { country: [browserUserData.locale.slice(-2).toLowerCase()] }
-      : { country: ['br'] }
+      ? { country: [sha256(browserUserData.locale.slice(-2).toLowerCase())] }
+      : { country: [sha256('br')] }
     )
   };
 
