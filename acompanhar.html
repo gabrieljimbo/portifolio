@@ -5,6 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jimbo Studios — Acompanhe seu Ensaio</title>
   <meta name="robots" content="noindex, nofollow" />
+
+  <!-- =====================================================
+       META PIXEL
+       Substitua SEU_PIXEL_ID pelo ID do seu pixel Meta.
+  ====================================================== -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    // ID configurado em acompanhar.html → META_PIXEL_ID
+    // Este bloco usa string literal para funcionar antes do script principal
+    fbq('init', 'SEU_PIXEL_ID');  // ← mantenha igual ao META_PIXEL_ID abaixo
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=SEU_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -912,11 +931,15 @@
      DATA + LOGIC
 ===================== -->
 <script>
+  // ─── CONFIGURAÇÃO ────────────────────────────────────────
+  const META_PIXEL_ID = 'SEU_PIXEL_ID'; // ← substitua pelo seu Pixel ID
+  // ─────────────────────────────────────────────────────────
+
   // ============================================
   //  DADOS DOS CLIENTES
   //  Carregados de clientes.json automaticamente.
   //  Para adicionar clientes ou editar dados,
-  //  edite clientes.json diretamente.
+  //  edite clientes/{pasta}/config.json diretamente.
   // ============================================
   let CLIENTS = {};
 
@@ -970,6 +993,9 @@
     document.getElementById('login-screen').style.display  = 'none';
     document.getElementById('dashboard').style.display = 'block';
     window.scrollTo(0, 0);
+
+    // Disparar evento Meta Pixel (lead pagante acessando o ensaio)
+    firePixelLogin(phone, client);
   }
 
   function doLogout() {
@@ -1138,6 +1164,81 @@
 
     // Upsell: trigger after 45s if ensaio is 100% complete
     initUpsell(c);
+  }
+
+  // ============================================
+  //  META PIXEL — TRACKING DE CLIENTES ATIVOS
+  // ============================================
+
+  // Lê cookie por nome (_fbp, _fbc, etc.)
+  function getCookie(name) {
+    const m = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+    return m ? m[2] : null;
+  }
+
+  // SHA-256 via WebCrypto (async) — usado para Advanced Matching
+  async function sha256(str) {
+    const buf = await crypto.subtle.digest(
+      'SHA-256',
+      new TextEncoder().encode(str.trim().toLowerCase())
+    );
+    return Array.from(new Uint8Array(buf))
+      .map(b => b.toString(16).padStart(2, '0'))
+      .join('');
+  }
+
+  // Gera eventID determinístico por cliente/dia para deduplicação.
+  // Mesmo ID no cliente e no servidor → Meta descarta a cópia.
+  function buildEventId(phone, eventName) {
+    const day = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+    return `${eventName}_${phone}_${day}`;
+  }
+
+  async function firePixelLogin(phone, client) {
+    if (typeof fbq === 'undefined') return;   // Pixel não carregado
+
+    const eventName = 'Purchase';
+    const eventId   = buildEventId(phone, eventName);
+
+    // Deduplicação: não reenviar o mesmo evento no mesmo dia/sessão
+    const firedKey = 'px_fired_' + eventId;
+    if (sessionStorage.getItem(firedKey)) return;
+
+    // Hash de dados pessoais para Advanced Matching (LGPD-safe: nunca sai raw)
+    const [hashedPhone, hashedFn, hashedLn] = await Promise.all([
+      sha256(phone),
+      sha256(client.name.split(' ')[0]),
+      sha256(client.name.split(' ').at(-1)),
+    ]);
+
+    // Enriquecer o pixel com dados do cliente (Advanced Matching)
+    // Re-init com dados hashed → Meta aumenta a taxa de match sem expor PII
+    fbq('init', META_PIXEL_ID, {
+      ph: hashedPhone,
+      fn: hashedFn,
+      ln: hashedLn,
+    });
+
+    // Dados do evento
+    const eventData = {
+      value:            client.price   || 0,
+      currency:         'BRL',
+      content_name:     client.pkg_name,
+      content_category: client.label,
+      content_ids:      [phone],
+      content_type:     'product',
+      // Metadados extras (ficam em custom_data no Events Manager)
+      ensaio_status:    client.status,
+      pkg_total_fotos:  client.package.total + (client.package.bonus || 0),
+    };
+
+    fbq('track', eventName, eventData, { eventID: eventId });
+
+    // Marcar como disparado para não duplicar em refresh
+    sessionStorage.setItem(firedKey, '1');
+
+    // Log de diagnóstico (remova em produção se quiser)
+    console.log('[Pixel]', eventName, eventId, eventData);
   }
 </script>
 
