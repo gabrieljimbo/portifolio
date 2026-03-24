@@ -21,7 +21,20 @@
       "Bash(cp \"C:/Users/gabri/OneDrive/ADS/Fotos Geradas por IA/Portfolio/galeria/pet/d64a2add-f3ae-48b3-8a0d-23bb373a6cf1.png\" \"c:/Users/gabri/portifolio/images/galeria/pet-03.png\")",
       "Bash(cp \"C:/Users/gabri/OneDrive/ADS/Fotos Geradas por IA/Portfolio/galeria/pet/gato_janela.png\" \"c:/Users/gabri/portifolio/images/galeria/pet-04.png\")",
       "Bash(cp \"C:/Users/gabri/OneDrive/ADS/Fotos Geradas por IA/Portfolio/galeria/pet/husky.png\" \"c:/Users/gabri/portifolio/images/galeria/pet-05.png\")",
-      "Bash(cp \"C:/Users/gabri/OneDrive/ADS/Fotos Geradas por IA/Portfolio/galeria/pet/siames.png\" \"c:/Users/gabri/portifolio/images/galeria/pet-06.png\")"
+      "Bash(cp \"C:/Users/gabri/OneDrive/ADS/Fotos Geradas por IA/Portfolio/galeria/pet/siames.png\" \"c:/Users/gabri/portifolio/images/galeria/pet-06.png\")",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(python -c \"print\\(''ok''\\)\")",
+      "Bash(py -3 -c \"print\\(''ok''\\)\")",
+      "Bash(node -e \"console.log\\(''''ok''''\\)\")",
+      "Bash(node -e \"require\\(''''sharp''''\\)\")",
+      "Bash(npm install:*)",
+      "Bash(node -e \":*)",
+      "Bash(git push:*)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\gabri\\OneDrive\\ADS\\Fotos Geradas por IA\\clientes\\Bull Terrie - Almies\\feito",
+      "C:\\Users\\gabri\\OneDrive\\ADS\\Fotos Geradas por IA\\logo"
     ]
   }
 }
