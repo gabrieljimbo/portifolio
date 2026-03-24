@@ -60,41 +60,71 @@
       padding: 2rem;
       position: relative; z-index: 1;
     }
+    /* Ambient glow behind card */
+    #login-screen::after {
+      content: '';
+      position: absolute;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+      pointer-events: none;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .login-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.6rem;
+      max-width: 400px;
+      width: 100%;
+      position: relative; z-index: 1;
+    }
+    .login-logo {
+      height: 56px;
+      width: auto;
+      filter: drop-shadow(0 2px 16px rgba(201,168,76,0.4));
+    }
     .login-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: clamp(2.5rem, 6vw, 4rem);
-      max-width: 420px;
+      padding: clamp(2rem, 5vw, 3rem);
       width: 100%;
       text-align: center;
-      box-shadow: 0 0 60px rgba(201,168,76,0.06);
+      box-shadow: 0 8px 48px rgba(0,0,0,0.4), 0 0 0 0.5px rgba(201,168,76,0.1) inset;
     }
-    .login-logo {
-      height: 80px;
-      width: auto;
-      margin: 0 auto 2rem;
-      filter: drop-shadow(0 2px 18px rgba(201,168,76,0.35));
+    .login-heading {
+      margin-bottom: 1.6rem;
+    }
+    .login-heading .label {
+      display: block;
+      margin-bottom: 0.7rem;
     }
     .login-card h1 {
-      font-size: clamp(1.8rem, 4vw, 2.4rem);
-      margin-bottom: 0.5rem;
+      font-size: clamp(2rem, 5vw, 2.6rem);
+      line-height: 1.1;
+    }
+    .login-divider {
+      width: 40px; height: 1px;
+      background: var(--border);
+      margin: 1.4rem auto;
     }
     .login-card .subtitle {
       color: var(--text-secondary);
-      font-size: 0.95rem;
-      margin-bottom: 2rem;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      margin-bottom: 1.8rem;
     }
     .input-wrap {
       position: relative;
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
     }
     .input-wrap input {
       width: 100%;
       background: var(--bg-secondary);
       border: 1px solid var(--border);
       border-radius: 50px;
-      padding: 0.9rem 1.5rem;
+      padding: 0.85rem 1.5rem;
       color: var(--text-primary);
       font-family: 'DM Mono', monospace;
       font-size: 1rem;
@@ -129,13 +159,12 @@
     }
     .login-error {
       color: var(--coral);
-      font-size: 0.85rem;
-      margin-top: 0.8rem;
+      font-size: 0.82rem;
+      margin-top: 0.75rem;
       display: none;
     }
     .login-footer {
-      margin-top: 2rem;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--text-secondary);
     }
 
@@ -489,29 +518,36 @@
      LOGIN SCREEN
 ===================== -->
 <section id="login-screen">
-  <div class="login-card">
+  <div class="login-wrapper">
     <img src="logo.png" alt="Jimbo Studios" class="login-logo" />
 
-    <span class="label">Portal do Cliente</span>
-    <h1>Acompanhe<br /><em style="color:var(--gold)">seu ensaio</em></h1>
-    <p class="subtitle">Digite o número de celular cadastrado para ver o andamento das suas fotos.</p>
+    <div class="login-card">
+      <div class="login-heading">
+        <span class="label">Portal do Cliente</span>
+        <h1>Acompanhe<br /><em style="color:var(--gold)">seu ensaio</em></h1>
+      </div>
 
-    <div class="input-wrap">
-      <input
-        type="tel"
-        id="phone-input"
-        placeholder="(11) 99999-9999"
-        maxlength="15"
-        autocomplete="off"
-      />
+      <div class="login-divider"></div>
+
+      <p class="subtitle">Digite o número de celular cadastrado para ver o andamento das suas fotos.</p>
+
+      <div class="input-wrap">
+        <input
+          type="tel"
+          id="phone-input"
+          placeholder="(11) 99999-9999"
+          maxlength="15"
+          autocomplete="off"
+        />
+      </div>
+
+      <button class="btn-login" onclick="doLogin()">Acessar meu ensaio &rarr;</button>
+
+      <p class="login-error" id="login-error">Número não encontrado. Verifique e tente novamente.</p>
     </div>
 
-    <button class="btn-login" onclick="doLogin()">Acessar meu ensaio &rarr;</button>
-
-    <p class="login-error" id="login-error">Número não encontrado. Verifique e tente novamente.</p>
-
     <div class="login-footer">
-      Dúvidas? Fale pelo <a href="https://wa.me/5511999999999" style="color:var(--gold)">WhatsApp</a>
+      Dúvidas? Fale pelo <a href="https://wa.me/5511947727299" style="color:var(--gold)">WhatsApp</a>
     </div>
   </div>
 </section>
