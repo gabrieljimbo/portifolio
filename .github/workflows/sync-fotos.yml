@@ -1,0 +1,35 @@
+name: Sync Fotos
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'clientes/**'   # dispara apenas quando novas fotos são subidas
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Escanear fotos e atualizar clientes.json
+        run: node sync-fotos.js
+
+      - name: Commit e push se houver mudanças
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add clientes.json
+          git diff --staged --quiet && echo "Sem mudanças." || (
+            git commit -m "sync: fotos atualizadas automaticamente [skip ci]"
+            git push
+          )

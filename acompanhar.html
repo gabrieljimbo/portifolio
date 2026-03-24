@@ -510,6 +510,132 @@
       .progress-top { flex-direction: column; }
       .progress-counter { text-align: left; }
     }
+
+    /* ========================
+       UPSELL MODAL
+    ======================== */
+    #upsell-overlay {
+      position: fixed; inset: 0; z-index: 100;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(4px);
+      display: flex; align-items: flex-end; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+    #upsell-overlay.visible {
+      opacity: 1; pointer-events: all;
+    }
+    .upsell-sheet {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-bottom: none;
+      border-radius: var(--radius) var(--radius) 0 0;
+      padding: clamp(2rem, 5vw, 3rem);
+      width: 100%;
+      max-width: 540px;
+      position: relative;
+      transform: translateY(100%);
+      transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 -8px 48px rgba(0,0,0,0.5), 0 0 0 0.5px rgba(201,168,76,0.15) inset;
+    }
+    #upsell-overlay.visible .upsell-sheet {
+      transform: translateY(0);
+    }
+    .upsell-close {
+      position: absolute;
+      top: 1.2rem; right: 1.2rem;
+      background: none; border: none;
+      color: var(--text-secondary);
+      font-size: 1.4rem; cursor: pointer;
+      line-height: 1;
+      transition: color var(--transition);
+      padding: 0.2rem 0.4rem;
+    }
+    .upsell-close:hover { color: var(--text-primary); }
+    .upsell-tag {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: rgba(201,168,76,0.12);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 50px;
+      padding: 0.25rem 0.8rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .upsell-sheet h2 {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      margin-bottom: 0.6rem;
+      line-height: 1.15;
+    }
+    .upsell-sheet .upsell-sub {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 1.6rem;
+    }
+    .upsell-pricing {
+      display: flex; align-items: baseline; gap: 0.8rem;
+      margin-bottom: 1.6rem;
+    }
+    .upsell-price-old {
+      font-family: 'DM Mono', monospace;
+      font-size: 1rem;
+      color: var(--text-secondary);
+      text-decoration: line-through;
+    }
+    .upsell-price-new {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 500;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .upsell-price-label {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+    }
+    .upsell-features {
+      list-style: none;
+      margin-bottom: 1.8rem;
+      display: flex; flex-direction: column; gap: 0.4rem;
+    }
+    .upsell-features li {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .upsell-features li::before {
+      content: '✦';
+      color: var(--gold);
+      font-size: 0.6rem;
+      flex-shrink: 0;
+    }
+    .btn-upsell {
+      display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+      width: 100%;
+      padding: 1.05rem 2rem;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+      color: #0A0A0A;
+      border-radius: 50px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700; font-size: 1rem;
+      cursor: pointer; border: none;
+      text-decoration: none;
+      transition: var(--transition);
+      box-shadow: 0 4px 20px rgba(201,168,76,0.3);
+    }
+    .btn-upsell:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 28px rgba(201,168,76,0.45);
+    }
+    .upsell-urgency {
+      margin-top: 0.9rem;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+    }
+    .upsell-urgency strong { color: var(--coral); }
   </style>
 </head>
 <body oncontextmenu="return false">
@@ -541,7 +667,7 @@
         />
       </div>
 
-      <button class="btn-login" onclick="doLogin()">Acessar meu ensaio &rarr;</button>
+      <button class="btn-login" id="btn-login" onclick="doLogin()" disabled>Acessar meu ensaio &rarr;</button>
 
       <p class="login-error" id="login-error">Número não encontrado. Verifique e tente novamente.</p>
     </div>
@@ -645,43 +771,69 @@
 </div>
 
 <!-- =====================
+     UPSELL MODAL
+===================== -->
+<div id="upsell-overlay" role="dialog" aria-modal="true">
+  <div class="upsell-sheet">
+    <button class="upsell-close" onclick="closeUpsell()" aria-label="Fechar">&times;</button>
+
+    <div class="upsell-tag">✦ Oferta exclusiva para clientes</div>
+
+    <h2 id="upsell-heading">Amou as fotos?<br /><em style="color:var(--gold)">Faça um novo ensaio.</em></h2>
+
+    <p class="upsell-sub" id="upsell-sub">
+      Clientes que adoram o resultado sempre voltam para um segundo ensaio —
+      e nós reservamos um desconto especial só para você.
+    </p>
+
+    <div class="upsell-pricing">
+      <span class="upsell-price-old">R$97,00</span>
+      <span class="upsell-price-new">R$67,90</span>
+      <span class="upsell-price-label">— 30% off<br />só para clientes</span>
+    </div>
+
+    <ul class="upsell-features">
+      <li>10 fotos em alta resolução</li>
+      <li>Novo tema à sua escolha (pet, profissional, casal…)</li>
+      <li>Entrega em até 6h</li>
+      <li>Sem agendamento, tudo pelo WhatsApp</li>
+    </ul>
+
+    <a id="upsell-cta" href="#" class="btn-upsell" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      Quero meu próximo ensaio
+    </a>
+
+    <p class="upsell-urgency">
+      <strong>⏱ Válido por 24 horas</strong> — desconto aplicado automaticamente no WhatsApp
+    </p>
+  </div>
+</div>
+
+<!-- =====================
      DATA + LOGIC
 ===================== -->
 <script>
   // ============================================
-  //  PACOTES DISPONÍVEIS (referência)
-  //  STARTER  — R$14,90 → 3 fotos
-  //  POPULAR  — R$39,90 → 10 fotos
-  //  PREMIUM  — R$79,90 → 25 fotos + 5 bônus
-  //
-  //  Para adicionar novos clientes:
-  //  1. Crie a pasta clientes/{id}/feito/ no repo
-  //  2. Coloque as fotos prontas lá
-  //  3. Adicione a entrada abaixo com o telefone (só dígitos)
+  //  DADOS DOS CLIENTES
+  //  Carregados de clientes.json automaticamente.
+  //  Para adicionar clientes ou editar dados,
+  //  edite clientes.json diretamente.
   // ============================================
-  const CLIENTS = {
-    "11996029870": {
-      name:    "Ailton Amista Soares",
-      pet:     "Almies (Bull Terrier)",
-      label:   "Ensaio Pet",
-      pkg_name:"💎 Premium",
-      package: { total: 25, bonus: 5 },
-      status:  "andamento",  // "andamento" | "concluido"
-      eta:     "até 28 de março",
-      folder:  "clientes/ailton/feito",
-      photos: [
-        "01.png",
-        "02.png",
-        "03.png",
-        "003.png",
-        "04.png",
-        "05.png",
-        "06.png",
-        "07.png"
-      ],
-      download_url: null  // coloque o link do Google Drive/Dropbox quando concluir
-    }
-  };
+  let CLIENTS = {};
+
+  fetch('clientes.json?v=' + Date.now())
+    .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(data => {
+      CLIENTS = data;
+      document.getElementById('btn-login').disabled = false;
+    })
+    .catch(() => {
+      document.getElementById('login-error').textContent = 'Erro ao carregar dados. Tente novamente.';
+      document.getElementById('login-error').style.display = 'block';
+    });
 
   // ============================================
   //  HELPERS
@@ -725,6 +877,8 @@
   }
 
   function doLogout() {
+    if (upsellTimer) { clearTimeout(upsellTimer); upsellTimer = null; }
+    closeUpsell();
     document.getElementById('login-screen').style.display  = 'flex';
     document.getElementById('dashboard').style.display = 'none';
     document.getElementById('phone-input').value = '';
@@ -734,6 +888,55 @@
   // ============================================
   //  RENDER DASHBOARD
   // ============================================
+  // ============================================
+  //  UPSELL
+  // ============================================
+  let upsellTimer = null;
+
+  function initUpsell(c) {
+    // Only show when ensaio is 100% delivered
+    const total = c.package.total + c.package.bonus;
+    const done  = c.photos.length;
+    const isComplete = c.status === 'concluido' && done >= total;
+    if (!isComplete) return;
+
+    // Don't show again if already dismissed this session
+    const dismissed = sessionStorage.getItem('upsell_dismissed');
+    if (dismissed) return;
+
+    // Personalize heading and WhatsApp message with client first name + pet
+    const firstName = c.name.split(' ')[0];
+    document.getElementById('upsell-heading').innerHTML =
+      `${firstName}, amou as fotos?<br /><em style="color:var(--gold)">Faça um novo ensaio.</em>`;
+
+    const waMsg = encodeURIComponent(
+      `Oi! Sou ${firstName} e acabei de ver meu ensaio do ${c.pet} — ficou incrível! 😍\n` +
+      `Quero aproveitar o desconto exclusivo de 30% e fazer um novo ensaio. Pode me ajudar?`
+    );
+    document.getElementById('upsell-cta').href =
+      `https://wa.me/5511947727299?text=${waMsg}`;
+
+    // Show after 45 seconds
+    upsellTimer = setTimeout(showUpsell, 45000);
+  }
+
+  function showUpsell() {
+    const overlay = document.getElementById('upsell-overlay');
+    overlay.classList.add('visible');
+  }
+
+  function closeUpsell() {
+    const overlay = document.getElementById('upsell-overlay');
+    overlay.classList.remove('visible');
+    sessionStorage.setItem('upsell_dismissed', '1');
+    if (upsellTimer) { clearTimeout(upsellTimer); upsellTimer = null; }
+  }
+
+  // Close on overlay click (outside sheet)
+  document.getElementById('upsell-overlay').addEventListener('click', function(e) {
+    if (e.target === this) closeUpsell();
+  });
+
   function renderDashboard(c) {
     const total    = c.package.total + c.package.bonus;
     const done     = c.photos.length;
@@ -832,6 +1035,9 @@
       dlBtn.onclick = function() { return false; };
       document.getElementById('eta-date').textContent = c.eta;
     }
+
+    // Upsell: trigger after 45s if ensaio is 100% complete
+    initUpsell(c);
   }
 </script>
 
