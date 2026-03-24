@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jimbo Studios — Acompanhe seu Ensaio</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-primary:    #0A0A0A;
+      --bg-secondary:  #111111;
+      --bg-card:       #161616;
+      --gold:          #C9A84C;
+      --gold-light:    #E4C76B;
+      --coral:         #E8726A;
+      --text-primary:  #F5F0EB;
+      --text-secondary:#9A9490;
+      --border:        rgba(201,168,76,0.2);
+      --border-hover:  rgba(201,168,76,0.5);
+      --radius:        16px;
+      --radius-sm:     8px;
+      --transition:    0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: 'DM Sans', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* Grain */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0;
+      pointer-events: none; opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-repeat: repeat; background-size: 200px 200px;
+    }
+
+    h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; line-height: 1.15; font-weight: 500; }
+    .label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold);
+    }
+
+    /* ========================
+       LOGIN SCREEN
+    ======================== */
+    #login-screen {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 2rem;
+      position: relative; z-index: 1;
+    }
+    .login-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: clamp(2.5rem, 6vw, 4rem);
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 0 60px rgba(201,168,76,0.06);
+    }
+    .login-logo {
+      height: 56px;
+      margin: 0 auto 2rem;
+      filter: brightness(1.1);
+    }
+    .login-card h1 {
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      margin-bottom: 0.5rem;
+    }
+    .login-card .subtitle {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+    .input-wrap {
+      position: relative;
+      margin-bottom: 1rem;
+    }
+    .input-wrap input {
+      width: 100%;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 0.9rem 1.5rem;
+      color: var(--text-primary);
+      font-family: 'DM Mono', monospace;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      outline: none;
+      transition: var(--transition);
+      text-align: center;
+    }
+    .input-wrap input:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.1);
+    }
+    .input-wrap input::placeholder { color: var(--text-secondary); }
+    .btn-login {
+      width: 100%;
+      padding: 0.95rem 2rem;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+      color: #0A0A0A;
+      border-radius: 50px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      border: none;
+      transition: var(--transition);
+      box-shadow: 0 4px 20px rgba(201,168,76,0.25);
+    }
+    .btn-login:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 28px rgba(201,168,76,0.35);
+    }
+    .login-error {
+      color: var(--coral);
+      font-size: 0.85rem;
+      margin-top: 0.8rem;
+      display: none;
+    }
+    .login-footer {
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    /* ========================
+       DASHBOARD
+    ======================== */
+    #dashboard { display: none; position: relative; z-index: 1; }
+
+    /* Header */
+    .dash-header {
+      border-bottom: 1px solid var(--border);
+      padding: 1.2rem 0;
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(12px);
+    }
+    .dash-header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 4vw, 2.5rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .dash-header img { height: 40px; }
+    .dash-header .btn-logout {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      background: none; border: none; cursor: pointer;
+      transition: color var(--transition);
+    }
+    .dash-header .btn-logout:hover { color: var(--gold); }
+
+    /* Main content */
+    .dash-main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: clamp(2.5rem, 5vw, 4rem) clamp(1rem, 4vw, 2.5rem);
+    }
+
+    /* Welcome */
+    .welcome-section {
+      margin-bottom: 3rem;
+    }
+    .welcome-section .label { margin-bottom: 0.6rem; display: block; }
+    .welcome-section h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 0.4rem;
+    }
+    .welcome-section p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.35rem 1rem;
+      border-radius: 50px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-top: 1rem;
+    }
+    .status-badge.andamento {
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.3);
+      color: var(--gold);
+    }
+    .status-badge.concluido {
+      background: rgba(72, 200, 130, 0.1);
+      border: 1px solid rgba(72, 200, 130, 0.3);
+      color: #48C882;
+    }
+    .status-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: currentColor;
+      animation: pulse-dot 2s infinite;
+    }
+    .status-badge.concluido .status-dot { animation: none; }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    /* Progress Card */
+    .progress-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: clamp(1.8rem, 4vw, 2.5rem);
+      margin-bottom: 3rem;
+    }
+    .progress-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.8rem;
+    }
+    .progress-top h3 {
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      margin-bottom: 0.3rem;
+    }
+    .progress-top p {
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+    }
+    .progress-counter {
+      text-align: right;
+    }
+    .progress-counter .big-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 5vw, 3.5rem);
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .progress-counter .big-denom {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+    }
+
+    /* Bar */
+    .progress-bar-wrap {
+      margin-bottom: 1.2rem;
+    }
+    .progress-bar-track {
+      background: var(--bg-secondary);
+      border-radius: 50px;
+      height: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      border-radius: 50px;
+      background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%);
+      transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 0 12px rgba(201,168,76,0.4);
+      position: relative;
+    }
+    .progress-bar-fill::after {
+      content: '';
+      position: absolute;
+      right: 0; top: 0; bottom: 0;
+      width: 20px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3));
+      border-radius: 0 50px 50px 0;
+    }
+    .progress-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.6rem;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+    }
+    .progress-labels span { font-family: 'DM Mono', monospace; }
+    .progress-labels .done-count { color: var(--gold); font-weight: 500; }
+
+    /* Segments breakdown */
+    .progress-breakdown {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    .breakdown-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--bg-secondary);
+      border-radius: 50px;
+      padding: 0.4rem 0.9rem;
+      font-size: 0.82rem;
+    }
+    .breakdown-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+    }
+    .breakdown-dot.gold { background: var(--gold); }
+    .breakdown-dot.coral { background: var(--coral); }
+    .breakdown-dot.muted { background: #333; border: 1px solid #444; }
+
+    /* Photos Grid */
+    .photos-section { margin-bottom: 3rem; }
+    .photos-section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.8rem;
+    }
+    .photos-section-header h3 {
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+    }
+    .photos-section-header p {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      margin-top: 0.2rem;
+    }
+
+    .photos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      user-select: none;
+    }
+    .photo-thumb {
+      position: relative;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      aspect-ratio: 1;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      cursor: default;
+      transition: var(--transition);
+    }
+    .photo-thumb:hover {
+      border-color: var(--border-hover);
+      transform: scale(1.01);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+    .photo-thumb img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+      -webkit-user-drag: none;
+    }
+    /* Subtle overlay to make right-click saving harder */
+    .photo-thumb::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to bottom,
+        transparent 60%,
+        rgba(10,10,10,0.6) 100%
+      );
+      pointer-events: none;
+    }
+    .photo-num {
+      position: absolute;
+      bottom: 0.5rem; left: 0.7rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: rgba(245,240,235,0.7);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Pending placeholders */
+    .photo-pending {
+      aspect-ratio: 1;
+      background: var(--bg-card);
+      border: 1px dashed rgba(255,255,255,0.08);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .photo-pending-icon {
+      font-size: 1.8rem;
+      opacity: 0.15;
+    }
+
+    /* Download section */
+    .download-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: clamp(2rem, 4vw, 3rem);
+      text-align: center;
+    }
+    .download-section h3 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      margin-bottom: 0.8rem;
+    }
+    .download-section p {
+      color: var(--text-secondary);
+      max-width: 480px;
+      margin: 0 auto 1.8rem;
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 1rem 2.4rem;
+      border-radius: 50px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      border: none;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+    .btn-download.active {
+      background: linear-gradient(135deg, #48C882 0%, #3aaa6e 100%);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(72,200,130,0.3);
+    }
+    .btn-download.active:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 28px rgba(72,200,130,0.45);
+    }
+    .btn-download.disabled {
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+      cursor: not-allowed;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .download-eta {
+      margin-top: 1.2rem;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+    .download-eta strong { color: var(--gold); }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 3rem 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .photos-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 0.6rem;
+      }
+      .progress-top { flex-direction: column; }
+      .progress-counter { text-align: left; }
+    }
+  </style>
+</head>
+<body oncontextmenu="return false">
+
+<!-- =====================
+     LOGIN SCREEN
+===================== -->
+<section id="login-screen">
+  <div class="login-card">
+    <img src="logo.png" alt="Jimbo Studios" class="login-logo" />
+
+    <span class="label">Portal do Cliente</span>
+    <h1>Acompanhe<br /><em style="color:var(--gold)">seu ensaio</em></h1>
+    <p class="subtitle">Digite o número de celular cadastrado para ver o andamento das suas fotos.</p>
+
+    <div class="input-wrap">
+      <input
+        type="tel"
+        id="phone-input"
+        placeholder="(11) 99999-9999"
+        maxlength="15"
+        autocomplete="off"
+      />
+    </div>
+
+    <button class="btn-login" onclick="doLogin()">Acessar meu ensaio &rarr;</button>
+
+    <p class="login-error" id="login-error">Número não encontrado. Verifique e tente novamente.</p>
+
+    <div class="login-footer">
+      Dúvidas? Fale pelo <a href="https://wa.me/5511999999999" style="color:var(--gold)">WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- =====================
+     DASHBOARD
+===================== -->
+<div id="dashboard">
+
+  <!-- Header -->
+  <header class="dash-header">
+    <div class="dash-header-inner">
+      <img src="logo.png" alt="Jimbo Studios" />
+      <button class="btn-logout" onclick="doLogout()">← Sair</button>
+    </div>
+  </header>
+
+  <main class="dash-main">
+
+    <!-- Welcome -->
+    <div class="welcome-section">
+      <span class="label" id="client-label">Ensaio Pet</span>
+      <h2 id="client-greeting">Olá, Cliente!</h2>
+      <p id="client-detail" style="color:var(--text-secondary);margin-top:0.3rem;"></p>
+      <div class="status-badge andamento" id="status-badge">
+        <div class="status-dot"></div>
+        <span id="status-text">Em Andamento</span>
+      </div>
+    </div>
+
+    <!-- Progress Card -->
+    <div class="progress-card">
+      <div class="progress-top">
+        <div>
+          <h3>Progresso do Ensaio</h3>
+          <p>Acompanhe em tempo real quantas fotos já estão prontas.</p>
+        </div>
+        <div class="progress-counter">
+          <div class="big-num" id="done-count">0</div>
+          <div class="big-denom">de <span id="total-count">30</span> fotos</div>
+        </div>
+      </div>
+
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" id="progress-fill" style="width:0%"></div>
+        </div>
+        <div class="progress-labels">
+          <span class="done-count" id="pct-label">0% concluído</span>
+          <span id="remaining-label">30 restantes</span>
+        </div>
+      </div>
+
+      <div class="progress-breakdown" id="breakdown-wrap">
+        <!-- populated by JS -->
+      </div>
+    </div>
+
+    <!-- Photos Grid -->
+    <div class="photos-section">
+      <div class="photos-section-header">
+        <div>
+          <h3>Fotos Prontas</h3>
+          <p id="photos-subtitle">Prévia do seu ensaio — download disponível ao final.</p>
+        </div>
+      </div>
+
+      <div class="photos-grid" id="photos-grid">
+        <!-- populated by JS -->
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Download Section -->
+    <div class="download-section">
+      <h3 id="dl-title">Quase lá…</h3>
+      <p id="dl-desc">Quando todas as fotos estiverem prontas, o botão de download será liberado automaticamente. Você também receberá uma mensagem no WhatsApp.</p>
+
+      <a href="#" class="btn-download disabled" id="dl-btn" onclick="return false">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Baixar todas as fotos
+      </a>
+
+      <div class="download-eta" id="dl-eta">
+        Previsão de entrega: <strong id="eta-date">em breve</strong>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- =====================
+     DATA + LOGIC
+===================== -->
+<script>
+  // ============================================
+  //  PACOTES DISPONÍVEIS (referência)
+  //  STARTER  — R$14,90 → 3 fotos
+  //  POPULAR  — R$39,90 → 10 fotos
+  //  PREMIUM  — R$79,90 → 25 fotos + 5 bônus
+  //
+  //  Para adicionar novos clientes:
+  //  1. Crie a pasta clientes/{id}/feito/ no repo
+  //  2. Coloque as fotos prontas lá
+  //  3. Adicione a entrada abaixo com o telefone (só dígitos)
+  // ============================================
+  const CLIENTS = {
+    "11996029870": {
+      name:    "Ailton Amista Soares",
+      pet:     "Almies (Bull Terrier)",
+      label:   "Ensaio Pet",
+      pkg_name:"💎 Premium",
+      package: { total: 25, bonus: 5 },
+      status:  "andamento",  // "andamento" | "concluido"
+      eta:     "até 28 de março",
+      folder:  "clientes/ailton/feito",
+      photos: [
+        "01.png",
+        "02.png",
+        "03.png",
+        "003.png",
+        "04.png",
+        "05.png",
+        "06.png",
+        "07.png"
+      ],
+      download_url: null  // coloque o link do Google Drive/Dropbox quando concluir
+    }
+  };
+
+  // ============================================
+  //  HELPERS
+  // ============================================
+  function normalizePhone(raw) {
+    return raw.replace(/\D/g, '');
+  }
+
+  // ============================================
+  //  LOGIN
+  // ============================================
+  document.getElementById('phone-input').addEventListener('keydown', e => {
+    if (e.key === 'Enter') doLogin();
+  });
+
+  // Auto-format phone input
+  document.getElementById('phone-input').addEventListener('input', function() {
+    let v = this.value.replace(/\D/g, '').slice(0, 11);
+    if (v.length > 2) v = '(' + v.slice(0,2) + ') ' + v.slice(2);
+    if (v.length > 10) v = v.slice(0,10) + '-' + v.slice(10);
+    this.value = v;
+  });
+
+  function doLogin() {
+    const raw   = document.getElementById('phone-input').value;
+    const phone = normalizePhone(raw);
+    const client = CLIENTS[phone];
+    const errEl = document.getElementById('login-error');
+
+    if (!client) {
+      errEl.style.display = 'block';
+      document.getElementById('phone-input').style.borderColor = 'var(--coral)';
+      return;
+    }
+
+    errEl.style.display = 'none';
+    renderDashboard(client);
+    document.getElementById('login-screen').style.display  = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+    window.scrollTo(0, 0);
+  }
+
+  function doLogout() {
+    document.getElementById('login-screen').style.display  = 'flex';
+    document.getElementById('dashboard').style.display = 'none';
+    document.getElementById('phone-input').value = '';
+    document.getElementById('phone-input').style.borderColor = '';
+  }
+
+  // ============================================
+  //  RENDER DASHBOARD
+  // ============================================
+  function renderDashboard(c) {
+    const total    = c.package.total + c.package.bonus;
+    const done     = c.photos.length;
+    const pct      = Math.round((done / total) * 100);
+    const remaining = total - done;
+
+    // Welcome
+    document.getElementById('client-label').textContent    = c.label;
+    document.getElementById('client-greeting').textContent = `Olá, ${c.name.split(' ')[0]}!`;
+    const total2 = c.package.total + c.package.bonus;
+    document.getElementById('client-detail').textContent   = `Ensaio de ${c.pet}  ·  Pacote ${c.pkg_name} — ${total2} fotos`;
+
+    // Status badge
+    const badge = document.getElementById('status-badge');
+    if (c.status === 'concluido') {
+      badge.className = 'status-badge concluido';
+      document.getElementById('status-text').textContent = 'Concluído';
+    } else {
+      badge.className = 'status-badge andamento';
+      document.getElementById('status-text').textContent = 'Em Andamento';
+    }
+
+    // Counters
+    document.getElementById('done-count').textContent    = done;
+    document.getElementById('total-count').textContent   = total;
+    document.getElementById('pct-label').textContent     = `${pct}% concluído`;
+    document.getElementById('remaining-label').textContent = `${remaining} restante${remaining === 1 ? '' : 's'}`;
+
+    // Animate bar after brief delay
+    setTimeout(() => {
+      document.getElementById('progress-fill').style.width = pct + '%';
+    }, 150);
+
+    // Breakdown
+    const donePkg   = Math.min(done, c.package.total);
+    const doneBonus = Math.max(0, done - c.package.total);
+    const pendPkg   = c.package.total - donePkg;
+    const pendBonus = c.package.bonus - doneBonus;
+
+    document.getElementById('breakdown-wrap').innerHTML = `
+      <div class="breakdown-item">
+        <div class="breakdown-dot gold"></div>
+        <span>${donePkg} de ${c.package.total} fotos do pacote prontas</span>
+      </div>
+      <div class="breakdown-item">
+        <div class="breakdown-dot coral"></div>
+        <span>${doneBonus} de ${c.package.bonus} bônus prontos</span>
+      </div>
+      ${pendPkg + pendBonus > 0 ? `
+      <div class="breakdown-item">
+        <div class="breakdown-dot muted"></div>
+        <span>${pendPkg + pendBonus} foto${pendPkg + pendBonus === 1 ? '' : 's'} em produção</span>
+      </div>` : ''}
+    `;
+
+    // Photos grid — done thumbnails + pending placeholders
+    const grid = document.getElementById('photos-grid');
+    grid.innerHTML = '';
+
+    c.photos.forEach((fname, i) => {
+      const div = document.createElement('div');
+      div.className = 'photo-thumb';
+      div.innerHTML = `
+        <img src="${c.folder}/${fname}" alt="Foto ${i+1}" draggable="false" />
+        <span class="photo-num">${String(i+1).padStart(2,'0')}</span>
+      `;
+      grid.appendChild(div);
+    });
+
+    // Pending placeholders
+    for (let i = done; i < total; i++) {
+      const div = document.createElement('div');
+      div.className = 'photo-pending';
+      div.innerHTML = `<div class="photo-pending-icon">✦</div>`;
+      grid.appendChild(div);
+    }
+
+    // Photos subtitle
+    document.getElementById('photos-subtitle').textContent =
+      `${done} foto${done === 1 ? '' : 's'} pronta${done === 1 ? '' : 's'} — download disponível ao final.`;
+
+    // Download section
+    const dlBtn = document.getElementById('dl-btn');
+    if (c.status === 'concluido' && c.download_url) {
+      document.getElementById('dl-title').textContent = '✓ Ensaio Pronto!';
+      document.getElementById('dl-desc').textContent  = 'Seu ensaio está completo! Clique abaixo para baixar todas as fotos em alta resolução.';
+      dlBtn.className  = 'btn-download active';
+      dlBtn.href       = c.download_url;
+      dlBtn.onclick    = null;
+      document.getElementById('dl-eta').style.display = 'none';
+    } else {
+      document.getElementById('dl-title').textContent = 'Quase lá…';
+      document.getElementById('dl-desc').textContent  = 'Quando todas as fotos estiverem prontas, o botão de download será liberado automaticamente. Você também receberá uma mensagem no WhatsApp.';
+      dlBtn.className = 'btn-download disabled';
+      dlBtn.href = '#';
+      dlBtn.onclick = function() { return false; };
+      document.getElementById('eta-date').textContent = c.eta;
+    }
+  }
+</script>
+
+</body>
+</html>
