@@ -24,6 +24,8 @@
   <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=SEU_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
 
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -505,6 +507,11 @@
       color: var(--text-secondary);
       cursor: not-allowed;
       border: 1px solid rgba(255,255,255,0.08);
+    }
+    .btn-download.loading {
+      opacity: 0.7;
+      cursor: wait;
+      pointer-events: none;
     }
     .download-eta {
       margin-top: 1.2rem;
@@ -1147,13 +1154,18 @@
 
     // Download section
     const dlBtn = document.getElementById('dl-btn');
-    if (c.status === 'concluido' && c.download_url) {
+    if (c.status === 'concluido') {
       document.getElementById('dl-title').textContent = '✓ Ensaio Pronto!';
       document.getElementById('dl-desc').textContent  = 'Seu ensaio está completo! Clique abaixo para baixar todas as fotos em alta resolução.';
-      dlBtn.className  = 'btn-download active';
-      dlBtn.href       = c.download_url;
-      dlBtn.onclick    = null;
+      dlBtn.className = 'btn-download active';
       document.getElementById('dl-eta').style.display = 'none';
+      if (c.download_url) {
+        dlBtn.href    = c.download_url;
+        dlBtn.onclick = null;
+      } else {
+        dlBtn.href    = '#';
+        dlBtn.onclick = function(e) { e.preventDefault(); downloadZip(c); };
+      }
     } else {
       document.getElementById('dl-title').textContent = 'Quase lá…';
       document.getElementById('dl-desc').textContent  = 'Quando todas as fotos estiverem prontas, o botão de download será liberado automaticamente. Você também receberá uma mensagem no WhatsApp.';
@@ -1240,6 +1252,41 @@
 
     // Log de diagnóstico (remova em produção se quiser)
     console.log('[Pixel]', eventName, eventId, eventData);
+  }
+
+  // ============================================
+  //  DOWNLOAD ZIP
+  // ============================================
+  async function downloadZip(c) {
+    const btn = document.getElementById('dl-btn');
+    btn.classList.add('loading');
+    btn.onclick = null; // evita duplo clique
+
+    try {
+      const zip  = new JSZip();
+      const nome = c.name.split(' ')[0].toLowerCase();
+
+      await Promise.all(c.photos.map(async (fname) => {
+        const url  = `${c.folder}/${fname}`;
+        const resp = await fetch(url);
+        if (!resp.ok) throw new Error(`Erro ao buscar ${fname}`);
+        const blob = await resp.blob();
+        zip.file(fname, blob);
+      }));
+
+      const content = await zip.generateAsync({ type: 'blob' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(content);
+      a.download = `ensaio-${nome}.zip`;
+      a.click();
+      URL.revokeObjectURL(a.href);
+    } catch (err) {
+      console.error('[downloadZip]', err);
+      alert('Erro ao gerar o download. Tente novamente.');
+    } finally {
+      btn.classList.remove('loading');
+      btn.onclick = function(e) { e.preventDefault(); downloadZip(c); };
+    }
   }
 </script>
 
