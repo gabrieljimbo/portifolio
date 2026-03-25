@@ -1073,7 +1073,8 @@
     document.getElementById('client-label').textContent    = c.label;
     document.getElementById('client-greeting').textContent = `Olá, ${c.name.split(' ')[0]}!`;
     const total2 = c.package.total + c.package.bonus;
-    document.getElementById('client-detail').textContent   = `Ensaio de ${c.pet}  ·  Pacote ${c.pkg_name} — ${total2} fotos`;
+    const detail = c.pet ? `Ensaio de ${c.pet}` : c.label;
+    document.getElementById('client-detail').textContent   = `${detail}  ·  Pacote ${c.pkg_name} — ${total2} fotos`;
 
     // Status badge
     const badge = document.getElementById('status-badge');
