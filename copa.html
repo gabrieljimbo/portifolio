@@ -3,1408 +3,1404 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Álbum Oficial Copa do Mundo 2026 — Completo para Impressão</title>
-  <meta name="description" content="O álbum completo da Copa do Mundo 2026 com todas as figurinhas para imprimir em casa. Sem gastar fortuna em pacotinhos. Entrega imediata via WhatsApp." />
-  <meta property="og:title" content="Álbum Copa 2026 — Completo para Impressão" />
-  <meta property="og:description" content="Todas as figurinhas da Copa 2026 para imprimir. Entrega imediata. Sem gastar fortuna." />
-  <meta property="og:type" content="website" />
+  <title>Portfólio — Gabriel Jimbo | Ensaios Profissionais, Aniversário e Formatura com IA</title>
+  <meta name="description" content="Veja resultados reais de ensaios fotográficos criados com IA. Profissional, aniversário e formatura. Sem estúdio, sem fotógrafo, entrega em até 24h." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <style>
+    /* ===========================
+       CSS VARIABLES & RESET
+    =========================== */
     :root {
-      --bg: #060B10;
-      --bg2: #0D1520;
-      --bg3: #111D2C;
-      --gold: #D4A825;
-      --gold2: #F0C93A;
-      --green: #00A859;
-      --green2: #00D472;
-      --blue: #0066CC;
-      --text: #F0EDE8;
-      --muted: #8A9BB0;
-      --border: rgba(212,168,37,0.2);
+      --bg-primary: #0A0A0A;
+      --bg-secondary: #111111;
+      --bg-card: #161616;
+      --gold: #C9A84C;
+      --gold-light: #E4C76B;
+      --coral: #E8726A;
+      --coral-dark: #d45f57;
+      --text-primary: #F5F0EB;
+      --text-secondary: #9A9490;
+      --border: rgba(201, 168, 76, 0.2);
+      --border-hover: rgba(201, 168, 76, 0.5);
+      --shadow-gold: 0 0 30px rgba(201, 168, 76, 0.08);
+      --shadow-gold-hover: 0 0 40px rgba(201, 168, 76, 0.18);
       --radius: 16px;
-      --shadow: 0 0 40px rgba(212,168,37,0.08);
+      --radius-sm: 8px;
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; font-size: 16px; }
     body {
-      background: var(--bg);
-      color: var(--text);
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
       font-family: 'DM Sans', sans-serif;
       line-height: 1.6;
       overflow-x: hidden;
     }
     img { max-width: 100%; height: auto; display: block; }
     a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
 
-    /* GRAIN */
+    /* Grain overlay */
     body::before {
       content: '';
-      position: fixed; inset: 0; z-index: 0; pointer-events: none;
-      opacity: 0.03;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      background-size: 200px;
+      position: fixed; inset: 0; z-index: 0;
+      pointer-events: none; opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-repeat: repeat; background-size: 200px 200px;
     }
 
-    /* UTILS */
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
-    .gold { color: var(--gold2); }
-    .green { color: var(--green2); }
-
-    /* TOPBAR */
-    .topbar {
-      background: var(--green);
-      text-align: center;
-      padding: 10px 24px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      position: relative; z-index: 10;
+    /* ===========================
+       TYPOGRAPHY
+    =========================== */
+    h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; line-height: 1.15; font-weight: 500; }
+    h1 { font-size: clamp(2.6rem, 6vw, 5rem); }
+    h2 { font-size: clamp(1.9rem, 4vw, 3.2rem); }
+    h3 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); }
+    .label {
+      font-family: 'DM Mono', monospace; font-size: 0.7rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); display: inline-block; margin-bottom: 1rem;
     }
-    .topbar span { opacity: 0.9; }
-    .topbar strong { color: #fff; }
+    .gold { color: var(--gold); }
+    .coral { color: var(--coral); }
 
-    /* HERO */
+    /* ===========================
+       LAYOUT
+    =========================== */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 clamp(1rem, 5vw, 3rem); }
+    section { position: relative; z-index: 1; }
+    .section-pad { padding: clamp(5rem, 10vw, 8rem) 0; }
+    .section-header { text-align: center; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+    .section-header p { color: var(--text-secondary); max-width: 560px; margin: 1rem auto 0; font-size: 1.05rem; }
+
+    /* ===========================
+       BUTTONS
+    =========================== */
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.9rem 2rem; border-radius: 50px;
+      font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600;
+      transition: var(--transition); position: relative; overflow: hidden;
+      text-decoration: none; white-space: nowrap;
+    }
+    .btn::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.15) 50%, transparent 100%);
+      transform: translateX(-100%); transition: transform 0.5s ease;
+    }
+    .btn:hover::after { transform: translateX(100%); }
+    .btn-whatsapp {
+      background: linear-gradient(135deg, #25D366 0%, #1ebe5a 100%);
+      color: #fff; font-weight: 700; font-size: 1rem; padding: 1rem 2.2rem;
+      box-shadow: 0 4px 24px rgba(37,211,102,0.35);
+    }
+    .btn-whatsapp:hover { transform: translateY(-3px); box-shadow: 0 10px 36px rgba(37,211,102,0.5); }
+    .btn-ghost {
+      background: transparent; color: var(--text-primary);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { border-color: var(--border-hover); background: rgba(201,168,76,0.05); transform: translateY(-2px); }
+
+    /* ===========================
+       NAVBAR
+    =========================== */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.2rem 0; transition: var(--transition);
+    }
+    .navbar.scrolled {
+      background: rgba(10,10,10,0.92); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border); padding: 0.8rem 0;
+    }
+    .navbar .container { display: flex; align-items: center; justify-content: space-between; }
+    .navbar-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; }
+    .navbar-logo span { color: var(--gold); }
+    .navbar-nav { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .navbar-nav a { font-size: 0.9rem; color: var(--text-secondary); transition: var(--transition); }
+    .navbar-nav a:hover, .navbar-nav a.active { color: var(--text-primary); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; padding: 0.5rem; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text-primary); border-radius: 2px; transition: var(--transition); }
+    .mobile-menu {
+      display: none; position: fixed; inset: 0; z-index: 99;
+      background: rgba(10,10,10,0.98); backdrop-filter: blur(20px);
+      flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--text-primary); }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-close { position: absolute; top: 1.5rem; right: 1.5rem; font-size: 2rem; color: var(--text-secondary); cursor: pointer; }
+    @media (max-width: 768px) {
+      .navbar-nav, .navbar-cta { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ===========================
+       ANIMATIONS
+    =========================== */
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes count-up { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+    .reveal {
+      opacity: 0; transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ===========================
+       HERO
+    =========================== */
     .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      padding: 80px 0 60px;
+      min-height: 100dvh; display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden; padding: 8rem 0 5rem;
     }
-
-    /* stadium field lines bg */
-    .hero::before {
-      content: '';
-      position: absolute; inset: 0;
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
       background:
-        radial-gradient(ellipse 80% 60% at 50% 110%, rgba(0,168,89,0.12) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 40% at 50% 100%, rgba(0,168,89,0.06) 0%, transparent 50%);
-      pointer-events: none;
+        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 80% 20%, rgba(232,114,106,0.05) 0%, transparent 60%),
+        var(--bg-primary);
     }
-
-    /* field circle decoration */
-    .hero-field {
-      position: absolute;
-      bottom: -300px; left: 50%; transform: translateX(-50%);
-      width: 700px; height: 700px;
-      border: 1px solid rgba(0,168,89,0.15);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-    .hero-field::before {
-      content: '';
-      position: absolute; inset: 80px;
-      border: 1px solid rgba(0,168,89,0.08);
-      border-radius: 50%;
-    }
-
-    .hero-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-    @media(max-width: 768px) {
-      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
-      .hero-visual { order: -1; }
-    }
-
+    .hero-content { position: relative; z-index: 1; text-align: center; max-width: 860px; }
     .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(212,168,37,0.1);
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      padding: 6px 16px;
-      font-size: 0.78rem;
-      font-family: 'DM Mono', monospace;
-      letter-spacing: 0.08em;
-      color: var(--gold2);
-      margin-bottom: 24px;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(201,168,76,0.1); border: 1px solid var(--border);
+      padding: 0.45rem 1.1rem; border-radius: 50px; margin-bottom: 2rem;
+      font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.15em;
+      color: var(--gold); opacity: 0; animation: fade-up 0.8s 0.2s forwards;
     }
-    .hero-badge::before {
-      content: '';
-      width: 6px; height: 6px;
-      background: var(--green2);
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(0.8); }
-    }
-
-    .hero h1 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(2.8rem, 6vw, 5rem);
-      font-weight: 900;
-      line-height: 1;
-      text-transform: uppercase;
-      letter-spacing: -0.01em;
-      margin-bottom: 20px;
-    }
-    .hero h1 em {
-      font-style: italic;
-      color: var(--gold2);
-      display: block;
-    }
-
+    .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; animation: pulse-dot 2s infinite; }
+    @keyframes pulse-dot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
+    .hero h1 { opacity: 0; animation: fade-up 0.9s 0.4s forwards; margin-bottom: 1.5rem; }
+    .hero h1 em { color: var(--gold); font-style: italic; }
     .hero-sub {
-      font-size: 1.1rem;
-      color: var(--muted);
-      max-width: 480px;
-      margin-bottom: 32px;
-      line-height: 1.7;
+      font-size: clamp(1rem, 2vw, 1.15rem); color: var(--text-secondary);
+      max-width: 540px; margin: 0 auto 2.5rem;
+      opacity: 0; animation: fade-up 0.9s 0.6s forwards; line-height: 1.7;
     }
-    .hero-sub strong { color: var(--text); }
-
-    .hero-price-block {
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 20px 24px;
-      margin-bottom: 28px;
-      display: inline-block;
-    }
-    .hero-price-old {
-      font-size: 0.85rem;
-      color: var(--muted);
-      text-decoration: line-through;
-    }
-    .hero-price-now {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 3rem;
-      font-weight: 800;
-      color: var(--green2);
-      line-height: 1;
-    }
-    .hero-price-detail {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-top: 4px;
+    .hero-btns {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+      opacity: 0; animation: fade-up 0.9s 0.8s forwards;
     }
 
-    .btn-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--green);
-      color: #fff;
-      font-size: 1rem;
-      font-weight: 700;
-      padding: 16px 32px;
-      border-radius: 12px;
-      border: none;
-      cursor: pointer;
-      transition: all 0.25s;
-      text-decoration: none;
-      letter-spacing: 0.02em;
+    /* Hero comparison preview */
+    .hero-preview {
+      display: flex; align-items: center; justify-content: center; gap: 0;
+      margin-top: 4rem; opacity: 0; animation: fade-up 0.9s 1s forwards;
+      max-width: 700px; margin-left: auto; margin-right: auto;
     }
-    .btn-cta:hover {
-      background: var(--green2);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(0,168,89,0.35);
+    .hero-preview-img {
+      flex: 1; position: relative; overflow: hidden; border-radius: var(--radius);
+      aspect-ratio: 3/4; max-width: 260px;
     }
-    .btn-cta svg { flex-shrink: 0; }
-
-    .hero-guarantee {
-      margin-top: 14px;
-      font-size: 0.8rem;
-      color: var(--muted);
-      display: flex;
-      align-items: center;
-      gap: 6px;
+    .hero-preview-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.5s ease;
     }
-
-    /* ALBUM VISUAL MOCKUP */
-    .hero-visual {
-      position: relative;
-      display: flex;
-      justify-content: center;
+    .hero-preview-img:hover img { transform: scale(1.05); }
+    .hero-preview-label {
+      position: absolute; bottom: 0.8rem; left: 50%; transform: translateX(-50%);
+      padding: 0.3rem 0.9rem; background: rgba(10,10,10,0.75); backdrop-filter: blur(8px);
+      border-radius: 50px; font-family: 'DM Mono', monospace; font-size: 0.65rem;
+      letter-spacing: 0.15em; white-space: nowrap;
     }
-    .album-mockup {
-      position: relative;
-      width: 100%;
-      max-width: 460px;
+    .hero-preview-label.before { color: var(--text-secondary); border: 1px solid rgba(255,255,255,0.1); }
+    .hero-preview-label.after { color: var(--gold); border: 1px solid var(--border); }
+    .hero-arrow-center {
+      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+      padding: 0 1.5rem; flex-shrink: 0;
+    }
+    .hero-arrow-center svg { width: 40px; height: 40px; color: var(--gold); }
+    .hero-arrow-center span {
+      font-family: 'DM Mono', monospace; font-size: 0.6rem;
+      letter-spacing: 0.2em; color: var(--text-secondary); text-transform: uppercase;
+    }
+    @media (max-width: 560px) {
+      .hero-preview { gap: 0; }
+      .hero-preview-img { max-width: 140px; }
+      .hero-arrow-center { padding: 0 0.8rem; }
+      .hero-arrow-center svg { width: 28px; height: 28px; }
     }
 
-    .album-cover {
-      background: linear-gradient(135deg, #1a2a50 0%, #0a1535 50%, #071025 100%);
-      border-radius: 20px;
-      aspect-ratio: 3/4;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(212,168,37,0.3);
+    /* ===========================
+       STATS BAR
+    =========================== */
+    .stats-bar {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 2.5rem 0;
     }
+    .stats-grid {
+      display: flex; align-items: center; justify-content: center;
+      gap: clamp(2rem, 6vw, 5rem); flex-wrap: wrap;
+    }
+    .stat-item { text-align: center; }
+    .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 600; color: var(--gold); line-height: 1; display: block;
+    }
+    .stat-label {
+      font-family: 'DM Mono', monospace; font-size: 0.68rem;
+      letter-spacing: 0.15em; color: var(--text-secondary);
+      text-transform: uppercase; margin-top: 0.4rem; display: block;
+    }
+    .stat-divider {
+      width: 1px; height: 50px; background: var(--border);
+    }
+    @media (max-width: 600px) { .stat-divider { display: none; } }
 
-    /* Trophy SVG inside album cover */
-    .album-cover-inner {
-      position: absolute; inset: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 20px;
+    /* ===========================
+       SOCIAL PROOF (REVIEWS)
+    =========================== */
+    .reviews-section { background: var(--bg-primary); }
+    .google-badge {
+      display: inline-flex; align-items: center; gap: 0.8rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      padding: 0.8rem 1.4rem; border-radius: var(--radius-sm);
+      margin-bottom: 3rem;
     }
-    .album-cover-top {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.3em;
-      color: rgba(212,168,37,0.7);
-      text-transform: uppercase;
+    .google-badge-stars { color: #FBBC04; font-size: 1.1rem; letter-spacing: 0.05em; }
+    .google-badge-text { font-size: 0.9rem; }
+    .google-badge-text strong { color: var(--text-primary); display: block; font-size: 0.95rem; }
+    .google-badge-text span { color: var(--text-secondary); font-size: 0.8rem; }
+    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+    .review-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.8rem;
+      transition: var(--transition);
     }
-    .album-trophy {
-      font-size: 5rem;
-      line-height: 1;
-      filter: drop-shadow(0 0 20px rgba(212,168,37,0.5));
+    .review-card:hover { border-color: var(--border-hover); box-shadow: var(--shadow-gold); transform: translateY(-3px); }
+    .review-stars { color: #FBBC04; font-size: 1rem; margin-bottom: 1rem; letter-spacing: 0.05em; }
+    .review-text { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.2rem; font-style: italic; }
+    .review-text::before { content: '"'; color: var(--gold); font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; line-height: 0; vertical-align: -0.3rem; margin-right: 0.2rem; }
+    .review-author { display: flex; align-items: center; gap: 0.8rem; }
+    .review-avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 0.85rem; color: var(--bg-primary); flex-shrink: 0;
     }
-    .album-cover-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.8rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      text-align: center;
-      line-height: 1.1;
-      color: var(--gold2);
-    }
-    .album-cover-year {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 4rem;
-      font-weight: 900;
-      color: #fff;
-      letter-spacing: -0.02em;
-      line-height: 1;
-    }
+    .review-author-info strong { display: block; font-size: 0.9rem; font-weight: 600; }
+    .review-author-info span { font-size: 0.78rem; color: var(--text-secondary); }
 
-    /* stripe decoration */
-    .album-stripe {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--green), var(--gold2), var(--green));
-    }
-
-    /* sticker grid floating */
-    .sticker-float {
-      position: absolute;
-      right: -40px;
-      top: 20px;
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 12px;
-      display: grid;
-      grid-template-columns: repeat(4, 32px);
-      gap: 4px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-    }
-    .sticker-mini {
-      width: 32px; height: 40px;
-      border-radius: 4px;
-      background: var(--bg3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.6rem;
-      overflow: hidden;
+    /* WhatsApp screenshot mockups */
+    .whatsapp-reviews { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; margin-top: 2rem; }
+    .whatsapp-bubble {
+      background: #1a2a1e; border: 1px solid rgba(37,211,102,0.2);
+      border-radius: var(--radius); padding: 1.2rem;
       position: relative;
     }
-    .sticker-mini::after {
+    .whatsapp-bubble::before {
       content: '';
-      position: absolute; inset: 0;
-      border-radius: 4px;
-      border: 1px solid rgba(212,168,37,0.2);
+      position: absolute; top: 0.8rem; left: -8px;
+      border-width: 6px 8px 6px 0; border-style: solid;
+      border-color: transparent rgba(37,211,102,0.2) transparent transparent;
     }
+    .whatsapp-header { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.8rem; }
+    .whatsapp-avatar {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: linear-gradient(135deg, #25D366, #1ebe5a);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 700; color: #fff;
+    }
+    .whatsapp-name { font-size: 0.82rem; font-weight: 600; color: #25D366; }
+    .whatsapp-text { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; }
+    .whatsapp-time { font-size: 0.7rem; color: rgba(255,255,255,0.3); text-align: right; margin-top: 0.5rem; }
 
-    /* fake sticker colors */
-    .s1 { background: linear-gradient(135deg, #1a3a6b 0%, #0f2040 100%); }
-    .s2 { background: linear-gradient(135deg, #6b1a1a 0%, #401010 100%); }
-    .s3 { background: linear-gradient(135deg, #1a6b2a 0%, #103a18 100%); }
-    .s4 { background: linear-gradient(135deg, #4a1a6b 0%, #28103a 100%); }
-    .s5 { background: linear-gradient(135deg, #6b4a1a 0%, #3a2510 100%); }
-    .s6 { background: linear-gradient(135deg, #1a5a6b 0%, #102f3a 100%); }
-    .s7 { background: linear-gradient(135deg, #6b1a4a 0%, #3a1028 100%); }
-    .s8 { background: linear-gradient(135deg, #3a6b1a 0%, #1f3a10 100%); }
-    .s9 { background: linear-gradient(135deg, #1a2a6b 0%, #101540 100%); }
-    .s10 { background: linear-gradient(135deg, #6b6b1a 0%, #3a3a10 100%); }
-    .s11 { background: linear-gradient(135deg, #6b2a1a 0%, #3a1510 100%); }
-    .s12 { background: linear-gradient(135deg, #1a6b5a 0%, #103a30 100%); }
+    /* ===========================
+       PORTFOLIO GRID
+    =========================== */
+    .portfolio-section { background: var(--bg-secondary); }
 
-    /* star rating floating */
-    .rating-float {
-      position: absolute;
-      left: -30px;
-      bottom: 60px;
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 12px 16px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-      min-width: 160px;
+    /* Tab navigation */
+    .portfolio-tabs {
+      display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center;
+      margin-bottom: 3rem; padding: 0.5rem;
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 50px;
+      width: fit-content; margin-left: auto; margin-right: auto;
     }
-    .rating-stars { color: var(--gold2); font-size: 1rem; letter-spacing: 2px; }
-    .rating-text { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+    .tab-btn {
+      padding: 0.6rem 1.4rem; border-radius: 50px; font-size: 0.88rem; font-weight: 500;
+      color: var(--text-secondary); transition: var(--transition); cursor: pointer;
+      border: none; background: none; font-family: 'DM Sans', sans-serif;
+    }
+    .tab-btn:hover { color: var(--text-primary); }
+    .tab-btn.active { background: var(--gold); color: var(--bg-primary); font-weight: 600; }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; animation: fade-in 0.4s ease; }
 
-    @media(max-width: 768px) {
-      .sticker-float { right: -10px; top: 10px; }
-      .rating-float { left: -10px; bottom: 30px; }
+    /* Before/After grid */
+    /* REPLACE PHOTOS: Each .ba-card has data-before and data-after img tags
+       Replace src attributes with your real photo paths */
+    .ba-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+    .ba-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+      transition: var(--transition);
     }
+    .ba-card:hover { border-color: var(--border-hover); box-shadow: var(--shadow-gold-hover); transform: translateY(-4px); }
+    .ba-comparison {
+      display: grid; grid-template-columns: 1fr auto 1fr;
+      align-items: stretch; gap: 0;
+    }
+    .ba-img-wrap {
+      position: relative; aspect-ratio: 3/4; overflow: hidden;
+    }
+    .ba-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .ba-card:hover .ba-img-wrap img { transform: scale(1.05); }
+    .ba-chip {
+      position: absolute; bottom: 0.6rem; left: 50%; transform: translateX(-50%);
+      padding: 0.25rem 0.7rem; border-radius: 50px;
+      font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em;
+      white-space: nowrap; backdrop-filter: blur(8px);
+    }
+    .ba-chip.before { background: rgba(10,10,10,0.7); color: var(--text-secondary); border: 1px solid rgba(255,255,255,0.1); }
+    .ba-chip.after { background: rgba(201,168,76,0.15); color: var(--gold); border: 1px solid var(--border); }
+    .ba-divider {
+      display: flex; align-items: center; justify-content: center;
+      padding: 0 0.5rem; background: var(--bg-primary);
+      border-left: 1px solid var(--border); border-right: 1px solid var(--border);
+    }
+    .ba-divider svg { width: 20px; height: 20px; color: var(--gold); }
+    .ba-card-footer {
+      padding: 1rem 1.2rem;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .ba-category {
+      font-family: 'DM Mono', monospace; font-size: 0.68rem;
+      letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase;
+    }
+    .ba-desc { font-size: 0.85rem; color: var(--text-secondary); }
 
-    /* COUNTER SECTION */
-    .counter-bar {
-      background: var(--bg2);
-      border-top: 1px solid rgba(255,255,255,0.04);
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-      padding: 20px 0;
+    /* ===========================
+       COMO FUNCIONA
+    =========================== */
+    .how-section { background: var(--bg-primary); }
+    .how-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+    .how-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 2.2rem 1.8rem;
+      transition: var(--transition); position: relative; overflow: hidden;
     }
-    .counter-inner {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
+    .how-card::before {
+      content: attr(data-step);
+      position: absolute; top: -0.5rem; right: 1.2rem;
+      font-family: 'Cormorant Garamond', serif; font-size: 7rem; font-weight: 700;
+      color: rgba(201,168,76,0.04); line-height: 1; pointer-events: none;
     }
-    .counter-item {
-      text-align: center;
-    }
-    .counter-num {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: var(--gold2);
-      line-height: 1;
-    }
-    .counter-label {
-      font-size: 0.78rem;
-      color: var(--muted);
-      margin-top: 2px;
-      letter-spacing: 0.04em;
-    }
-    .counter-divider {
-      width: 1px;
-      height: 40px;
-      background: rgba(255,255,255,0.06);
-    }
-    @media(max-width: 500px) { .counter-divider { display: none; } }
+    .how-card:hover { border-color: var(--border-hover); box-shadow: var(--shadow-gold-hover); transform: translateY(-4px); }
+    .how-icon { font-size: 2.8rem; margin-bottom: 1.2rem; display: block; }
+    .how-card h3 { font-size: 1.4rem; margin-bottom: 0.7rem; }
+    .how-card p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.7; }
 
-    /* PAIN SECTION */
-    .section { padding: 80px 0; }
-    .section-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
-      color: var(--green2);
-      text-transform: uppercase;
-      margin-bottom: 12px;
+    /* ===========================
+       FAQ ACCORDION
+    =========================== */
+    .faq-section { background: var(--bg-secondary); }
+    .faq-list { max-width: 760px; margin: 0 auto; }
+    .faq-item {
+      border: 1px solid var(--border); border-radius: var(--radius-sm);
+      margin-bottom: 0.8rem; overflow: hidden; transition: var(--transition);
     }
-    .section-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      font-weight: 800;
-      text-transform: uppercase;
-      line-height: 1.05;
-      margin-bottom: 16px;
+    .faq-item:hover { border-color: var(--border-hover); }
+    .faq-item.open { border-color: var(--border-hover); }
+    .faq-question {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      padding: 1.3rem 1.5rem; background: var(--bg-card); cursor: pointer;
+      font-size: 1rem; font-weight: 500; text-align: left; color: var(--text-primary);
+      gap: 1rem;
     }
-    .section-sub {
-      font-size: 1.05rem;
-      color: var(--muted);
-      max-width: 560px;
-      line-height: 1.7;
+    .faq-question:hover { color: var(--gold); }
+    .faq-item.open .faq-question { color: var(--gold); }
+    .faq-icon {
+      width: 24px; height: 24px; border-radius: 50%;
+      border: 1px solid var(--border); display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: var(--transition); font-size: 1rem; color: var(--gold);
     }
+    .faq-item.open .faq-icon { transform: rotate(45deg); background: rgba(201,168,76,0.1); }
+    .faq-answer {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+      padding: 0 1.5rem; background: var(--bg-card);
+    }
+    .faq-item.open .faq-answer { max-height: 300px; padding: 0 1.5rem 1.3rem; }
+    .faq-answer p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; }
 
-    .pain-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
-      margin-top: 40px;
-    }
-    .pain-card {
-      background: var(--bg2);
-      border: 1px solid rgba(255,255,255,0.05);
-      border-radius: var(--radius);
-      padding: 24px;
-      position: relative;
-      overflow: hidden;
-    }
-    .pain-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(232,80,80,0.5), transparent);
-    }
-    .pain-icon { font-size: 2rem; margin-bottom: 12px; }
-    .pain-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
-    .pain-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
-
-    /* PRODUCT SECTION */
-    .product-section {
-      background: var(--bg2);
-      border-top: 1px solid rgba(255,255,255,0.04);
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-      padding: 80px 0;
-    }
-
-    .product-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-      margin-top: 48px;
-    }
-    @media(max-width: 768px) { .product-grid { grid-template-columns: 1fr; gap: 40px; } }
-
-    /* PDF preview mockup */
-    .pdf-stack {
-      position: relative;
-      max-width: 380px;
-      margin: 0 auto;
-    }
-    .pdf-page {
-      border-radius: 12px;
-      overflow: hidden;
-      position: relative;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-    }
-    .pdf-page-inner {
-      background: #f8f5ef;
-      aspect-ratio: 3/4;
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      grid-template-rows: repeat(6, 1fr);
-      gap: 6px;
-      padding: 16px;
-    }
-    .pdf-sticker {
-      border-radius: 4px;
-      background: linear-gradient(135deg, #1a2a4a 0%, #0d1a30 100%);
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-end;
-      padding-bottom: 4px;
-    }
-    .pdf-sticker::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.6) 100%);
-    }
-    .pdf-sticker-num {
-      font-size: 0.42rem;
-      color: rgba(255,255,255,0.7);
-      position: relative;
-      z-index: 1;
-      font-family: 'DM Mono', monospace;
-    }
-    /* color variations for stickers */
-    .pdf-sticker:nth-child(3n) { background: linear-gradient(135deg, #2a1a0d 0%, #1a0d0a 100%); }
-    .pdf-sticker:nth-child(5n) { background: linear-gradient(135deg, #0d2a1a 0%, #0a1a10 100%); }
-    .pdf-sticker:nth-child(7n) { background: linear-gradient(135deg, #1a1a2a 0%, #0d0d1a 100%); }
-    .pdf-sticker:nth-child(11n) { background: linear-gradient(135deg, #2a2a0d 0%, #1a1a0a 100%); }
-
-    /* blur overlay for strategic mystery */
-    .pdf-blur-overlay {
-      position: absolute; inset: 0;
-      backdrop-filter: blur(6px);
-      background: rgba(10,15,25,0.4);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-    .blur-lock { font-size: 2.5rem; }
-    .blur-text {
-      font-size: 0.78rem;
-      color: var(--gold2);
-      font-family: 'DM Mono', monospace;
-      letter-spacing: 0.08em;
-      text-align: center;
-    }
-
-    .pdf-back {
-      position: absolute;
-      top: 15px; right: -15px;
-      width: 90%;
-      height: 100%;
-      background: var(--bg3);
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      z-index: -1;
-    }
-
-    .include-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .include-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      background: var(--bg3);
-      border: 1px solid rgba(255,255,255,0.05);
-      border-radius: 12px;
-      padding: 18px 20px;
-      transition: border-color 0.25s;
-    }
-    .include-item:hover { border-color: var(--border); }
-    .include-icon {
-      font-size: 1.8rem;
-      flex-shrink: 0;
-      line-height: 1;
-    }
-    .include-item h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 3px; }
-    .include-item p { font-size: 0.83rem; color: var(--muted); line-height: 1.5; }
-    .include-badge {
-      margin-left: auto;
-      flex-shrink: 0;
-      background: rgba(0,168,89,0.15);
-      border: 1px solid rgba(0,168,89,0.3);
-      color: var(--green2);
-      font-size: 0.7rem;
-      font-weight: 700;
-      padding: 2px 8px;
-      border-radius: 100px;
-    }
-
-    /* HOW IT WORKS */
-    .how-section { padding: 80px 0; }
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 48px;
-      position: relative;
-    }
-    .steps::before {
-      content: '';
-      position: absolute;
-      top: 32px; left: calc(16.66% + 8px); right: calc(16.66% + 8px);
-      height: 1px;
-      background: linear-gradient(90deg, var(--border), rgba(212,168,37,0.4), var(--border));
-    }
-    @media(max-width: 640px) {
-      .steps { grid-template-columns: 1fr; }
-      .steps::before { display: none; }
-    }
-    .step {
-      text-align: center;
-      padding: 32px 20px;
-    }
-    .step-num {
-      width: 64px; height: 64px;
-      border-radius: 50%;
-      background: var(--bg3);
-      border: 2px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: var(--gold2);
-      margin: 0 auto 20px;
-    }
-    .step h3 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.3rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-    .step p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
-
-    /* SAVINGS SECTION */
-    .savings-section {
-      padding: 80px 0;
-      background: var(--bg2);
-      border-top: 1px solid rgba(255,255,255,0.04);
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-    }
-    .savings-compare {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      gap: 24px;
-      align-items: center;
-      margin-top: 48px;
-    }
-    @media(max-width: 640px) {
-      .savings-compare { grid-template-columns: 1fr; }
-      .vs-badge { display: none; }
-    }
-    .compare-card {
-      border-radius: var(--radius);
-      padding: 32px 28px;
-    }
-    .compare-bad {
-      background: rgba(232,80,80,0.06);
-      border: 1px solid rgba(232,80,80,0.2);
-    }
-    .compare-good {
-      background: rgba(0,168,89,0.06);
-      border: 1px solid rgba(0,168,89,0.3);
-    }
-    .compare-label {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-    .bad { color: #E85050; }
-    .good { color: var(--green2); }
-    .compare-price {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 3.5rem;
-      font-weight: 900;
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-    .compare-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
-    .compare-list {
-      list-style: none;
-      margin-top: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .compare-list li {
-      font-size: 0.85rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .compare-list li::before {
-      content: '✕';
-      color: #E85050;
-      font-weight: 700;
-      flex-shrink: 0;
-    }
-    .compare-list-good li::before { content: '✓'; color: var(--green2); }
-
-    .vs-badge {
-      width: 56px; height: 56px;
-      border-radius: 50%;
-      background: var(--bg3);
-      border: 2px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: var(--gold2);
-      flex-shrink: 0;
-    }
-
-    /* TESTIMONIALS */
-    .testimonials { padding: 80px 0; }
-    .testi-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      margin-top: 48px;
-    }
-    .testi-card {
-      background: var(--bg2);
-      border: 1px solid rgba(255,255,255,0.05);
-      border-radius: var(--radius);
-      padding: 24px;
-    }
-    .testi-stars { color: var(--gold2); font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 12px; }
-    .testi-text { font-size: 0.92rem; line-height: 1.7; margin-bottom: 16px; font-style: italic; color: var(--text); }
-    .testi-author { display: flex; align-items: center; gap: 10px; }
-    .testi-avatar {
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--gold2);
-      font-family: 'Barlow Condensed', sans-serif;
-    }
-    .testi-name { font-size: 0.85rem; font-weight: 700; }
-    .testi-location { font-size: 0.75rem; color: var(--muted); }
-
-    /* CTA SECTION */
+    /* ===========================
+       FINAL CTA
+    =========================== */
     .cta-section {
-      padding: 100px 0;
-      position: relative;
-      overflow: hidden;
-      text-align: center;
+      background: var(--bg-primary);
+      position: relative; overflow: hidden;
     }
     .cta-section::before {
       content: '';
       position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse 70% 50% at 50% 50%, rgba(0,168,89,0.08) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 60% at 50% 100%, rgba(212,168,37,0.05) 0%, transparent 50%);
+      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(201,168,76,0.07) 0%, transparent 70%);
       pointer-events: none;
     }
-    .cta-section h2 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(2.4rem, 5vw, 4rem);
-      font-weight: 900;
-      text-transform: uppercase;
-      line-height: 1.05;
-      margin-bottom: 16px;
+    .cta-inner {
+      position: relative; z-index: 1; text-align: center;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: calc(var(--radius) * 1.5); padding: clamp(3rem, 6vw, 5rem) clamp(2rem, 5vw, 4rem);
+      max-width: 760px; margin: 0 auto;
     }
-    .cta-section p {
-      font-size: 1.05rem;
-      color: var(--muted);
-      max-width: 520px;
-      margin: 0 auto 32px;
-      line-height: 1.7;
+    .cta-urgency {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(232,114,106,0.1); border: 1px solid rgba(232,114,106,0.3);
+      padding: 0.4rem 1rem; border-radius: 50px; margin-bottom: 1.5rem;
+      font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em;
+      color: var(--coral); text-transform: uppercase;
     }
-    .cta-price-big {
-      margin-bottom: 32px;
+    .cta-urgency::before { content: '🔥'; }
+    .cta-inner h2 { margin-bottom: 1rem; }
+    .cta-inner p { color: var(--text-secondary); margin-bottom: 2.5rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
+    .cta-trust { display: flex; align-items: center; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+    .cta-trust-item {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-family: 'DM Mono', monospace; font-size: 0.68rem;
+      letter-spacing: 0.1em; color: var(--text-secondary); text-transform: uppercase;
     }
-    .cta-price-old {
-      font-size: 1rem;
-      color: var(--muted);
-      text-decoration: line-through;
-      margin-bottom: 4px;
-    }
-    .cta-price-value {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 5rem;
-      font-weight: 900;
-      color: var(--green2);
-      line-height: 1;
-    }
-    .cta-price-sub {
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-    .cta-btn-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 20px;
-    }
-    .btn-cta-lg {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: var(--green);
-      color: #fff;
-      font-size: 1.15rem;
-      font-weight: 700;
-      padding: 18px 40px;
-      border-radius: 14px;
-      transition: all 0.25s;
-      letter-spacing: 0.02em;
-    }
-    .btn-cta-lg:hover {
-      background: var(--green2);
-      transform: translateY(-3px);
-      box-shadow: 0 12px 40px rgba(0,168,89,0.4);
-    }
-    .cta-guarantee-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 24px;
-      flex-wrap: wrap;
-      margin-top: 20px;
-    }
-    .cta-guarantee-item {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
+    .cta-trust-item span { font-size: 1rem; }
 
-    /* FAQ */
-    .faq-section { padding: 80px 0; background: var(--bg2); border-top: 1px solid rgba(255,255,255,0.04); }
-    .faq-list {
-      margin-top: 48px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      max-width: 720px;
-      margin-left: auto;
-      margin-right: auto;
+    /* ===========================
+       FOOTER
+    =========================== */
+    .footer {
+      background: var(--bg-secondary); border-top: 1px solid var(--border);
+      padding: 3rem 0 2rem;
     }
-    .faq-item {
-      background: var(--bg3);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 12px;
-      overflow: hidden;
+    .footer-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 2rem; margin-bottom: 2rem;
     }
-    .faq-q {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px 20px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      text-align: left;
-      cursor: pointer;
-      background: none;
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-      border: none;
-      gap: 12px;
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; }
+    .footer-logo span { color: var(--gold); }
+    .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.88rem; color: var(--text-secondary); transition: var(--transition); }
+    .footer-links a:hover { color: var(--text-primary); }
+    .footer-bottom {
+      padding-top: 1.5rem; border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
     }
-    .faq-q:hover { background: rgba(255,255,255,0.02); }
-    .faq-arrow {
-      font-size: 0.7rem;
-      color: var(--gold2);
-      flex-shrink: 0;
-      transition: transform 0.25s;
-    }
-    .faq-item.open .faq-arrow { transform: rotate(180deg); }
-    .faq-a {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-    }
-    .faq-item.open .faq-a { max-height: 200px; }
-    .faq-a-inner {
-      padding: 0 20px 18px;
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.7;
-    }
+    .footer-bottom p { font-size: 0.82rem; color: var(--text-secondary); }
 
-    /* FOOTER */
-    footer {
-      padding: 32px 24px;
-      text-align: center;
-      font-size: 0.78rem;
-      color: var(--muted);
-      border-top: 1px solid rgba(255,255,255,0.04);
-      position: relative; z-index: 1;
+    /* ===========================
+       WHATSAPP FLOATING BUTTON
+    =========================== */
+    .whatsapp-float {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 50;
+      display: flex; align-items: center; gap: 0.7rem;
+      background: linear-gradient(135deg, #25D366 0%, #1ebe5a 100%);
+      color: #fff; font-weight: 700; font-size: 0.9rem;
+      padding: 0.9rem 1.5rem 0.9rem 1.1rem; border-radius: 50px;
+      box-shadow: 0 6px 28px rgba(37,211,102,0.45);
+      transition: var(--transition); text-decoration: none;
+      animation: float-pulse 3s ease-in-out infinite;
     }
-
-    /* STICKY CTA */
-    .sticky-cta {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      z-index: 100;
-      transform: translateY(120px);
-      transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+    .whatsapp-float:hover { transform: translateY(-3px) scale(1.04); box-shadow: 0 10px 36px rgba(37,211,102,0.6); animation: none; }
+    @keyframes float-pulse {
+      0%, 100% { box-shadow: 0 6px 28px rgba(37,211,102,0.45); }
+      50% { box-shadow: 0 6px 40px rgba(37,211,102,0.65); }
     }
-    .sticky-cta.visible { transform: translateY(0); }
-    .sticky-btn {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--green);
-      color: #fff;
-      font-size: 0.9rem;
-      font-weight: 700;
-      padding: 14px 22px;
-      border-radius: 100px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.5), 0 0 0 3px rgba(0,168,89,0.3);
-      transition: all 0.25s;
-      border: none;
-      cursor: pointer;
-      text-decoration: none;
+    .whatsapp-float svg { width: 22px; height: 22px; flex-shrink: 0; }
+    @media (max-width: 480px) {
+      .whatsapp-float span { display: none; }
+      .whatsapp-float { padding: 1rem; border-radius: 50%; }
     }
-    .sticky-btn:hover {
-      background: var(--green2);
-      box-shadow: 0 12px 40px rgba(0,168,89,0.4);
-    }
-    @media(max-width: 480px) {
-      .sticky-cta { bottom: 16px; right: 16px; left: 16px; }
-      .sticky-btn { justify-content: center; border-radius: 12px; }
-    }
-
-    /* URGENCY BANNER */
-    .urgency {
-      background: linear-gradient(90deg, rgba(212,168,37,0.1), rgba(212,168,37,0.05), rgba(212,168,37,0.1));
-      border: 1px solid rgba(212,168,37,0.25);
-      border-radius: 12px;
-      padding: 16px 20px;
-      margin: 32px 0;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      max-width: 520px;
-    }
-    .urgency-icon { font-size: 1.5rem; flex-shrink: 0; }
-    .urgency-text { font-size: 0.88rem; color: var(--text); line-height: 1.5; }
-    .urgency-text strong { color: var(--gold2); }
-
   </style>
 </head>
 <body>
 
-<!-- TOPBAR -->
-<div class="topbar">
-  <span>⚽ Copa do Mundo 2026 começa em <strong>11 de junho</strong> — entrega imediata, comece hoje mesmo</span>
-</div>
+  <!-- ===========================
+       NAVBAR
+  =========================== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-logo">Gabriel <span>Jimbo</span></a>
+      <ul class="navbar-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="portfolio.html" class="active">Portfólio</a></li>
+        <li><a href="index.html#como-funciona">Como Funciona</a></li>
+        <li><a href="index.html#precos">Preços</a></li>
+      </ul>
+      <div class="navbar-cta">
+        <a href="https://wa.me/5511947727299?text=Ol%C3%A1!%20Quero%20fazer%20meu%20ensaio%20com%20IA" target="_blank" rel="noopener" class="btn btn-whatsapp">
+          <!-- WhatsApp icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Quero meu ensaio
+        </a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-field"></div>
-  <div class="container">
-    <div class="hero-inner">
-      <!-- Copy -->
-      <div>
-        <div class="hero-badge">⚽ ÁLBUM OFICIAL FIFA WORLD CUP 2026</div>
-        <h1>
-          Complete o álbum
-          <em>sem gastar uma fortuna</em>
-          em pacotinhos
-        </h1>
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <span class="mobile-close" id="mobileClose">✕</span>
+    <a href="index.html">Home</a>
+    <a href="portfolio.html">Portfólio</a>
+    <a href="index.html#como-funciona">Como Funciona</a>
+    <a href="index.html#precos">Preços</a>
+    <a href="https://wa.me/5511947727299?text=Ol%C3%A1!%20Quero%20fazer%20meu%20ensaio%20com%20IA" class="btn btn-whatsapp" target="_blank" rel="noopener">Pedir agora no WhatsApp</a>
+  </div>
+
+  <!-- ===========================
+       HERO
+       Imagens de destaque: substitua os src pelas fotos reais de antes/depois
+  =========================== -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">✦ Portfólio de Resultados Reais</div>
+        <h1>Fotos comuns.<br><em>Ensaios extraordinários.</em></h1>
         <p class="hero-sub">
-          Álbum completo + todas as <strong>figurinhas para imprimir</strong> — em PDF de alta resolução, entrega imediata, sem enrolação.
+          Veja o que a nossa IA faz com fotos de celular.
+          Profissional, aniversário ou formatura — tudo pelo WhatsApp, em até 24h.
         </p>
-
-        <div class="hero-price-block">
-          <div class="hero-price-old">Gastaria R$300–500 em pacotinhos sem completar</div>
-          <div class="hero-price-now">R$ 17,90</div>
-          <div class="hero-price-detail">Pagamento único · Acesso vitalício · PDF em alta resolução</div>
-        </div>
-
-        <div>
-          <a href="https://pay.kiwify.com.br/hMIVZKa" class="btn-cta">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-            Quero o Álbum Completo
+        <div class="hero-btns">
+          <a href="#portfolio" class="btn btn-ghost">Ver todos os resultados ↓</a>
+          <a href="https://wa.me/5511947727299?text=Ol%C3%A1!%20Quero%20fazer%20meu%20ensaio%20com%20IA" target="_blank" rel="noopener" class="btn btn-whatsapp">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Quero o meu agora
           </a>
         </div>
 
-        <p class="hero-guarantee">🔒 Pagamento seguro · Acesso imediato após confirmação</p>
+        <!-- HERO PREVIEW: foto antes/depois em destaque — substitua pelos seus melhores antes/depois -->
+        <div class="hero-preview">
+          <div class="hero-preview-img">
+            <img src="images/galeria/trabalho-antes.png" alt="Foto antes da transformação" loading="eager" />
+            <span class="hero-preview-label before">ANTES</span>
+          </div>
+          <div class="hero-arrow-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+            <span>IA</span>
+          </div>
+          <div class="hero-preview-img">
+            <img src="images/galeria/trabalho-depois.png" alt="Foto depois da transformação por IA" loading="eager" />
+            <span class="hero-preview-label after">DEPOIS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       STATS BAR — Contadores animados
+  =========================== -->
+  <div class="stats-bar">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-number" data-target="500" id="counter-clients">0</span>
+          <span class="stat-label">Clientes satisfeitos</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="98" id="counter-satisfaction">0</span>
+          <span class="stat-label">% de satisfação</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">24h</span>
+          <span class="stat-label">Prazo de entrega</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">⭐⭐⭐⭐⭐</span>
+          <span class="stat-label">Avaliação Google</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===========================
+       SOCIAL PROOF — Avaliações
+  =========================== -->
+  <section class="reviews-section section-pad" id="avaliacoes">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label">O que dizem nossos clientes</span>
+        <h2>Resultados que <em class="gold">falam por si</em></h2>
+        <p>Mais de 500 famílias já transformaram suas fotos com a nossa IA. Veja o que elas acharam.</p>
       </div>
 
-      <!-- Visual -->
-      <div class="hero-visual">
-        <div class="album-mockup">
-          <div class="album-cover">
-            <div class="album-cover-inner">
-              <div class="album-cover-top">FIFA · OFFICIAL · PANINI</div>
-              <div class="album-trophy">🏆</div>
-              <div class="album-cover-title">World Cup<br>Album</div>
-              <div class="album-cover-year">2026</div>
+      <!-- Google rating badge -->
+      <div style="display:flex; justify-content:center; margin-bottom:3rem;">
+        <div class="google-badge reveal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          <div class="google-badge-text">
+            <strong>⭐⭐⭐⭐⭐ 5,0 no Google</strong>
+            <span>Empresa verificada · CNPJ ativo</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Google reviews -->
+      <div class="reviews-grid">
+        <div class="review-card reveal reveal-delay-1">
+          <div class="review-stars">⭐⭐⭐⭐⭐</div>
+          <p class="review-text">Ficou incrível! Mandei uma foto normal do dia a dia e voltou como um ensaio de LinkedIn profissional. Minha chefia perguntou onde eu fui tirar as fotos!</p>
+          <div class="review-author">
+            <div class="review-avatar">AC</div>
+            <div class="review-author-info">
+              <strong>Ana Carolina M.</strong>
+              <span>Ensaio Profissional · LinkedIn</span>
             </div>
-            <div class="album-stripe"></div>
-          </div>
-
-          <!-- Floating sticker grid -->
-          <div class="sticker-float">
-            <div class="sticker-mini s1"><span style="color:rgba(255,255,255,0.4);font-size:0.5rem">▪</span></div>
-            <div class="sticker-mini s2"><span style="color:rgba(255,255,255,0.4);font-size:0.5rem">▪</span></div>
-            <div class="sticker-mini s3"><span style="color:rgba(255,255,255,0.4);font-size:0.5rem">▪</span></div>
-            <div class="sticker-mini s4"><span style="color:rgba(255,255,255,0.4);font-size:0.5rem">▪</span></div>
-            <div class="sticker-mini s5"></div>
-            <div class="sticker-mini s6"></div>
-            <div class="sticker-mini s7"></div>
-            <div class="sticker-mini s8"></div>
-            <div class="sticker-mini s9"></div>
-            <div class="sticker-mini s10"></div>
-            <div class="sticker-mini s11"></div>
-            <div class="sticker-mini s12"></div>
-          </div>
-
-          <!-- Floating rating -->
-          <div class="rating-float">
-            <div class="rating-stars">★★★★★</div>
-            <div class="rating-text">+2.400 álbuns entregues</div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- COUNTER BAR -->
-<div class="counter-bar">
-  <div class="container">
-    <div class="counter-inner">
-      <div class="counter-item">
-        <div class="counter-num">670+</div>
-        <div class="counter-label">Páginas de figurinhas</div>
-      </div>
-      <div class="counter-divider"></div>
-      <div class="counter-item">
-        <div class="counter-num">100%</div>
-        <div class="counter-label">Álbum completo</div>
-      </div>
-      <div class="counter-divider"></div>
-      <div class="counter-item">
-        <div class="counter-num">Alta</div>
-        <div class="counter-label">Resolução para impressão</div>
-      </div>
-      <div class="counter-divider"></div>
-      <div class="counter-item">
-        <div class="counter-num">&lt;5min</div>
-        <div class="counter-label">Tempo de entrega</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- PAIN SECTION -->
-<section class="section">
-  <div class="container">
-    <div class="section-label">O problema</div>
-    <h2 class="section-title">Comprar pacotinho é um<br><span class="gold">jogo viciado</span></h2>
-    <p class="section-sub">A Panini sabe exatamente o que está fazendo. O álbum completo tem 670+ figurinhas — e eles garantem que você nunca vai fechar no varejo sem gastar muito.</p>
-
-    <div class="pain-grid">
-      <div class="pain-card">
-        <div class="pain-icon">💸</div>
-        <h3>Custa uma fortuna completar</h3>
-        <p>Para completar um álbum por pacotinhos, você vai gastar entre R$300 e R$600 — sem garantia de conseguir todas.</p>
-      </div>
-      <div class="pain-card">
-        <div class="pain-icon">🔄</div>
-        <h3>Figurinha repetida, dinheiro jogado fora</h3>
-        <p>Metade do que você compra já tem no álbum. Você paga para repetir o que não precisa, na esperança de tirar a que falta.</p>
-      </div>
-      <div class="pain-card">
-        <div class="pain-icon">🏪</div>
-        <h3>Encontrar figurinha avulsa é um martírio</h3>
-        <p>Grupos de troca, banca de jornal, fila de escola. Horas perdidas para completar 10 figurinhas que faltam.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PRODUCT SECTION -->
-<section class="product-section">
-  <div class="container">
-    <div class="section-label">A solução</div>
-    <h2 class="section-title">O álbum inteiro,<br><span class="green">de uma vez só</span></h2>
-    <p class="section-sub">Você recebe os PDFs prontos para imprimir. Álbum completo + todas as figurinhas, numeradas, em alta resolução. Só imprimir e colar.</p>
-
-    <div class="product-grid">
-      <!-- PDF Mockup -->
-      <div class="pdf-stack">
-        <div class="pdf-back"></div>
-        <div class="pdf-page">
-          <div class="pdf-page-inner">
-            <!-- 30 sticker placeholders -->
-            <div class="pdf-sticker"><span class="pdf-sticker-num">01</span></div>
-            <div class="pdf-sticker"><span class="pdf-sticker-num">02</span></div>
-            <div class="pdf-sticker"><span class="pdf-sticker-num">03</span></div>
-            <div class="pdf-sticker"><span class="pdf-sticker-num">04</span></div>
-            <div class="pdf-sticker"><span class="pdf-sticker-num">05</span></div>
-            <div class="pdf-sticker"><span class="pdf-sticker-num">06</span></div>
-            <div class="pdf-sticker"><span class="pdf-sticker-num">07</span></div>
-            <div class="pdf-sticker"><span class="pdf-sticker-num">08</span></div>
-            <div class="pdf-sticker"><span class="pdf-sticker-num">09</span></div>
-            <div class="pdf-sticker"><span class="pdf-sticker-num">10</span></div>
-            <div class="pdf-sticker"><span class="pdf-sticker-num">11</span></div>
-            <div class="pdf-sticker"><span class="pdf-sticker-num">12</span></div>
-            <div class="pdf-sticker"><span class="pdf-sticker-num">13</span></div>
-            <div class="pdf-sticker"><span class="pdf-sticker-num">14</span></div>
-            <div class="pdf-sticker"><span class="pdf-sticker-num">15</span></div>
-            <div class="pdf-sticker"><span class="pdf-sticker-num">16</span></div>
-            <div class="pdf-sticker"><span class="pdf-sticker-num">17</span></div>
-            <div class="pdf-sticker"><span class="pdf-sticker-num">18</span></div>
-            <div class="pdf-sticker"><span class="pdf-sticker-num">19</span></div>
-            <div class="pdf-sticker"><span class="pdf-sticker-num">20</span></div>
-            <div class="pdf-sticker"><span class="pdf-sticker-num">21</span></div>
-            <div class="pdf-sticker"><span class="pdf-sticker-num">22</span></div>
-            <div class="pdf-sticker"><span class="pdf-sticker-num">23</span></div>
-            <div class="pdf-sticker"><span class="pdf-sticker-num">24</span></div>
-            <div class="pdf-sticker"><span class="pdf-sticker-num">25</span></div>
-            <div class="pdf-sticker"><span class="pdf-sticker-num">26</span></div>
-            <div class="pdf-sticker"><span class="pdf-sticker-num">27</span></div>
-            <div class="pdf-sticker"><span class="pdf-sticker-num">28</span></div>
-            <div class="pdf-sticker"><span class="pdf-sticker-num">29</span></div>
-            <div class="pdf-sticker"><span class="pdf-sticker-num">30</span></div>
-          </div>
-          <div class="pdf-blur-overlay">
-            <div class="blur-lock">🔐</div>
-            <div class="blur-text">PREVIEW RESTRITO<br>Disponível após a compra</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Include list -->
-      <div>
-        <ul class="include-list">
-          <li class="include-item">
-            <div class="include-icon">📖</div>
-            <div>
-              <h4>Álbum completo para impressão</h4>
-              <p>Todas as páginas do álbum oficial em PDF pronto para imprimir em A4. Capas, seções de países, fases da competição.</p>
+        <div class="review-card reveal reveal-delay-2">
+          <div class="review-stars">⭐⭐⭐⭐⭐</div>
+          <p class="review-text">Minha filha amou as fotos de aniversário. A gente não tinha como pagar fotógrafo e com R$49 saiu um ensaio completo. Valeu muito demais!</p>
+          <div class="review-author">
+            <div class="review-avatar">RS</div>
+            <div class="review-author-info">
+              <strong>Rosana S.</strong>
+              <span>Ensaio Aniversário · 15 anos</span>
             </div>
-            <span class="include-badge">PDF</span>
-          </li>
-          <li class="include-item">
-            <div class="include-icon">🌟</div>
-            <div>
-              <h4>Todas as figurinhas numeradas</h4>
-              <p>PDFs com as figurinhas organizadas em folhas A4, prontas para imprimir, recortar e colar. Nenhuma faltando.</p>
+          </div>
+        </div>
+        <div class="review-card reveal reveal-delay-3">
+          <div class="review-stars">⭐⭐⭐⭐⭐</div>
+          <p class="review-text">As fotos de formatura ficaram lindas! Entreguei no prazo prometido. Recomendo muito para quem quer um resultado profissional sem gastar muito.</p>
+          <div class="review-author">
+            <div class="review-avatar">LF</div>
+            <div class="review-author-info">
+              <strong>Lucas F.</strong>
+              <span>Ensaio Formatura · Engenharia</span>
             </div>
-            <span class="include-badge">PDF</span>
-          </li>
-          <li class="include-item">
-            <div class="include-icon">🖨️</div>
-            <div>
-              <h4>Guia de impressão passo a passo</h4>
-              <p>Configurações exatas de impressora, tipo de papel recomendado e dicas de recorte para resultado profissional.</p>
-            </div>
-            <span class="include-badge">BÔNUS</span>
-          </li>
-          <li class="include-item">
-            <div class="include-icon">⚡</div>
-            <div>
-              <h4>Acesso imediato após o pagamento</h4>
-              <p>Checkout seguro via Kiwify. Confirmou o pagamento, os arquivos chegam automaticamente. Sem espera, sem complicação.</p>
-            </div>
-            <span class="include-badge">GRÁTIS</span>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section class="how-section">
-  <div class="container">
-    <div class="section-label">Como funciona</div>
-    <h2 class="section-title">3 passos para o<br><span class="gold">álbum completo</span></h2>
-
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <h3>Clique e compre</h3>
-        <p>Clique no botão, preencha seus dados e pague via Pix ou cartão. Checkout 100% seguro.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <h3>Receba os PDFs</h3>
-        <p>Acesso imediato após o pagamento. Álbum + figurinhas + guia de impressão no seu e-mail.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <h3>Imprima e cole</h3>
-        <p>Papel fotográfico adesivo, impressora comum, e pronto. Resultado profissional em casa.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SAVINGS COMPARE -->
-<section class="savings-section">
-  <div class="container">
-    <div class="section-label">Comparação</div>
-    <h2 class="section-title">A conta não fecha<br><span class="gold">comprando pacotinho</span></h2>
-
-    <div class="savings-compare">
-      <!-- BAD side -->
-      <div class="compare-card compare-bad">
-        <div class="compare-label bad">⚠ Comprando pacotinhos</div>
-        <div class="compare-price bad">R$300–600</div>
-        <p class="compare-desc">Média para completar um álbum no varejo — e ainda assim restam figurinhas faltando.</p>
-        <ul class="compare-list">
-          <li>Metade são repetidas</li>
-          <li>Sem garantia de completar</li>
-          <li>Horas trocando figurinhas</li>
-          <li>Depende de sorte</li>
-        </ul>
-      </div>
-
-      <div class="vs-badge">VS</div>
-
-      <!-- GOOD side -->
-      <div class="compare-card compare-good">
-        <div class="compare-label good">✓ Álbum digital completo</div>
-        <div class="compare-price good">R$17,90</div>
-        <p class="compare-desc">Pagamento único. Álbum 100% completo. Todas as figurinhas. Entrega em 5 minutos.</p>
-        <ul class="compare-list compare-list-good">
-          <li>Nenhuma figurinha faltando</li>
-          <li>Zero repetidas</li>
-          <li>Imprima quantas quiser</li>
-          <li>Resultado profissional</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="testimonials">
-  <div class="container">
-    <div class="section-label">Quem já completou</div>
-    <h2 class="section-title">O que estão<br><span class="green">falando</span></h2>
-
-    <div class="testi-grid">
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"Comprei ontem à noite, imprimi hoje de manhã. Ficou INCRÍVEL. Meu filho não acreditou que eu tinha impresso em casa. O papel adesivo glossy ficou igual ao original."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">RB</div>
-          <div>
-            <div class="testi-name">Ricardo B.</div>
-            <div class="testi-location">São Paulo, SP</div>
           </div>
         </div>
       </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"Tinha gastado quase R$200 em pacotinhos e ainda faltavam mais de 100 figurinhas. Com esse PDF completei tudo em um dia. Não tem comparação."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">MC</div>
-          <div>
-            <div class="testi-name">Mariana C.</div>
-            <div class="testi-location">Belo Horizonte, MG</div>
+
+      <!-- WhatsApp message mockups -->
+      <div class="whatsapp-reviews">
+        <div class="whatsapp-bubble reveal reveal-delay-1">
+          <div class="whatsapp-header">
+            <div class="whatsapp-avatar">JB</div>
+            <span class="whatsapp-name">Juliana B.</span>
+          </div>
+          <p class="whatsapp-text">Gente, ficou PERFEITO! Parece que fui num estúdio de verdade 😍 Já mandei pra todo mundo no grupo da família!</p>
+          <p class="whatsapp-time">14:32 ✓✓</p>
+        </div>
+        <div class="whatsapp-bubble reveal reveal-delay-2">
+          <div class="whatsapp-header">
+            <div class="whatsapp-avatar">MC</div>
+            <span class="whatsapp-name">Marcos C.</span>
+          </div>
+          <p class="whatsapp-text">Cara, atualizei meu LinkedIn e já recebi 3 chamadas de recrutadores essa semana. A foto faz MUITA diferença! Valeu demais 🙌</p>
+          <p class="whatsapp-time">09:47 ✓✓</p>
+        </div>
+        <div class="whatsapp-bubble reveal reveal-delay-3">
+          <div class="whatsapp-header">
+            <div class="whatsapp-avatar">PT</div>
+            <span class="whatsapp-name">Patricia T.</span>
+          </div>
+          <p class="whatsapp-text">Recebi em menos de 24h como prometido. Super profissional! Já indiquei pra minhas amigas da turma de formatura 🎓✨</p>
+          <p class="whatsapp-time">19:15 ✓✓</p>
+        </div>
+        <div class="whatsapp-bubble reveal reveal-delay-4">
+          <div class="whatsapp-header">
+            <div class="whatsapp-avatar">FN</div>
+            <span class="whatsapp-name">Fernanda N.</span>
+          </div>
+          <p class="whatsapp-text">Melhor investimento dos meus 30 anos! As fotos de aniversário ficaram dignas de revista. Ameiii 💛</p>
+          <p class="whatsapp-time">21:03 ✓✓</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       PORTFOLIO GRID
+       COMO SUBSTITUIR FOTOS:
+       - Troque o atributo src de cada <img> pelo caminho da sua foto real
+       - As imagens "antes" devem ter proporção 3:4 (portrait)
+       - Fotos reais ficam em images/galeria/
+  =========================== -->
+  <section class="portfolio-section section-pad" id="portfolio">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label">Resultados Reais</span>
+        <h2>Do celular ao <em class="gold">ensaio profissional</em></h2>
+        <p>Cada par abaixo é uma foto enviada pelo WhatsApp transformada pela nossa IA. Sem estúdio, sem fotógrafo.</p>
+      </div>
+
+      <!-- Category tabs -->
+      <div class="portfolio-tabs" role="tablist">
+        <button class="tab-btn active" role="tab" data-tab="todos">Todos</button>
+        <button class="tab-btn" role="tab" data-tab="profissional">💼 Profissional</button>
+        <button class="tab-btn" role="tab" data-tab="aniversario">🎂 Aniversário</button>
+        <button class="tab-btn" role="tab" data-tab="formatura">🎓 Formatura</button>
+      </div>
+
+      <!-- TAB: TODOS -->
+      <div class="tab-panel active" id="tab-todos">
+        <div class="ba-grid">
+
+          <!-- ── PROFISSIONAL ── -->
+
+          <!-- FOTO REAL: trabalho (substitua pelo melhor par profissional) -->
+          <div class="ba-card reveal">
+            <div class="ba-comparison">
+              <div class="ba-img-wrap">
+                <img src="images/galeria/trabalho-antes.png" alt="Antes: foto casual de trabalho" loading="lazy" />
+                <span class="ba-chip before">ANTES</span>
+              </div>
+              <div class="ba-divider">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+              </div>
+              <div class="ba-img-wrap">
+                <img src="images/galeria/trabalho-depois.png" alt="Depois: headshot profissional com IA" loading="lazy" />
+                <span class="ba-chip after">DEPOIS</span>
+              </div>
+            </div>
+            <div class="ba-card-footer">
+              <span class="ba-category">💼 Profissional</span>
+              <span class="ba-desc">Headshot LinkedIn</span>
+            </div>
+          </div>
+
+          <!-- PLACEHOLDER: profissional 2 — substitua src pelo seu -->
+          <div class="ba-card reveal reveal-delay-1">
+            <div class="ba-comparison">
+              <div class="ba-img-wrap">
+                <img src="https://picsum.photos/seed/prof2b/400/533" alt="Antes: foto informal" loading="lazy" />
+                <span class="ba-chip before">ANTES</span>
+              </div>
+              <div class="ba-divider">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+              </div>
+              <div class="ba-img-wrap">
+                <img src="https://picsum.photos/seed/prof2a/400/533" alt="Depois: ensaio corporativo" loading="lazy" />
+                <span class="ba-chip after">DEPOIS</span>
+              </div>
+            </div>
+            <div class="ba-card-footer">
+              <span class="ba-category">💼 Profissional</span>
+              <span class="ba-desc">Foto corporativa</span>
+            </div>
+          </div>
+
+          <!-- PLACEHOLDER: profissional 3 -->
+          <div class="ba-card reveal reveal-delay-2">
+            <div class="ba-comparison">
+              <div class="ba-img-wrap">
+                <img src="https://picsum.photos/seed/prof3b/400/533" alt="Antes" loading="lazy" />
+                <span class="ba-chip before">ANTES</span>
+              </div>
+              <div class="ba-divider">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+              </div>
+              <div class="ba-img-wrap">
+                <img src="https://picsum.photos/seed/prof3a/400/533" alt="Depois" loading="lazy" />
+                <span class="ba-chip after">DEPOIS</span>
+              </div>
+            </div>
+            <div class="ba-card-footer">
+              <span class="ba-category">💼 Profissional</span>
+              <span class="ba-desc">Currículo premium</span>
+            </div>
+          </div>
+
+          <!-- PLACEHOLDER: profissional 4 -->
+          <div class="ba-card reveal reveal-delay-3">
+            <div class="ba-comparison">
+              <div class="ba-img-wrap">
+                <img src="https://picsum.photos/seed/prof4b/400/533" alt="Antes" loading="lazy" />
+                <span class="ba-chip before">ANTES</span>
+              </div>
+              <div class="ba-divider">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+              </div>
+              <div class="ba-img-wrap">
+                <img src="https://picsum.photos/seed/prof4a/400/533" alt="Depois" loading="lazy" />
+                <span class="ba-chip after">DEPOIS</span>
+              </div>
+            </div>
+            <div class="ba-card-footer">
+              <span class="ba-category">💼 Profissional</span>
+              <span class="ba-desc">Headshot executivo</span>
+            </div>
+          </div>
+
+          <!-- ── ANIVERSÁRIO ── -->
+
+          <!-- PLACEHOLDER: aniversário 1 -->
+          <div class="ba-card reveal">
+            <div class="ba-comparison">
+              <div class="ba-img-wrap">
+                <img src="https://picsum.photos/seed/aniv1b/400/533" alt="Antes" loading="lazy" />
+                <span class="ba-chip before">ANTES</span>
+              </div>
+              <div class="ba-divider">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+              </div>
+              <div class="ba-img-wrap">
+                <img src="https://picsum.photos/seed/aniv1a/400/533" alt="Depois" loading="lazy" />
+                <span class="ba-chip after">DEPOIS</span>
+              </div>
+            </div>
+            <div class="ba-card-footer">
+              <span class="ba-category">🎂 Aniversário</span>
+              <span class="ba-desc">15 anos — debutante</span>
+            </div>
+          </div>
+
+          <!-- PLACEHOLDER: aniversário 2 -->
+          <div class="ba-card reveal reveal-delay-1">
+            <div class="ba-comparison">
+              <div class="ba-img-wrap">
+                <img src="https://picsum.photos/seed/aniv2b/400/533" alt="Antes" loading="lazy" />
+                <span class="ba-chip before">ANTES</span>
+              </div>
+              <div class="ba-divider">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+              </div>
+              <div class="ba-img-wrap">
+                <img src="https://picsum.photos/seed/aniv2a/400/533" alt="Depois" loading="lazy" />
+                <span class="ba-chip after">DEPOIS</span>
+              </div>
+            </div>
+            <div class="ba-card-footer">
+              <span class="ba-category">🎂 Aniversário</span>
+              <span class="ba-desc">Aniversário adulto</span>
+            </div>
+          </div>
+
+          <!-- PLACEHOLDER: aniversário 3 -->
+          <div class="ba-card reveal reveal-delay-2">
+            <div class="ba-comparison">
+              <div class="ba-img-wrap">
+                <img src="https://picsum.photos/seed/aniv3b/400/533" alt="Antes" loading="lazy" />
+                <span class="ba-chip before">ANTES</span>
+              </div>
+              <div class="ba-divider">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+              </div>
+              <div class="ba-img-wrap">
+                <img src="https://picsum.photos/seed/aniv3a/400/533" alt="Depois" loading="lazy" />
+                <span class="ba-chip after">DEPOIS</span>
+              </div>
+            </div>
+            <div class="ba-card-footer">
+              <span class="ba-category">🎂 Aniversário</span>
+              <span class="ba-desc">Ensaio 30 anos</span>
+            </div>
+          </div>
+
+          <!-- PLACEHOLDER: aniversário 4 -->
+          <div class="ba-card reveal reveal-delay-3">
+            <div class="ba-comparison">
+              <div class="ba-img-wrap">
+                <img src="https://picsum.photos/seed/aniv4b/400/533" alt="Antes" loading="lazy" />
+                <span class="ba-chip before">ANTES</span>
+              </div>
+              <div class="ba-divider">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+              </div>
+              <div class="ba-img-wrap">
+                <img src="https://picsum.photos/seed/aniv4a/400/533" alt="Depois" loading="lazy" />
+                <span class="ba-chip after">DEPOIS</span>
+              </div>
+            </div>
+            <div class="ba-card-footer">
+              <span class="ba-category">🎂 Aniversário</span>
+              <span class="ba-desc">Mini ensaio festa</span>
+            </div>
+          </div>
+
+          <!-- ── FORMATURA ── -->
+
+          <!-- PLACEHOLDER: formatura 1 -->
+          <div class="ba-card reveal">
+            <div class="ba-comparison">
+              <div class="ba-img-wrap">
+                <img src="https://picsum.photos/seed/form1b/400/533" alt="Antes" loading="lazy" />
+                <span class="ba-chip before">ANTES</span>
+              </div>
+              <div class="ba-divider">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+              </div>
+              <div class="ba-img-wrap">
+                <img src="https://picsum.photos/seed/form1a/400/533" alt="Depois" loading="lazy" />
+                <span class="ba-chip after">DEPOIS</span>
+              </div>
+            </div>
+            <div class="ba-card-footer">
+              <span class="ba-category">🎓 Formatura</span>
+              <span class="ba-desc">Beca com diploma</span>
+            </div>
+          </div>
+
+          <!-- PLACEHOLDER: formatura 2 -->
+          <div class="ba-card reveal reveal-delay-1">
+            <div class="ba-comparison">
+              <div class="ba-img-wrap">
+                <img src="https://picsum.photos/seed/form2b/400/533" alt="Antes" loading="lazy" />
+                <span class="ba-chip before">ANTES</span>
+              </div>
+              <div class="ba-divider">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+              </div>
+              <div class="ba-img-wrap">
+                <img src="https://picsum.photos/seed/form2a/400/533" alt="Depois" loading="lazy" />
+                <span class="ba-chip after">DEPOIS</span>
+              </div>
+            </div>
+            <div class="ba-card-footer">
+              <span class="ba-category">🎓 Formatura</span>
+              <span class="ba-desc">Ensaio toga clássico</span>
+            </div>
+          </div>
+
+          <!-- PLACEHOLDER: formatura 3 -->
+          <div class="ba-card reveal reveal-delay-2">
+            <div class="ba-comparison">
+              <div class="ba-img-wrap">
+                <img src="https://picsum.photos/seed/form3b/400/533" alt="Antes" loading="lazy" />
+                <span class="ba-chip before">ANTES</span>
+              </div>
+              <div class="ba-divider">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+              </div>
+              <div class="ba-img-wrap">
+                <img src="https://picsum.photos/seed/form3a/400/533" alt="Depois" loading="lazy" />
+                <span class="ba-chip after">DEPOIS</span>
+              </div>
+            </div>
+            <div class="ba-card-footer">
+              <span class="ba-category">🎓 Formatura</span>
+              <span class="ba-desc">Formatura + família</span>
+            </div>
+          </div>
+
+          <!-- PLACEHOLDER: formatura 4 -->
+          <div class="ba-card reveal reveal-delay-3">
+            <div class="ba-comparison">
+              <div class="ba-img-wrap">
+                <img src="https://picsum.photos/seed/form4b/400/533" alt="Antes" loading="lazy" />
+                <span class="ba-chip before">ANTES</span>
+              </div>
+              <div class="ba-divider">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+              </div>
+              <div class="ba-img-wrap">
+                <img src="https://picsum.photos/seed/form4a/400/533" alt="Depois" loading="lazy" />
+                <span class="ba-chip after">DEPOIS</span>
+              </div>
+            </div>
+            <div class="ba-card-footer">
+              <span class="ba-category">🎓 Formatura</span>
+              <span class="ba-desc">Capelo premium</span>
+            </div>
+          </div>
+
+        </div><!-- /.ba-grid -->
+      </div><!-- /#tab-todos -->
+
+      <!-- TAB: PROFISSIONAL -->
+      <div class="tab-panel" id="tab-profissional">
+        <div class="ba-grid">
+          <div class="ba-card reveal">
+            <div class="ba-comparison">
+              <div class="ba-img-wrap"><img src="images/galeria/trabalho-antes.png" alt="Antes" loading="lazy" /><span class="ba-chip before">ANTES</span></div>
+              <div class="ba-divider"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></div>
+              <div class="ba-img-wrap"><img src="images/galeria/trabalho-depois.png" alt="Depois" loading="lazy" /><span class="ba-chip after">DEPOIS</span></div>
+            </div>
+            <div class="ba-card-footer"><span class="ba-category">💼 Profissional</span><span class="ba-desc">Headshot LinkedIn</span></div>
+          </div>
+          <div class="ba-card reveal reveal-delay-1">
+            <div class="ba-comparison">
+              <div class="ba-img-wrap"><img src="https://picsum.photos/seed/prof2b/400/533" alt="Antes" loading="lazy" /><span class="ba-chip before">ANTES</span></div>
+              <div class="ba-divider"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></div>
+              <div class="ba-img-wrap"><img src="https://picsum.photos/seed/prof2a/400/533" alt="Depois" loading="lazy" /><span class="ba-chip after">DEPOIS</span></div>
+            </div>
+            <div class="ba-card-footer"><span class="ba-category">💼 Profissional</span><span class="ba-desc">Foto corporativa</span></div>
+          </div>
+          <div class="ba-card reveal reveal-delay-2">
+            <div class="ba-comparison">
+              <div class="ba-img-wrap"><img src="https://picsum.photos/seed/prof3b/400/533" alt="Antes" loading="lazy" /><span class="ba-chip before">ANTES</span></div>
+              <div class="ba-divider"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></div>
+              <div class="ba-img-wrap"><img src="https://picsum.photos/seed/prof3a/400/533" alt="Depois" loading="lazy" /><span class="ba-chip after">DEPOIS</span></div>
+            </div>
+            <div class="ba-card-footer"><span class="ba-category">💼 Profissional</span><span class="ba-desc">Currículo premium</span></div>
+          </div>
+          <div class="ba-card reveal reveal-delay-3">
+            <div class="ba-comparison">
+              <div class="ba-img-wrap"><img src="https://picsum.photos/seed/prof4b/400/533" alt="Antes" loading="lazy" /><span class="ba-chip before">ANTES</span></div>
+              <div class="ba-divider"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></div>
+              <div class="ba-img-wrap"><img src="https://picsum.photos/seed/prof4a/400/533" alt="Depois" loading="lazy" /><span class="ba-chip after">DEPOIS</span></div>
+            </div>
+            <div class="ba-card-footer"><span class="ba-category">💼 Profissional</span><span class="ba-desc">Headshot executivo</span></div>
           </div>
         </div>
       </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"Comprei para presentear meu pai que colecionava álbum desde 82. Ficou muito emocionado. A qualidade de impressão ficou perfeita. Muito obrigado!"</p>
-        <div class="testi-author">
-          <div class="testi-avatar">FP</div>
-          <div>
-            <div class="testi-name">Felipe P.</div>
-            <div class="testi-location">Porto Alegre, RS</div>
+
+      <!-- TAB: ANIVERSÁRIO -->
+      <div class="tab-panel" id="tab-aniversario">
+        <div class="ba-grid">
+          <div class="ba-card reveal">
+            <div class="ba-comparison">
+              <div class="ba-img-wrap"><img src="https://picsum.photos/seed/aniv1b/400/533" alt="Antes" loading="lazy" /><span class="ba-chip before">ANTES</span></div>
+              <div class="ba-divider"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></div>
+              <div class="ba-img-wrap"><img src="https://picsum.photos/seed/aniv1a/400/533" alt="Depois" loading="lazy" /><span class="ba-chip after">DEPOIS</span></div>
+            </div>
+            <div class="ba-card-footer"><span class="ba-category">🎂 Aniversário</span><span class="ba-desc">15 anos — debutante</span></div>
+          </div>
+          <div class="ba-card reveal reveal-delay-1">
+            <div class="ba-comparison">
+              <div class="ba-img-wrap"><img src="https://picsum.photos/seed/aniv2b/400/533" alt="Antes" loading="lazy" /><span class="ba-chip before">ANTES</span></div>
+              <div class="ba-divider"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></div>
+              <div class="ba-img-wrap"><img src="https://picsum.photos/seed/aniv2a/400/533" alt="Depois" loading="lazy" /><span class="ba-chip after">DEPOIS</span></div>
+            </div>
+            <div class="ba-card-footer"><span class="ba-category">🎂 Aniversário</span><span class="ba-desc">Aniversário adulto</span></div>
+          </div>
+          <div class="ba-card reveal reveal-delay-2">
+            <div class="ba-comparison">
+              <div class="ba-img-wrap"><img src="https://picsum.photos/seed/aniv3b/400/533" alt="Antes" loading="lazy" /><span class="ba-chip before">ANTES</span></div>
+              <div class="ba-divider"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></div>
+              <div class="ba-img-wrap"><img src="https://picsum.photos/seed/aniv3a/400/533" alt="Depois" loading="lazy" /><span class="ba-chip after">DEPOIS</span></div>
+            </div>
+            <div class="ba-card-footer"><span class="ba-category">🎂 Aniversário</span><span class="ba-desc">Ensaio 30 anos</span></div>
+          </div>
+          <div class="ba-card reveal reveal-delay-3">
+            <div class="ba-comparison">
+              <div class="ba-img-wrap"><img src="https://picsum.photos/seed/aniv4b/400/533" alt="Antes" loading="lazy" /><span class="ba-chip before">ANTES</span></div>
+              <div class="ba-divider"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></div>
+              <div class="ba-img-wrap"><img src="https://picsum.photos/seed/aniv4a/400/533" alt="Depois" loading="lazy" /><span class="ba-chip after">DEPOIS</span></div>
+            </div>
+            <div class="ba-card-footer"><span class="ba-category">🎂 Aniversário</span><span class="ba-desc">Mini ensaio festa</span></div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
 
-<!-- CTA SECTION -->
-<section class="cta-section">
-  <div class="container">
-    <div class="section-label">Oferta especial</div>
-    <h2>Completo o álbum<br><span class="green">agora mesmo</span></h2>
-    <p>Entrega imediata. Imprima hoje. Sem risco, sem enrolação.</p>
-
-    <div class="urgency">
-      <div class="urgency-icon">⏳</div>
-      <div class="urgency-text">
-        <strong>Promoção de lançamento</strong> — preço especial de R$17,90 válido por tempo limitado. Depois sobe para R$27,90.
-      </div>
-    </div>
-
-    <div class="cta-price-big">
-      <div class="cta-price-old">De R$27,90</div>
-      <div class="cta-price-value">R$17,90</div>
-      <div class="cta-price-sub">Pagamento único via Pix · Acesso vitalício</div>
-    </div>
-
-    <div class="cta-btn-row">
-      <a href="https://pay.kiwify.com.br/hMIVZKa" class="btn-cta-lg">
-        <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Quero o Álbum Completo — R$17,90
-      </a>
-    </div>
-
-    <div class="cta-guarantee-row">
-      <div class="cta-guarantee-item">🔒 Checkout seguro via Kiwify</div>
-      <div class="cta-guarantee-item">⚡ Acesso imediato</div>
-      <div class="cta-guarantee-item">📁 PDF em alta resolução</div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="faq-section">
-  <div class="container">
-    <div style="text-align:center; margin-bottom:0;">
-      <div class="section-label" style="text-align:center;">Dúvidas</div>
-      <h2 class="section-title" style="text-align:center;">Perguntas <span class="gold">frequentes</span></h2>
-    </div>
-
-    <div class="faq-list">
-      <div class="faq-item open">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Precisa de impressora especial? <span class="faq-arrow">▼</span>
-        </button>
-        <div class="faq-a">
-          <div class="faq-a-inner">Não. Qualquer impressora jato de tinta comum funciona. Para o melhor resultado, use papel fotográfico adesivo glossy (encontra no Mercado Livre por R$30–50 a resma de 20 folhas). O guia de impressão que vem junto explica tudo passo a passo.</div>
+      <!-- TAB: FORMATURA -->
+      <div class="tab-panel" id="tab-formatura">
+        <div class="ba-grid">
+          <div class="ba-card reveal">
+            <div class="ba-comparison">
+              <div class="ba-img-wrap"><img src="https://picsum.photos/seed/form1b/400/533" alt="Antes" loading="lazy" /><span class="ba-chip before">ANTES</span></div>
+              <div class="ba-divider"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></div>
+              <div class="ba-img-wrap"><img src="https://picsum.photos/seed/form1a/400/533" alt="Depois" loading="lazy" /><span class="ba-chip after">DEPOIS</span></div>
+            </div>
+            <div class="ba-card-footer"><span class="ba-category">🎓 Formatura</span><span class="ba-desc">Beca com diploma</span></div>
+          </div>
+          <div class="ba-card reveal reveal-delay-1">
+            <div class="ba-comparison">
+              <div class="ba-img-wrap"><img src="https://picsum.photos/seed/form2b/400/533" alt="Antes" loading="lazy" /><span class="ba-chip before">ANTES</span></div>
+              <div class="ba-divider"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></div>
+              <div class="ba-img-wrap"><img src="https://picsum.photos/seed/form2a/400/533" alt="Depois" loading="lazy" /><span class="ba-chip after">DEPOIS</span></div>
+            </div>
+            <div class="ba-card-footer"><span class="ba-category">🎓 Formatura</span><span class="ba-desc">Ensaio toga clássico</span></div>
+          </div>
+          <div class="ba-card reveal reveal-delay-2">
+            <div class="ba-comparison">
+              <div class="ba-img-wrap"><img src="https://picsum.photos/seed/form3b/400/533" alt="Antes" loading="lazy" /><span class="ba-chip before">ANTES</span></div>
+              <div class="ba-divider"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></div>
+              <div class="ba-img-wrap"><img src="https://picsum.photos/seed/form3a/400/533" alt="Depois" loading="lazy" /><span class="ba-chip after">DEPOIS</span></div>
+            </div>
+            <div class="ba-card-footer"><span class="ba-category">🎓 Formatura</span><span class="ba-desc">Formatura + família</span></div>
+          </div>
+          <div class="ba-card reveal reveal-delay-3">
+            <div class="ba-comparison">
+              <div class="ba-img-wrap"><img src="https://picsum.photos/seed/form4b/400/533" alt="Antes" loading="lazy" /><span class="ba-chip before">ANTES</span></div>
+              <div class="ba-divider"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></div>
+              <div class="ba-img-wrap"><img src="https://picsum.photos/seed/form4a/400/533" alt="Depois" loading="lazy" /><span class="ba-chip after">DEPOIS</span></div>
+            </div>
+            <div class="ba-card-footer"><span class="ba-category">🎓 Formatura</span><span class="ba-desc">Capelo premium</span></div>
+          </div>
         </div>
       </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Como recebo os arquivos? <span class="faq-arrow">▼</span>
-        </button>
-        <div class="faq-a">
-          <div class="faq-a-inner">Após o pagamento, o acesso é liberado automaticamente pela plataforma Kiwify. Você recebe os arquivos por e-mail imediatamente, sem precisar esperar aprovação manual.</div>
-        </div>
+
+      <!-- Mid-page CTA -->
+      <div style="text-align:center; margin-top:3.5rem;" class="reveal">
+        <p style="color:var(--text-secondary); margin-bottom:1.2rem; font-size:0.95rem;">Quer o seu resultado assim?</p>
+        <a href="https://wa.me/5511947727299?text=Ol%C3%A1!%20Vi%20o%20portf%C3%B3lio%20e%20quero%20fazer%20meu%20ensaio%20com%20IA" target="_blank" rel="noopener" class="btn btn-whatsapp">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Pedir meu ensaio pelo WhatsApp
+        </a>
       </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          As figurinhas ficam com o tamanho certo? <span class="faq-arrow">▼</span>
-        </button>
-        <div class="faq-a">
-          <div class="faq-a-inner">Sim. Os PDFs foram formatados no tamanho oficial das figurinhas Panini. Basta imprimir em tamanho real (100%, sem ajustar à página) em papel A4 e as figurinhas terão o tamanho exato para colar no álbum.</div>
-        </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       COMO FUNCIONA — 4 passos
+  =========================== -->
+  <section class="how-section section-pad" id="como-funciona">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label">Processo simples</span>
+        <h2>Como <em class="gold">funciona</em></h2>
+        <p>Do celular ao ensaio profissional em 4 passos. Tudo pelo WhatsApp, sem sair de casa.</p>
       </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Posso imprimir mais de uma vez? <span class="faq-arrow">▼</span>
-        </button>
-        <div class="faq-a">
-          <div class="faq-a-inner">Sim! O arquivo é seu. Pode imprimir quantas vezes quiser — para você, para os filhos, para presentear um amigo. Uma compra, uso ilimitado.</div>
+      <div class="how-cards">
+        <div class="how-card reveal reveal-delay-1" data-step="1">
+          <span class="how-icon">📸</span>
+          <h3>Envie suas fotos</h3>
+          <p>Mande 5 a 10 fotos do dia a dia pelo WhatsApp. Não precisam ser profissionais — selfies servem muito bem. Quanto mais ângulos, melhor o resultado.</p>
         </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          E se eu tiver problemas com o arquivo? <span class="faq-arrow">▼</span>
-        </button>
-        <div class="faq-a">
-          <div class="faq-a-inner">Me chama no <a href="https://wa.me/5511999999999" style="color:var(--green2)">WhatsApp</a> e resolvo na hora. Suporte direto, sem ticket, sem demora. O objetivo é que você consiga imprimir sem nenhuma dificuldade.</div>
+        <div class="how-card reveal reveal-delay-2" data-step="2">
+          <span class="how-icon">🎨</span>
+          <h3>Escolha o estilo</h3>
+          <p>Você escolhe: ensaio profissional, aniversário ou formatura. Se tiver referências do Pinterest ou Google, melhor ainda. Descrevendo também funciona!</p>
+        </div>
+        <div class="how-card reveal reveal-delay-3" data-step="3">
+          <span class="how-icon">🤖</span>
+          <h3>Nossa IA transforma</h3>
+          <p>A IA aprende seu rosto, biotipo e traços únicos para criar imagens com iluminação de estúdio, cenários profissionais e qualidade cinematográfica.</p>
+        </div>
+        <div class="how-card reveal reveal-delay-4" data-step="4">
+          <span class="how-icon">✨</span>
+          <h3>Receba em até 24h</h3>
+          <p>O ensaio completo chegará no seu WhatsApp em alta resolução, pronto para imprimir, emoldurar ou usar no LinkedIn. Satisfação garantida ou refazemos.</p>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- FOOTER -->
-<footer>
-  <p>© 2026 · Álbum Copa do Mundo · Checkout seguro via Kiwify · Dúvidas? <a href="https://wa.me/5511999999999" style="color:var(--green2);">Fale comigo no WhatsApp</a></p>
-</footer>
+  <!-- ===========================
+       FAQ ACCORDION
+  =========================== -->
+  <section class="faq-section section-pad" id="faq">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label">Dúvidas frequentes</span>
+        <h2>Perguntas <em class="gold">e respostas</em></h2>
+      </div>
+      <div class="faq-list">
 
-<!-- STICKY CTA -->
-<div class="sticky-cta" id="stickyCta">
-  <a href="https://pay.kiwify.com.br/hMIVZKa" class="sticky-btn">
-    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    ⚽ Quero o Álbum — R$17,90
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            Qual é o prazo de entrega?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>O prazo depende do pacote escolhido: Starter (1 foto) em 24h, Popular (5 fotos) em 12h, e Premium (10 fotos) em 6h. Em períodos de alta demanda, o prazo pode ser um pouco maior — mas sempre comunicamos antes.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal reveal-delay-1">
+          <button class="faq-question">
+            Que tipo de fotos devo enviar?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Fotos de celular servem perfeitamente! O ideal é enviar 5 a 10 fotos variadas: diferentes ângulos do rosto, com boa iluminação natural (perto de janela). Evite óculos escuros, filtros pesados ou fotos muito escuras. Quanto mais variadas, melhor a IA aprende seu rosto.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal reveal-delay-2">
+          <button class="faq-question">
+            Quais são as formas de pagamento?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Aceitamos PIX (aprovação imediata) e cartão de crédito. O pagamento é feito via link seguro enviado pelo WhatsApp após você escolher o pacote. A produção começa só após a confirmação do pagamento.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal reveal-delay-3">
+          <button class="faq-question">
+            E se eu não gostar do resultado?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Sua satisfação é nossa prioridade. Se não gostar do resultado, entre em contato pelo WhatsApp e avaliamos ajustes ou refazemos. A maioria dos clientes fica feliz logo no primeiro envio — mas estamos aqui para garantir que você ame o resultado.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal reveal-delay-4">
+          <button class="faq-question">
+            As fotos ficam parecidas comigo de verdade?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Sim! Nossa IA é treinada especificamente com as suas fotos para preservar seus traços únicos: rosto, cor de pele, olhos e biotipo. O resultado é você mesmo, com qualidade de estúdio. Confira o portfólio acima para ver exemplos reais.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            Posso fazer ensaio de formatura com toga e capelo?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Com certeza! É um dos nossos estilos mais pedidos. Criamos o ensaio com toga, capelo e diploma, com cenários de campus universitário, biblioteca ou fundo neutro profissional. Basta solicitar no WhatsApp e informar o seu curso.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       FINAL CTA — Urgência
+  =========================== -->
+  <section class="cta-section section-pad">
+    <div class="container">
+      <div class="cta-inner reveal">
+        <div class="cta-urgency">Vagas limitadas esta semana</div>
+        <h2>Pronto para sua <em class="gold">transformação</em>?</h2>
+        <p>Mande uma foto comum. Receba um ensaio que vai te surpreender — em até 24h, direto no seu WhatsApp.</p>
+        <div class="cta-btns">
+          <a href="https://wa.me/5511947727299?text=Ol%C3%A1!%20Quero%20fazer%20meu%20ensaio%20com%20IA.%20Vi%20o%20portf%C3%B3lio%20e%20adorei!" target="_blank" rel="noopener" class="btn btn-whatsapp" style="font-size:1.1rem; padding:1.1rem 2.5rem;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Começar agora pelo WhatsApp
+          </a>
+        </div>
+        <div class="cta-trust">
+          <div class="cta-trust-item"><span>✓</span> Entrega em até 24h</div>
+          <div class="cta-trust-item"><span>✓</span> Pagamento seguro via PIX</div>
+          <div class="cta-trust-item"><span>✓</span> Satisfação garantida</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       FOOTER
+  =========================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <a href="index.html" class="footer-logo">Gabriel <span>Jimbo</span></a>
+        <nav class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="portfolio.html">Portfólio</a>
+          <a href="index.html#como-funciona">Como Funciona</a>
+          <a href="index.html#precos">Preços</a>
+          <a href="https://wa.me/5511947727299" target="_blank" rel="noopener">WhatsApp</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Gabriel Jimbo — Ensaios Por IA. Todos os direitos reservados.</p>
+        <p style="color:var(--gold); font-family:'DM Mono',monospace; font-size:0.7rem; letter-spacing:0.1em;">TRANSFORMAÇÃO FOTOGRÁFICA COM IA</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===========================
+       WHATSAPP FLOATING BUTTON
+  =========================== -->
+  <a href="https://wa.me/5511947727299?text=Ol%C3%A1!%20Quero%20fazer%20meu%20ensaio%20com%20IA" target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span>Falar no WhatsApp</span>
   </a>
-</div>
 
-<script>
-  // Sticky CTA
-  const stickyCta = document.getElementById('stickyCta');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 600) {
-      stickyCta.classList.add('visible');
-    } else {
-      stickyCta.classList.remove('visible');
+  <!-- ===========================
+       JAVASCRIPT
+  =========================== -->
+  <script>
+    // ── Navbar scroll ──────────────────────────────
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // ── Mobile menu ────────────────────────────────
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileClose = document.getElementById('mobileClose');
+    hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
+    mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
+
+    // ── Tab filtering ──────────────────────────────
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tab = btn.dataset.tab;
+        // Update buttons
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        // Update panels
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        document.getElementById('tab-' + tab).classList.add('active');
+        // Re-trigger reveals for newly shown items
+        setTimeout(triggerReveals, 50);
+      });
+    });
+
+    // ── Reveal on scroll (IntersectionObserver) ───
+    function triggerReveals() {
+      document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
+        observer.observe(el);
+      });
     }
-  });
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    triggerReveals();
 
-  // FAQ toggle
-  function toggleFaq(btn) {
-    const item = btn.closest('.faq-item');
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
-  }
-</script>
+    // ── Animated counters (IntersectionObserver) ──
+    function animateCounter(el, target, suffix = '') {
+      const duration = 1800;
+      const start = performance.now();
+      const update = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+        const value = Math.floor(ease * target);
+        el.textContent = (value >= target ? '+' : '') + value + suffix;
+        if (progress < 1) requestAnimationFrame(update);
+        else el.textContent = '+' + target + suffix;
+      };
+      requestAnimationFrame(update);
+    }
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.dataset.target, 10);
+          animateCounter(el, target);
+          counterObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
+
+    // ── FAQ accordion ─────────────────────────────
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        // Close all
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        // Open clicked if it was closed
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
 
 </body>
 </html>
