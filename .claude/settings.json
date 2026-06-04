@@ -31,7 +31,9 @@
       "Bash(npm install:*)",
       "Bash(node -e \":*)",
       "Bash(git push:*)",
-      "Bash(node sync-fotos.js)"
+      "Bash(node sync-fotos.js)",
+      "Bash(Get-ChildItem \"C:\\\\Users\\\\gabri\\\\OneDrive\\\\ADS\\\\Album da Copa\\\\Entregavel\\\\Copa\" -Recurse)",
+      "Bash(Select-Object FullName, Length)"
     ],
     "additionalDirectories": [
       "C:\\Users\\gabri\\OneDrive\\ADS\\Fotos Geradas por IA\\clientes\\Bull Terrie - Almies\\feito",
